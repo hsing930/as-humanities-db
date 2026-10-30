@@ -20,7 +20,7 @@
 5. 點擊 **Save**，約 30 秒後即可在上方看到您的專屬公開網址：
    `https://<你的GitHub帳號>.github.io/as-humanities-databases/`
 
-### 方式二：使用 Git 命令列推送
+### 方式二：使用 Git 命令列推送 
 ```bash
 git init
 git add .
