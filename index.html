@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中央研究院人文社會科學數位資源與資料庫導覽 - 智慧選庫建議版</title>
+  <title>中央研究院人文社會科學數位資料庫導覽與智能選庫系統（75+全院旗艦版）</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
       background: #94a3b8;
     }
     .glass-nav {
-      background: rgba(15, 23, 42, 0.94);
+      background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(12px);
     }
   </style>
@@ -36,7 +36,7 @@
 
   <!-- Header & Navigation -->
   <header class="glass-nav sticky top-0 z-40 text-white shadow-lg border-b border-slate-700/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center shadow-md font-bold text-lg text-white">
           中
@@ -44,9 +44,9 @@
         <div>
           <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
             中央研究院人文類數位資料庫導覽
-            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">智慧選庫建議版</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">75+ 旗艦全覽版</span>
           </h1>
-          <p class="text-xs text-slate-400 hidden sm:block">輸入您的研究課題，智能推薦最合適的史料資料庫與教學轉化路徑</p>
+          <p class="text-xs text-slate-400 hidden sm:block">涵蓋 12 研究所與中心、全院圖書館 300+ 資源、外國史、西洋思潮與智能選庫</p>
         </div>
       </div>
       
@@ -84,23 +84,23 @@
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-indigo-500 transition">
-          <div class="text-xs text-slate-400 font-medium">七大研究核心領域</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1" id="statTotalDatabases">40</div>
-          <div class="text-xs text-indigo-400 mt-1">歷史考古、GIS空間、社會實證</div>
+          <div class="text-xs text-slate-400 font-medium">全院精選專業資料庫</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1" id="statTotalDatabases">75</div>
+          <div class="text-xs text-indigo-400 mt-1">含外國史、西洋思潮與子專題</div>
         </div>
         <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-emerald-500 transition">
           <div class="text-xs text-slate-400 font-medium">全民全開放 (免IP)</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1" id="statOpenAccess">27</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1" id="statOpenAccess">48</div>
           <div class="text-xs text-slate-400 mt-1">無須帳號隨時隨地可連</div>
         </div>
         <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-amber-500 transition">
-          <div class="text-xs text-slate-400 font-medium">南北院區連線共享</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1" id="statSouthCampus">13</div>
-          <div class="text-xs text-slate-400 mt-1">台南沙崙數位圖檔室同步</div>
+          <div class="text-xs text-slate-400 font-medium">南院共享與商業大庫</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1" id="statSouthCampus">27</div>
+          <div class="text-xs text-slate-400 mt-1">台南沙崙數位圖檔室全連線</div>
         </div>
         <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-rose-500 transition">
           <div class="text-xs text-slate-400 font-medium">課堂教材教案標註</div>
-          <div class="text-2xl sm:text-3xl font-extrabold text-rose-400 mt-1" id="statTeachingFocus">40</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-rose-400 mt-1" id="statTeachingFocus">75</div>
           <div class="text-xs text-slate-400 mt-1">108課綱探究與實作指引</div>
         </div>
       </div>
@@ -133,21 +133,23 @@
             <!-- Research Topic Filter (Category Filter) -->
             <select id="categoryFilter" class="px-3 py-2 rounded-xl border border-slate-300 text-xs sm:text-sm font-medium bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <option value="ALL">全部研究內容領域 (全部)</option>
-              <option value="歷史與考古文獻">歷史與考古文獻 (出土文物、古籍、近代與臺灣檔案)</option>
-              <option value="地理空間與數位人文">地理空間與數位人文 (GIS歷史地圖、時空軌跡、情感病理)</option>
-              <option value="族群、人類學與民俗">族群、人類學與民俗 (原住民族、平埔文書、民間信仰)</option>
-              <option value="語言、文字與語料庫">語言、文字與語料庫 (古漢字演變、閩客方言、南島語)</option>
-              <option value="社會變遷與民主調查">社會變遷與民主調查 (長期社會抽樣、亞洲民主、公民調查)</option>
-              <option value="經濟、法政與國際思潮">經濟、法政與國際思潮 (景氣預測、人權科技法、歐美思潮)</option>
-              <option value="跨領域策展與公眾轉譯">跨領域策展與公眾轉譯 (百萬藏品、學生線上策展、科普)</option>
+              <option value="中國古典與考古文獻">中國古典與考古文獻 (出土甲骨、金石、漢簡、明清公文)</option>
+              <option value="近代中國與檔案文獻">近代中國與檔案文獻 (外交部、民國婦女史、胡適手稿、期刊)</option>
+              <option value="臺灣在地歷史與民間檔案">臺灣在地歷史與民間檔案 (古契書、士紳日記、日治寫真帖)</option>
+              <option value="外國史、西洋思潮與國際關係">外國史、西洋思潮與國際關係 (歐美研究、英國歷史期刊、JSTOR)</option>
+              <option value="地理空間、時空軌跡與 GIS">地理空間、時空軌跡與 GIS (百年歷史地圖、全臺詩GIS、疾病地圖)</option>
+              <option value="族群文化、人類學與民俗">族群文化、人類學與民俗 (臺灣原住民、平埔文書、民間信仰)</option>
+              <option value="語言演變、文字學與語料庫">語言演變、文字學與語料庫 (小學堂、閩客語料庫、南島語言)</option>
+              <option value="社會變遷、經濟法政與實證調查">社會變遷、經濟法政與實證調查 (社會變遷TSCS、GDP預測、法學)</option>
+              <option value="跨領域策展、數位人文與科普">跨領域策展、數位人文與科普 (開放博物館、研之有物、NLP探勘)</option>
             </select>
 
             <!-- Access Tier Select -->
             <select id="accessFilter" class="px-3 py-2 rounded-xl border border-slate-300 text-xs sm:text-sm font-medium bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <option value="ALL">全部近用權限 (全部)</option>
               <option value="全開放免IP">全開放免 IP (全民共享)</option>
-              <option value="院區/南院共享">院區/南院共享 (需連線中研院)</option>
-              <option value="到館授權">到館授權 (特定檔案)</option>
+              <option value="院區/南院共享">院區/南院共享 (需連線中研院或至沙崙圖檔室)</option>
+              <option value="到館授權">到館授權 (特定原件檔案)</option>
             </select>
 
             <!-- Teaching Only Toggle -->
@@ -163,6 +165,31 @@
           </div>
         </div>
 
+        <!-- 300+ Cross Search Integration Bar -->
+        <div id="crossSearchSection" class="p-3 bg-indigo-50/70 border border-indigo-100 rounded-xl flex flex-wrap items-center justify-between gap-2.5 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="text-base">🌐</span>
+            <span class="font-semibold text-indigo-950">
+              在中研院全院 300+ 資料庫穿透檢索：
+              <span id="crossSearchTermLabel" class="font-bold text-indigo-700 font-mono">（輸入關鍵字後點擊）</span>
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <a id="crossSearchLibBtn" href="https://aslib.sinica.edu.tw/" target="_blank" rel="noopener noreferrer" 
+              class="px-3 py-1.5 bg-white hover:bg-indigo-600 hover:text-white text-indigo-900 border border-indigo-200 rounded-lg transition font-medium flex items-center gap-1 shadow-xs">
+              <span>🏛️ 中研院圖書館 (300+ 總目錄)</span>
+            </a>
+            <a id="crossSearchOpenMuseumBtn" href="https://openmuseum.tw/" target="_blank" rel="noopener noreferrer" 
+              class="px-3 py-1.5 bg-white hover:bg-amber-600 hover:text-white text-amber-900 border border-amber-200 rounded-lg transition font-medium flex items-center gap-1 shadow-xs">
+              <span>🎨 開放博物館 (117萬件藏品)</span>
+            </a>
+            <a id="crossSearchAscdcBtn" href="https://ascdc.digitalarchives.tw/" target="_blank" rel="noopener noreferrer" 
+              class="px-3 py-1.5 bg-white hover:bg-emerald-600 hover:text-white text-emerald-900 border border-emerald-200 rounded-lg transition font-medium flex items-center gap-1 shadow-xs">
+              <span>📜 數位典藏網 (百大子計畫)</span>
+            </a>
+          </div>
+        </div>
+
         <!-- Research Topic Quick Buttons -->
         <div class="pt-2 border-t border-slate-100">
           <div class="text-xs font-semibold text-slate-500 mb-2 flex items-center justify-between">
@@ -170,7 +197,7 @@
               <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
               <strong>研究內容主題分類：</strong>點選切換特定研究範疇
             </span>
-            <span id="activeCount" class="text-indigo-600 font-bold">顯示 40 個資源</span>
+            <span id="activeCount" class="text-indigo-600 font-bold">顯示 75 個資源</span>
           </div>
           <div id="topicButtonsContainer" class="flex flex-wrap gap-1.5 mb-2">
             <!-- Dynamically populated research topic buttons -->
@@ -180,7 +207,7 @@
         <!-- Institute Secondary Filter -->
         <div class="pt-2 border-t border-slate-100">
           <div class="text-xs font-semibold text-slate-500 mb-1.5">
-            <span>次要篩選：依所屬單位（12所中心 + 數位文化中心 + 南部院區）</span>
+            <span>次要篩選：依所屬單位（12所中心 + 數位文化中心 + 全院圖書館 + 南部院區）</span>
           </div>
           <div id="instituteFilterContainer" class="flex flex-wrap gap-1.5 custom-scrollbar max-h-24 overflow-y-auto">
             <!-- Rendered dynamically -->
@@ -201,7 +228,7 @@
           </div>
           <div>
             <h3 class="font-bold text-sm sm:text-base text-white">不知道該選哪一個資料庫？讓 AI 依研究課題為您導航！</h3>
-            <p class="text-xs text-indigo-200 mt-0.5">輸入師生想探討的具體課題（如日治教育、家鄉地景、古文疾病等），立即自動配對最佳資料庫與研究路徑。</p>
+            <p class="text-xs text-indigo-200 mt-0.5">輸入師生想探討的具體課題（如日治教育、家鄉地貌、古文瘟疫、英國史等），立即自動配對最佳起手庫與研究路徑。</p>
           </div>
         </div>
         <button id="calloutOpenAdvisorBtn" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-xl transition shadow flex-shrink-0 flex items-center gap-1.5">
@@ -220,7 +247,7 @@
           </svg>
         </div>
         <h3 class="text-lg font-bold text-slate-700">查無符合條件的數位資源</h3>
-        <p class="text-sm text-slate-500 mt-1">請嘗試縮減關鍵字、放寬篩選權限或切換研究主題</p>
+        <p class="text-sm text-slate-500 mt-1">請嘗試縮減關鍵字、放寬篩選權限，或點擊上方「跨庫穿透按鈕」搜尋全院 300+ 資料庫</p>
         <button id="emptyResetBtn" class="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-medium rounded-lg hover:bg-indigo-500 transition">
           重設所有篩選條件
         </button>
@@ -244,7 +271,7 @@
     </main>
   </div>
 
-  <!-- VIEW 2: Smart Research Topic Advisor (New Feature) -->
+  <!-- VIEW 2: Smart Research Topic Advisor -->
   <div id="advisorView" class="hidden flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 sm:p-8 space-y-6">
       
@@ -255,7 +282,7 @@
             <span>✨</span> 課題導航與史料選庫顧問
           </div>
           <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">您或學生想探討什麼研究課題？</h2>
-          <p class="text-sm text-slate-500 mt-1">無論是高中探究與實作、小論文撰寫、課堂備課或大學專題，輸入題目即可為您配對合適資料庫與研究路徑。</p>
+          <p class="text-sm text-slate-500 mt-1">無論是高中探究與實作、歷史小論文、備課設計或大專專題，輸入題目即可為您配對合適資料庫與研究路徑。</p>
         </div>
         <button id="advisorBackToBrowseBtn" class="text-xs font-bold text-slate-600 hover:text-indigo-600 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition flex items-center gap-1.5 self-start md:self-auto">
           <span>← 返回全庫導覽清單</span>
@@ -268,7 +295,7 @@
         <div class="flex flex-col sm:flex-row gap-3">
           <div class="relative flex-1">
             <input type="text" id="advisorQueryInput" 
-              placeholder="例如：日治時期臺灣教育與學校史、雲林家鄉百年地景變遷、古代疫情恐慌與偏方、商周青銅紋飾、半導體產業崛起..." 
+              placeholder="例如：日治時期臺灣教育與學校史、雲林家鄉百年地貌演變、居延漢簡屯戍、武梁祠神話、英國維多利亞時代、民國新女性..." 
               class="w-full px-4 py-3.5 rounded-2xl border-2 border-indigo-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-sm font-medium transition" />
           </div>
           <button id="advisorSearchBtn" class="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-2xl shadow-lg shadow-indigo-600/20 transition flex items-center justify-center gap-2">
@@ -297,13 +324,15 @@
   <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="space-y-1 text-center md:text-left">
-        <p class="font-semibold text-slate-300">中央研究院 人文社會科學數位典藏與研究資料庫專題整理（智慧選庫與研究課題導航版）</p>
-        <p>整理依據：《數位地景：解碼中研院的四重歷史透鏡》與中研院各所檔案館、數位文化中心官方資源</p>
+        <p class="font-semibold text-slate-300">中央研究院 人文社會科學數位典藏與研究資料庫專題整理（75+ 全景旗艦版）</p>
+        <p>整理依據：《數位地景：解碼中研院的四重歷史透鏡》與中研院各所檔案館、全院圖書館、數位文化中心官方資源</p>
       </div>
       <div class="flex items-center gap-4 text-slate-400">
         <span>© 中央研究院 Academia Sinica</span>
         <span>•</span>
         <a href="https://www.sinica.edu.tw" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition">中研院官網</a>
+        <span>•</span>
+        <a href="https://aslib.sinica.edu.tw" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition">全院圖書館服務</a>
         <span>•</span>
         <a href="https://ascdc.sinica.edu.tw" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition">數位文化中心</a>
       </div>
@@ -407,11 +436,11 @@
       <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
         <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
           <h4 class="font-bold text-emerald-900 flex items-center gap-1.5 mb-1">
-            <span>🟢</span> 基座層級：全民全開放資源（免 IP 限制）
+            <span>🟢</span> 基座層級：全民全開放資源（免 IP 限制，共 48+ 個）
           </h4>
           <p class="text-xs text-emerald-800">
             不限中研院網域，全台各級中小學、大學師生及社會大眾皆可隨時自由使用。<br>
-            <strong>代表項目：</strong>開放博物館、3D 考古文物櫥窗、疾病感覺地圖、遊方歷代僧傳、臺灣百年歷史地圖、小學堂文字學資料庫。最適合線上教學與課堂投影演示。
+            <strong>代表項目：</strong>開放博物館、3D 考古文物櫥窗、疾病感覺地圖、遊方歷代僧傳、臺灣百年歷史地圖、小學堂文字學、居延漢簡字典、漢代畫像石、胡適手稿、臺灣日記知識庫。
           </p>
         </div>
 
@@ -420,7 +449,7 @@
             <span>🟡</span> 中層級：中研院院區共享資源（限院內 IP / 南院共享）
           </h4>
           <p class="text-xs text-amber-800">
-            <strong>南部院區數位圖檔室</strong>（台南歸仁沙崙）已正式啟用，連線開放中研院本院各所採購之 95% 以上電子資料庫、近代史所檔案館與臺灣史所檔案館之授權檢索系統，南部師生無需北上南港即可閱覽與列印。
+            <strong>南部院區數位圖檔室</strong>（台南歸仁沙崙）已正式啟用，連線開放中研院本院各所採購之 95% 以上電子資料庫（晚清民國期刊庫、JSTOR、大成老舊刊等）及近史所、臺史所檔案館之授權檢索系統，南部師生無需北上南港即可閱覽與列印。
           </p>
         </div>
 
@@ -429,7 +458,7 @@
             <span>🔴</span> 頂層級：限制性原始檔案（北部院區限定）
           </h4>
           <p class="text-xs text-slate-700">
-            涉及法令隱私、外交機密或原件保護之特定原件與微縮膠卷，依規定仍須親至南港本院（歷史語言研究所傅斯年圖書館、近代史所檔案館、臺史所檔案館）辦理到館申請與抄錄。
+            涉及法令隱私、外交機密或原件保護之特定原件與微縮膠卷（如新華社內部參考單機檔），依規定仍須親至南港本院（傅斯年圖書館、近史所郭廷以圖書館、臺史所檔案館）辦理到館申請與抄錄。
           </p>
         </div>
       </div>
@@ -449,809 +478,11 @@
   </div>
 
   <script>
-    // Research Topic Definitions
-    const researchTopics = [
-      {
-        id: "ALL",
-        name: "全部研究領域",
-        icon: "🌐",
-        desc: "涵蓋中研院人文社會組七大研究範疇與 40 個專業資料庫"
-      },
-      {
-        id: "歷史與考古文獻",
-        name: "歷史與考古文獻",
-        icon: "🏛️",
-        desc: "商周出土文物、歷代古籍善本、明清內閣大庫、近代外交經濟公文與臺灣民間古文書"
-      },
-      {
-        id: "地理空間與數位人文",
-        name: "地理空間與數位人文",
-        icon: "🗺️",
-        desc: "百年疊圖GIS、僧人遊方空間軌跡、六朝疾病情感地圖與自然語言文本探勘"
-      },
-      {
-        id: "族群、人類學與民俗",
-        name: "族群、人類學與民俗",
-        icon: "🏺",
-        desc: "臺灣南島原住民、平埔族群歷史契約、漢人民間信仰田野與跨國民族誌"
-      },
-      {
-        id: "語言、文字與語料庫",
-        name: "語言、文字與語料庫",
-        icon: "🔤",
-        desc: "甲骨金文六書演變、閩客方言發音辭典、南島語言瀕危錄音與上古現代語料庫"
-      },
-      {
-        id: "社會變遷與民主調查",
-        name: "社會變遷與民主調查",
-        icon: "📊",
-        desc: "40年臺灣社會變遷長期貫時調查、跨國亞洲民主動態與社會科學實證數據庫"
-      },
-      {
-        id: "經濟、法政與國際思潮",
-        name: "經濟、法政與國際思潮",
-        icon: "⚖️",
-        desc: "臺灣總體經濟預測、TSSCI頂尖經濟與法學期刊、憲政人權及歐美哲學思潮"
-      },
-      {
-        id: "跨領域策展與公眾轉譯",
-        name: "跨領域策展與公眾轉譯",
-        icon: "🎨",
-        desc: "開放博物館百萬跨機構藏品、時間軸與故事地圖策展工具及全民知識平權平臺"
-      }
-    ];
+    const databases = [{id: "iias-portal", "name": "法律學研究所法學研究與學術活動網", "english_name": "iias-portal", "institute": "法律學研究所", "institute_code": "IIAS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.iias.sinica.edu.tw/", "description": "提供法律所各項跨領域法學工作坊實錄、重大法律政策建言及法學專書系列資訊。", "teaching_focus": "法治素養教學與重大法律議題思辨。", "tags": ["法治教育", "司法改革", "法律政策"], "access_detail": "全網開放"}, {id: "ips-research-portal", "name": "政治學研究所學術研究成果網", "english_name": "ips-research-portal", "institute": "政治學研究所", "institute_code": "IPS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.ipsas.sinica.edu.tw/", "description": "聚焦憲政體制、兩岸關係、國際地緣政治、選舉制度與民主治理之代表性研究專書與論文。", "teaching_focus": "高中公民憲政體制與選舉制度運作補充教材。", "tags": ["憲政主義", "國際關係", "選舉制度"], "access_detail": "全網開放"}, {id: "ieas-library-db", "name": "經濟研究所圖書館電子資源資料庫", "english_name": "ieas-library-db", "institute": "經濟研究所", "institute_code": "IEAS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "院區/南院共享", "url": "https://www.econ.sinica.edu.tw/library/pages/104", "description": "涵蓋全球主要金融經濟資料庫（如 AREMOS 臺灣經濟統計、IMF、OECD 數據庫）。", "teaching_focus": "大專院校專題論文資料檢索與計量實習教材。", "tags": ["金融數據", "AREMOS", "總體經濟"], "access_detail": "中研院網域／南院數位圖檔室共享"}, {id: "ios-publications", "name": "中研院社會學研究所學術出版與專題", "english_name": "ios-publications", "institute": "社會學研究所", "institute_code": "IOS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.ios.sinica.edu.tw/", "description": "收錄社會所重要學術成果、研討會論文、專書出版目錄及《台灣社會學》代表性前沿研究。", "teaching_focus": "高三選修社會或大學社會系導論延伸閱讀。", "tags": ["社會學期刊", "數位社會", "社會變遷"], "access_detail": "全網開放"}, {id: "rchss-gis-apps", "name": "人社中心 GIS 加值應用系統網", "english_name": "rchss-gis-apps", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://gis.rchss.sinica.edu.tw/application/", "description": "涵蓋鄭和航海圖 WebGIS、全臺詩地理資訊系統、臺灣戰後空間規劃史料資料庫。", "teaching_focus": "歷史文學與地理整合教學。", "tags": ["鄭和航海", "全臺詩GIS", "空間規劃"], "access_detail": "全網開放"}, {id: "rchss-mapsearch", "name": "地圖數位典藏整合查詢系統", "english_name": "rchss-mapsearch", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://gis.rchss.sinica.edu.tw/mapsearch/", "description": "整合國內外各大機構所藏之珍稀古地圖、戰略測量圖、都市計畫圖與航照圖影像。", "teaching_focus": "高中探究與實作空間環境與都市發展專案。", "tags": ["古地圖", "測繪史", "空間地景"], "access_detail": "全網開放"}, {id: "il-digital-studio", "name": "語言學研究所數位語言資源工作室", "english_name": "il-digital-studio", "institute": "語言學研究所", "institute_code": "IL", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://www.ling.sinica.edu.tw/item/zh-tw?code=list&ids=19", "description": "統籌中研院語言學所各大語料庫與詞彙庫研發成果，涵蓋現代漢語、上古漢語與南島語資源。", "teaching_focus": "高中語文資優班語言學導論教學。", "tags": ["語料庫", "詞彙庫", "語言學"], "access_detail": "全網開放"}, {id: "litphil-library-db", "name": "文哲所哲學與文學專題文獻庫", "english_name": "litphil-library-db", "institute": "中國文哲研究所", "institute_code": "LitPhil", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "院區/南院共享", "url": "https://www.litphil.sinica.edu.tw/library/posts/4235", "description": "典藏宋明理學、儒家哲學、先秦諸子、明清詞曲文集與近現代華人思想之專業電子文獻。", "teaching_focus": "大學中文系、哲學系經典研讀教材。", "tags": ["儒學", "宋明理學", "先秦諸子"], "access_detail": "中研院網域／南院數位圖檔室共享"}, {id: "ith-gov-travel", "name": "臺灣總督府職員錄與旅券查詢系統", "english_name": "ith-gov-travel", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "收錄日治時期臺灣總督府各級文官、警察、教師名冊，以及臺人赴海外出境旅券申請紀錄。", "teaching_focus": "百年老校校長教師考證與赴日留學足跡。", "tags": ["日治職員", "旅券", "海外留學"], "access_detail": "全網開放"}, {id: "ith-archives-net", "name": "臺灣歷史檔案資源網", "english_name": "ith-archives-net", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "臺史所檔案館入口門戶，每月發布檔案選粹、時事策展故事與歷史知識短文。", "teaching_focus": "適合中小學歷史科課堂導讀。", "tags": ["歷史故事", "科普轉譯", "檔案導讀"], "access_detail": "全網開放"}, {id: "ihp-digiarch", "name": "史語所數位資源整合檢索系統", "english_name": "ihp-digiarch", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://digiarch.sinica.edu.tw/ihp/index.jsp", "description": "一站式跨庫查詢史語所藏內閣大庫檔案、明清公文、善本書籍、拓片碑帖等龐大館藏。", "teaching_focus": "歷史專案研究與小論文撰寫。", "tags": ["明清檔案", "內閣大庫", "善本古籍"], "access_detail": "全網開放"}, {id: "ascdc-databases", "name": "數位文化中心資料庫總覽網", "english_name": "ascdc-databases", "institute": "數位文化中心", "institute_code": "ASCDC", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "全開放免IP", "url": "https://ascdc.sinica.edu.tw/databases.jsp", "description": "盤點並整合中研院歷年來逾百個數位典藏成果、專業資料庫及跨領域數位人文研究入口。", "teaching_focus": "高階專題研究、研究生資料檢索必備書籤。", "tags": ["資料庫總表", "數位典藏", "學術導航"], "access_detail": "全網開放"}, {id: "ihp-hanji", "name": "漢籍電子文獻資料庫 (Scripta Sinica)", "english_name": "Scripta Sinica Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://hanji.sinica.edu.tw/", "description": "6.8億字浩瀚古籍全文庫，收錄二十四史、經子集部、明清實錄、地方志、食貨志，為華人文學與史學研究之金字塔基石。", "teaching_focus": "高中歷史與國文考據、歷代典章制度比較、地方食貨志演變探究。", "tags": ["正史", "二十四史", "文獻考據", "食貨志", "古籍檢索"], "access_detail": "全網開放免費註冊帳號或使用公開查詢"}, {id: "ihp-neige", "name": "內閣大庫檔案資料庫", "english_name": "Grand Secretariat Archives Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://copyright.ihp.sinica.edu.tw/", "description": "明清朝廷中樞最核心原始公文，包含詔令、奏摺、題本、移會、殿試策卷等逾31萬件一手清廷決策檔案。", "teaching_focus": "清代中央官僚體制運作、奏摺制度探究與清代重大歷史事件考證。", "tags": ["明清公文", "奏摺", "殿試策卷", "中央官制", "朝廷決策"], "access_detail": "開放國內個人及教育機構免費申請帳號使用"}, {id: "ihp-3d-archaeology", "name": "3D 考古文物櫥窗", "english_name": "3D Archaeology Showcase", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://archeodata.sinica.edu.tw/1_2/3DAA/", "description": "以高解析攝影測量技術建立商周青銅器、居延漢簡、史前陶玉石器之3D模型，突破2D限制，還原出土考古脈絡。", "teaching_focus": "歷史與藝術跨科探究：青銅器饕餮紋飾、鑄造工藝接縫與商周階級禮制觀察。", "tags": ["青銅器", "商周禮樂", "考古學", "3D模型", "物質文化"], "access_detail": "免登入，支援電腦與行動裝置360度手勢旋轉放大"}, {id: "ihp-juyan-dict", "name": "簡牘字典（史語所藏居延漢簡資料庫）", "english_name": "Dictionary of Characters on Wooden Slips (Juyan Han Slips)", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://archeodata.sinica.edu.tw/", "description": "東亞最大規模漢簡資料庫，收錄1.3萬餘枚居延漢簡高解析彩圖、紅外線掃描影像與精確釋文考釋。", "teaching_focus": "漢代邊塞烽燧制度、河西走廊屯戍生活與隸書書法演變教學。", "tags": ["居延漢簡", "河西走廊", "烽燧", "邊塞屯戍", "漢代書法"], "access_detail": "全網開放檢索與字典對照"}, {id: "ihp-jiagu-rubbings", "name": "甲骨文拓片資料庫", "english_name": "Oracle Bone Inscription Rubbings Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://digiarch.sinica.edu.tw/ihp/index.jsp", "description": "典藏史語所安陽殷墟發掘與購藏之珍貴甲骨拓片逾4萬件，商代晚期王室占卜、祭祀與世系之一手文字紀錄。", "teaching_focus": "國文與歷史文字學教學：商王占卜求雨、田獵、生育紀錄與甲骨文造字法則。", "tags": ["甲骨文", "殷墟", "商代占卜", "金石學", "古文字"], "access_detail": "開放線上檢索書目與拓片圖檔"}, {id: "ihp-bronze-rubbings", "name": "青銅器拓片資料庫", "english_name": "Bronze Vessel Rubbings Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://digiarch.sinica.edu.tw/ihp/index.jsp", "description": "典藏商周青銅器全形拓、器腹紋飾與長篇金文銘文拓片，比原件更能清晰辨識銘文文字與名家題跋印記。", "teaching_focus": "金文銘文釋讀（如毛公鼎、散氏盤銘文）與古代書法篆刻美學。", "tags": ["青銅拓片", "全形拓", "金文", "毛公鼎", "銘文考證"], "access_detail": "開放檢索與高清影像閱覽"}, {id: "ihp-han-stone-rubbings", "name": "漢代石刻畫象拓本資料庫", "english_name": "Rubbings of Han Dynasty Pictorial Reliefs", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://digiarch.sinica.edu.tw/ihp/index.jsp", "description": "收錄山東武梁祠、河南南陽等地漢代畫象石與畫象磚拓片1,500餘件，生動描繪漢代神話、歷史故事與宴飲生活。", "teaching_focus": "高中歷史與美術專題：漢代死後升仙觀、西王母東王公神話與孝道故事畫象探究。", "tags": ["武梁祠", "漢代畫像石", "神話", "漢代信仰", "墓葬藝術"], "access_detail": "全開放免登入"}, {id: "ihp-buddhist-rubbings", "name": "佛教石刻造像拓片資料庫", "english_name": "Buddhist Stone Inscription Rubbings", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://digiarch.sinica.edu.tw/ihp/index.jsp", "description": "全臺收藏最豐富之南北朝至隋唐佛教碑刻、石窟造像記與摩崖刻經拓片，反映古代民間造像祈福心理。", "teaching_focus": "佛教中國化進程、隋唐民間信仰邑義團體與佛教石窟藝術考察。", "tags": ["佛教造像", "摩崖刻經", "造像記", "佛教史", "魏碑書法"], "access_detail": "開放線上查詢與拓本閱覽"}, {id: "ihp-liao-jin-rubbings", "name": "遼金元石刻碑拓資料庫", "english_name": "Liao, Jin, Yuan Inscriptions Rubbings", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://digiarch.sinica.edu.tw/ihp/index.jsp", "description": "典藏遼、金、元三朝碑拓2,200餘幅，包含契丹小字、女真文、八思巴文與漢文雙語碑刻，研究遊牧征服王朝首選。", "teaching_focus": "少數民族政權統治機制、雙語文字政策與北方遊牧社會文化交融史。", "tags": ["契丹小字", "八思巴文", "遼金元", "征服王朝", "碑刻墓誌"], "access_detail": "全開放線上查詢"}, {id: "ihp-rare-books", "name": "傅斯年圖書館藏善本圖籍資料庫", "english_name": "Fu Ssu-nien Library Rare Books Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "院區/南院共享", "url": "https://dap.ihp.sinica.edu.tw/", "description": "典藏宋元明清刊本、名家批校手抄本與海內外孤本珍籍，為國際漢學界公認之古典藏書寶庫。", "teaching_focus": "版本目錄學、古代印刷史、文人題跋批註與典籍流傳史教學。", "tags": ["宋元古籍", "善本珍籍", "版本學", "古籍批校", "手鈔本"], "access_detail": "目錄公開檢索，數位影像限院內或南部院區數位圖檔室連線閱覽"}, {id: "ihp-huizhou-contracts", "name": "徽州契約文書影本目錄資料庫", "english_name": "Huizhou Contracts and Documents Catalogue", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://lib.ihp.sinica.edu.tw/show2-2.php?id4=c5", "description": "明清至民國時期徽州府土地買賣、宗族義田、租佃合同與商業帳本檔案目錄，為明清社會經濟史最核心史料。", "teaching_focus": "明清商業發展、宗族組織結構、土地租佃制度與民間商業信用機制探討。", "tags": ["徽商", "徽州契約", "土地買賣", "明清經濟", "宗族義莊"], "access_detail": "全網開放目錄查詢"}, {id: "ihp-seals", "name": "傅圖藏印記資料庫", "english_name": "Fu Ssu-nien Library Seal Impressions Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://dap.ihp.sinica.edu.tw/", "description": "收錄善本古籍與金石書畫拓片上歷代收藏家、鑑賞家原鈐印記逾6萬方，支援印面文字與印主檢索。", "teaching_focus": "古代篆刻藝術、藏書家鑑賞脈絡與文物歷代遞藏源流考證。", "tags": ["藏書印", "印記", "篆刻", "古籍收藏", "藝術史"], "access_detail": "全開放線上查詢"}, {id: "ihp-southwest-minorities", "name": "中國西南少數民族資料庫（村寨網）", "english_name": "Southwest Minorities of China (Village Network)", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "族群文化、人類學與民俗", "research_topic": "族群文化、人類學與民俗", "access_tier": "全開放免IP", "url": "https://ascdc.sinica.edu.tw/single_project_page.jsp?projectId=143", "description": "1920-40年代史語所學者深入中國西南進行首次科學民族學調查，記錄彝族、納西東巴文、苗族文書與珍貴田野照片。", "teaching_focus": "民族學田野方法、邊疆族群治理歷史與納西象形文字文化探討。", "tags": ["東巴文", "西南民族", "凌純聲", "田野攝影", "少數民族"], "access_detail": "數位文化中心全網開放"}, {id: "ihp-archaeodata", "name": "考古資料數位典藏創新計畫資料庫", "english_name": "Digital Archives of Archaeological Data (IHP)", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://archeodata.sinica.edu.tw/", "description": "整編史語所一甲子發掘之臺灣十三行、卑南遺址與中原考古紀錄、地圖測繪與出土標本資料庫。", "teaching_focus": "史前聚落生活、臺灣鐵器時代與新石器時代文化層位分析。", "tags": ["十三行", "卑南遺址", "臺灣考古", "史前文化", "標本檔案"], "access_detail": "全開放免登入"}, {id: "ihp-xiaoxue", "name": "小學堂文字學資料庫", "english_name": "Xiaoxue Character Database", "institute": "歷史語言研究所", "institute_code": "IHP", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://xiaoxue.iis.sinica.edu.tw/", "description": "收錄甲骨、金文、簡帛、小篆到楷書逾22萬字形演變，及上古中古近代聲韻資料134萬筆。", "teaching_focus": "高中文言文生字造字法則、文字學六書解析與聲韻考訂。", "tags": ["字形演變", "六書", "甲骨文", "小篆", "文字學"], "access_detail": "全開放免登入"}, {id: "ea-euramerica", "name": "《歐美研究》(EurAmerica) 季刊全文資料庫", "english_name": "EurAmerica Full-text Database", "institute": "歐美研究所", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "全開放免IP", "url": "https://euramerica-ch.ea.sinica.edu.tw/", "description": "半世紀創刊歷史之頂尖歐美哲學、西洋歷史、英美文學與國際戰略學術期刊（THCI/TSSCI核心），全文免費開放。", "teaching_focus": "西洋啟蒙思想、後殖民文學批評、冷戰美歐外交政策研討。", "tags": ["西洋哲學", "歐美歷史", "英美文學", "國際政治", "雙語全文"], "access_detail": "歷期論文PDF完全免費開放下載"}, {id: "ea-british-periodicals", "name": "British Periodicals (英國歷史期刊資料庫 1680-1930)", "english_name": "British Periodicals Collections", "institute": "歐美研究所", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "院區/南院共享", "url": "https://www.ea.sinica.edu.tw/DigitalDB.aspx", "description": "收錄17世紀末至20世紀初英國近500種代表性期刊全文，含工業革命、大英帝國殖民擴張、維多利亞時代思潮一手紀錄。", "teaching_focus": "世界史高階教材：工業革命勞工問題、英國議會政治改革與維多利亞文學評論。", "tags": ["英國歷史", "西洋史", "維多利亞時代", "大英帝國", "工業革命"], "access_detail": "中研院網域／台南歸仁沙崙南部院區數位圖檔室連線閱覽"}, {id: "ea-oxford-dnb", "name": "Oxford Dictionary of National Biography (牛津英國國家人物傳記庫)", "english_name": "Oxford DNB Database", "institute": "歐美研究所", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "院區/南院共享", "url": "https://www.ea.sinica.edu.tw/DigitalDB.aspx", "description": "權威收錄羅馬時代至今逾6萬位影響英國與世界歷史人物之傳記考釋，為西洋傳記歷史研究標準權威工具。", "teaching_focus": "西洋歷史名人人格特質、科學革命家生平與英國君主立憲政治家考據。", "tags": ["西洋人物", "英國史", "世界史", "科學家傳記", "政治家傳記"], "access_detail": "中研院院區／南部院區共享使用"}, {id: "ea-presbyterian-mission", "name": "英國長老教會《使信月刊》宣教歷史資料庫", "english_name": "English Presbyterian Mission Archives (The Messenger)", "institute": "歐美研究所", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "院區/南院共享", "url": "https://aslib.sinica.edu.tw/posts/157776", "description": "收錄19世紀英國長老教會派駐臺灣與東南亞宣教師（馬雅各、巴克禮、甘為霖）回報母會的書信、醫療與社會記錄。", "teaching_focus": "西方傳教士視角下的臺灣開港、現代西醫引進與原住民福馬字白話字教育歷史。", "tags": ["長老教會", "馬雅各", "西方宣教", "臺灣近代醫療", "外國史料"], "access_detail": "圖書館線上資料庫／南院數位圖檔室共享"}, {id: "ea-dbpia", "name": "DBpia 韓國人文社科期刊全文資料庫", "english_name": "DBpia Korean Academic Journals", "institute": "歐美研究所", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "院區/南院共享", "url": "https://www.ea.sinica.edu.tw/DigitalDB.aspx", "description": "收錄韓國逾2,000種核心期刊全文，涵蓋東亞國際關係、朝鮮歷史、冷戰韓戰歷史與當代韓國社會文化。", "teaching_focus": "東亞歷史比較：中韓歷史交涉、韓半島冷戰分裂與東亞民主化進程。", "tags": ["韓國歷史", "東亞史", "韓戰", "東亞國際關係", "亞洲研究"], "access_detail": "歐美所圖書館／南院數位圖檔室連線"}, {id: "ea-library-db", "name": "歐美研究所圖書館外文學術資料庫 (JSTOR/MUSE)", "english_name": "IEAS Library Digital Databases", "institute": "歐美研究所", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "院區/南院共享", "url": "https://www.ea.sinica.edu.tw/DigitalJournal.aspx", "description": "匯聚JSTOR、Project MUSE、ProQuest等西洋史、哲學、文學與國際政治之百萬篇權威文獻。", "teaching_focus": "大學及高中資優生英文原典閱讀、西洋史學術論文研究檢索。", "tags": ["JSTOR", "西洋哲學", "歐洲史", "美國研究", "國際關係"], "access_detail": "中研院網域／南院數位圖檔室共享"}, {id: "mh-archives-portal", "name": "近代史研究所檔案館入口網", "english_name": "MH Archives Portal", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "全開放免IP", "url": "https://archives.sinica.edu.tw/", "description": "近代中國與臺灣最重要之外交、經濟與名人檔案總門戶，包含外務部、經濟部檔案全文檢索指南。", "teaching_focus": "近代中國條約體系演變、晚清各國洋務運動交涉與冷戰外交。", "tags": ["外交檔案", "總理衙門", "民國史", "晚清條約", "檔案目錄"], "access_detail": "入口網全面開放檢索"}, {id: "mh-search-sys", "name": "近史所檔案館館藏檢索新系統", "english_name": "MH Archives Catalog System", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "院區/南院共享", "url": "https://archives.sinica.edu.tw/redirect/71", "description": "全新線上全文檢索系統，收錄外交部、經濟部、財政部及政商名家檔案數位影像，線上調閱極為便利。", "teaching_focus": "戰後臺灣經濟計畫、進口替代轉出口導向之經濟公文解讀。", "tags": ["公文原件", "經濟部檔案", "線上調閱", "史料小論文"], "access_detail": "南港本院與南部院區數位圖檔室皆已連線開放閱覽與列印"}, {id: "mh-women-history", "name": "民國婦女與性別史資料庫", "english_name": "Women and Gender in Modern China Database", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "全開放免IP", "url": "https://archives.sinica.edu.tw/", "description": "典藏清末民初女子學校檔案、女權運動刊物、婦女參政請願書信與近代女性私領域手稿日記。", "teaching_focus": "高中性別平等教育與性別史專題：放足運動、女子受教權與近代職業婦女興起。", "tags": ["婦女史", "性別研究", "女子教育", "女權運動", "近代思潮"], "access_detail": "專題目錄與選粹全開放"}, {id: "mh-hushi", "name": "胡適數位典藏資料庫（胡適紀念館）", "english_name": "Hu Shih Digital Archives", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "全開放免IP", "url": "https://www.mh.sinica.edu.tw/", "description": "收錄胡適先生手稿、往來尺牘書信、日記草稿、藏書題跋與生平照片等5萬餘筆第一手思想家紀錄。", "teaching_focus": "五四白話文運動、自由主義思潮傳播與胡適科學方法「大膽假設小心求證」實踐。", "tags": ["胡適", "五四運動", "白話文", "自由主義", "名人手稿"], "access_detail": "全網開放檢索與手稿圖檔欣賞"}, {id: "mh-ktli", "name": "李國鼎先生數位資料庫", "english_name": "K. T. Li Digital Database", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "全開放免IP", "url": "https://archives.sinica.edu.tw/", "description": "收錄臺灣科技教父李國鼎先生推動工研院、竹科半導體、資訊工業之政策手稿與口述訪談錄音。", "teaching_focus": "臺灣戰後經濟轉型、半導體矽島產業政策決策內幕探討。", "tags": ["李國鼎", "竹科", "半導體政策", "臺灣經濟", "口述歷史"], "access_detail": "全開放免費線上使用"}, {id: "mh-diplomatic", "name": "中華民國外交部檔案資料庫（清季至民國）", "english_name": "Republic of China Diplomatic Archives", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "院區/南院共享", "url": "https://archives.sinica.edu.tw/collection/3", "description": "自總理各國事務衙門、外務部到民國外交部之清季條約、中俄邊界地圖、巴黎和會交涉原始照會公文。", "teaching_focus": "近代不平等條約簽訂與廢除、中俄疆界演變與二戰開羅宣言外交談判。", "tags": ["外交部公文", "條約約章", "中俄邊界", "巴黎和會", "晚清外交"], "access_detail": "南院數位圖檔室共享連線調閱"}, {id: "mh-zhujiahua", "name": "朱家驊先生檔案資料庫", "english_name": "Chu Chia-hua Archives Database", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "院區/南院共享", "url": "https://archives.sinica.edu.tw/", "description": "朱家驊先生歷任教育部長、交通部長與中研院代理院長之生平公文、政要往來書信與檔案。", "teaching_focus": "近代中國學術體制化、中央研究院早期歷史與抗戰後臺灣接收重建。", "tags": ["朱家驊", "中研院院史", "近代教育", "民國檔案"], "access_detail": "南港近史所及南院數位圖檔室共享"}, {id: "mh-neican", "name": "新華社《內部參考》全文資料庫 (郭廷以圖書館)", "english_name": "Xinhua News Agency Internal Reference Database", "institute": "近代史研究所", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "到館授權", "url": "https://lib.mh.sinica.edu.tw/", "description": "收錄1949至1985年間中共最高層級內部機密刊物，記載未公開之政治運動、農村經濟實況與民間真實反映。", "teaching_focus": "當代中國研究：大躍進飢荒實況、文化大革命基層動態與中共決策內幕。", "tags": ["內部參考", "當代中國", "中共機密", "文革", "大躍進"], "access_detail": "郭廷以圖書館館內單機查詢使用"}, {id: "ith-tais", "name": "臺灣史檔案資源系統", "english_name": "Taiwan Archival Information System", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "院區/南院共享", "url": "https://tais.ith.sinica.edu.tw/", "description": "全臺最具代表性之臺灣民間契書、家族日記、日治機構檔案數位化總庫，數量數百萬頁。", "teaching_focus": "解讀清代古契書（土地買賣、招佃）、家族社會流動與微觀地方史研究。", "tags": ["古文書", "土地買賣", "家族檔案", "契書", "地方行政"], "access_detail": "目錄公開檢索，到館及台南南院圖檔室全面開放列印"}, {id: "ith-diary", "name": "臺灣日記知識庫", "english_name": "Taiwan Diary Knowledge Base", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://taco.ith.sinica.edu.tw/tdk/", "description": "逐日考訂林獻堂、張麗俊、呂赫若等臺灣先賢日記全文與精闢註解，以當事人微觀視角重現歷史現場。", "teaching_focus": "臺灣議會設置請願運動、日治士紳文化生活與二二八事件歷史人物即時心境。", "tags": ["林獻堂", "灌園先生日記", "微觀歷史", "文化協會", "士紳社會"], "access_detail": "全文免費公開檢索與時間軸參照"}, {id: "ith-shokuinroku", "name": "臺灣總督府職員錄系統", "english_name": "Directory of the Office of the Governor-General of Taiwan", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "收錄1896-1944年間總督府全體文官、警察、教師、技師95萬筆名錄，含任職學校、官職等與俸給本籍。", "teaching_focus": "在地百年老校校史調查、日治文官升遷制度與臺籍公學校教師比例考據。", "tags": ["日治文官", "公學校教師", "總督府職員", "校史考證", "地方人事"], "access_detail": "全網開放檢索與名錄匯出"}, {id: "ith-ryoken", "name": "臺灣總督府旅券系統（海外移動紀錄）", "english_name": "Passports Database of the Governor-General of Taiwan", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "收錄1897-1942年間20萬筆臺灣住民出境護照申請紀錄，及日本駐中國領事館旅券檔案，為跨境移動一手史料。", "teaching_focus": "臺灣青年赴日留學潮、臺灣商人前往廈門與南洋經商足跡探討。", "tags": ["出境護照", "旅券", "留學史", "南洋經商", "跨境移動"], "access_detail": "全網開放檢索與分年瀏覽"}, {id: "ith-ancient-contracts", "name": "臺灣古文書整合查詢系統", "english_name": "Integrated Taiwan Ancient Contracts System", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "整合全臺各機構典藏之清代民間字據、番契、胎借契、分家字與佃批，提供高解析影幅與契約結構分析。", "teaching_focus": "土地開墾制度（一田二主、墾首制）、原漢土地交易與臺灣清代司法秩序。", "tags": ["番契", "胎借字", "一田二主", "民間契約", "土地拓墾"], "access_detail": "全面開放檢索"}, {id: "ith-photo-albums", "name": "日治時期寫真帖資料庫", "english_name": "Japanese Colonial Era Photo Albums Database", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "收錄日治總督府與民間發行之官方紀念相冊，涵蓋市區改正、鐵道通車、理蕃記錄與學校卒業寫真帖。", "teaching_focus": "日治地景圖像分析、近代化工程建設與殖民政府宣傳視角批判。", "tags": ["寫真帖", "老照片", "市區改正", "日治地景", "理蕃紀錄"], "access_detail": "全網開放高解析圖片瀏覽"}, {id: "ith-literary-magazines", "name": "臺灣文藝雜誌資料庫", "english_name": "Taiwan Literary Periodicals Database", "institute": "臺灣史研究所", "institute_code": "ITH", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/", "description": "收錄日治時期《臺灣民報》、《福爾摩沙》、《臺灣文藝》等新文學運動時期創刊之經典文藝雜誌全文。", "teaching_focus": "新舊文學論戰、賴和與龍瑛宗小說發表時空語境、臺灣文化協會思想啟蒙。", "tags": ["臺灣文藝", "賴和", "新文學運動", "臺灣民報", "文學啟蒙"], "access_detail": "全網開放全文檢索"}, {id: "litphil-disease-map", "name": "疾病：感覺地圖", "english_name": "Disease: Sensory Map", "institute": "中國文哲研究所", "institute_code": "LitPhil", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://dh-illnesses.litphil.sinica.edu.tw/", "description": "文哲所劉苑如團隊建置，結合魏晉南北朝小說與僧傳，探勘古人面對瘟疫的恐懼、偏方心理與社會倫理之GIS地圖。", "teaching_focus": "國文與生命教育跨科探究：古代防疫社交距離與現代傳染病社會恐慌之歷史鏡像。", "tags": ["六朝小說", "疾病歷史", "情感史", "GIS地圖", "社會病理"], "access_detail": "全開放免登入"}, {id: "litphil-youfun-map", "name": "遊方：歷代僧傳", "english_name": "Travels: Biographies of Monks", "institute": "中國文哲研究所", "institute_code": "LitPhil", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://youfun.litphil.sinica.edu.tw/", "description": "梳理千年歷代僧傳，自動標記僧侶出行動機、求法路線與弘法成果，在歷史地圖上動態重現絲路空間軌跡。", "teaching_focus": "世界史古代絲路交通、玄奘與法顯西行取經路線與跨國宗教傳播地理。", "tags": ["高僧傳", "絲路", "佛教傳播", "空間人文", "時空軌跡"], "access_detail": "全開放免登入"}, {id: "litphil-bielji", "name": "明清文人別集資料庫", "english_name": "Ming-Qing Literary Collections Database", "institute": "中國文哲研究所", "institute_code": "LitPhil", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://www.litphil.sinica.edu.tw/library/posts/4235", "description": "收錄明清時期文人個人詩集、文集、尺牘書信與行狀年譜，為明清士紳文人心靈世界的一手文獻。", "teaching_focus": "明清古典文學、士大夫交遊網絡與明亡清興之際遺民心境研析。", "tags": ["別集", "明清文人", "詩集", "文人尺牘", "思想史"], "access_detail": "開放文哲所電子資源連線"}, {id: "litphil-shijing", "name": "詩經文獻資料庫", "english_name": "Shijing (Classic of Poetry) Database", "institute": "中國文哲研究所", "institute_code": "LitPhil", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "全開放免IP", "url": "https://www.litphil.sinica.edu.tw/library/posts/4235", "description": "典藏歷代毛詩傳箋、三家詩殘篇、朱熹集傳及歷代名物草木鳥獸名考釋之詩經研究專門文獻庫。", "teaching_focus": "高中國文詩經選讀、賦比興修辭解析與先秦風土物種考證。", "tags": ["詩經", "十三經", "經學", "毛詩", "國文教材"], "access_detail": "文哲所公開資源"}, {id: "ioe-digital-archive", "name": "民族學研究所數位典藏系統", "english_name": "IOE Digital Archives", "institute": "民族學研究所", "institute_code": "IOE", "category": "族群文化、人類學與民俗", "research_topic": "族群文化、人類學與民俗", "access_tier": "全開放免IP", "url": "https://ianthro.ioe.sinica.edu.tw/", "description": "典藏臺灣南島原住民十六族、平埔族群及民間信仰之器物照片、田野影音、古文書與民族學調查紀錄。", "teaching_focus": "原住民物質文化（排灣琉璃珠、泰雅織布）、部落祭儀文化與跨族群文化平權教育。", "tags": ["臺灣原住民", "南島民族", "物質文化", "民族誌", "田野影音"], "access_detail": "全面開放檢索使用"}, {id: "ioe-openmuseum", "name": "民族學研究所數位博物館", "english_name": "Museum of the Institute of Ethnology", "institute": "民族學研究所", "institute_code": "IOE", "category": "族群文化、人類學與民俗", "research_topic": "族群文化、人類學與民俗", "access_tier": "全開放免IP", "url": "https://mioe.openmuseum.tw/", "description": "打造《臺灣原住民族文化展》與《臺灣漢人民間信仰》虛擬常設展，提供沉浸式語音導覽與展廳穿梭。", "teaching_focus": "中學社會科與藝術科線上虛擬參訪教學、展覽學習單製作。", "tags": ["虛擬博物館", "原民常設展", "民間信仰", "線上導覽", "文化遺產"], "access_detail": "全開放免登入"}, {id: "ioe-pepo-cluster", "name": "臺灣原住民數位知識聚落（平埔文化專題）", "english_name": "Indigenous Knowledge Cluster & Plains Tribes", "institute": "民族學研究所", "institute_code": "IOE", "category": "族群文化、人類學與民俗", "research_topic": "族群文化、人類學與民俗", "access_tier": "全開放免IP", "url": "http://www.ianthro.org/", "description": "整理西拉雅、巴宰、噶瑪蘭、巴布拉等平埔族群歷史契約、歌謠採集、語言復振紀錄與文史工作室成果。", "teaching_focus": "地方鄉土史教學：平埔族群正名運動、西拉雅夜祭與新港文書契字解讀。", "tags": ["平埔族群", "西拉雅", "新港文書", "族群復振", "鄉土史料"], "access_detail": "全開放免登入"}, {id: "ioe-ethnographic-video", "name": "臺灣民族誌數位影音典藏庫", "english_name": "Taiwan Ethnographic Film and Audio Archives", "institute": "民族學研究所", "institute_code": "IOE", "category": "族群文化、人類學與民俗", "research_topic": "族群文化、人類學與民俗", "access_tier": "全開放免IP", "url": "https://ianthro.ioe.sinica.edu.tw/", "description": "收錄2,000卷珍貴民族誌田野錄影帶與錄音帶，涵蓋賽夏族巴斯達隘、鄒族瑪雅斯比、東港迎王祭典實錄。", "teaching_focus": "人類學影像紀錄、無形文化資產保存與民間祭儀結構分析。", "tags": ["民族誌影音", "矮靈祭", "王船祭", "田野錄音", "無形文化資產"], "access_detail": "開放線上精華選段閱覽"}, {id: "il-min-hakka", "name": "中央研究院閩客語辭典與文獻語料庫", "english_name": "AS Min and Hakka Dictionaries & Corpora", "institute": "語言學研究所", "institute_code": "IL", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://minhakka2.ling.sinica.edu.tw/", "description": "彙整臺灣閩南語與客家語歷史文獻、地方方言調查、教會羅馬字文獻及現代閩客辭典之綜合發音與詞彙庫。", "teaching_focus": "本土語文（閩南語、客家語）課堂教學：正字發音對照、俗諺語源考證與童謠音讀。", "tags": ["閩南語", "客家語", "本土語言", "方言語音", "辭典檢索"], "access_detail": "全開放免費線上使用"}, {id: "il-formosan", "name": "臺灣南島語言數位典藏與語料庫", "english_name": "Formosan Languages Digital Archives", "institute": "語言學研究所", "institute_code": "IL", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://ascdc.digitalarchives.tw/site.php?type=3731", "description": "蒐集臺灣瀕危南島語言之原住民耆老錄音音檔、國際音標對齊逐字稿、神話傳說與跨語言詞法分析。", "teaching_focus": "南島語系起源與臺灣「南島語原鄉假說」印證教學、瀕危母語保育觀念傳達。", "tags": ["南島語言", "原住民母語", "語音採集", "國際音標", "文化保育"], "access_detail": "全網開放檢索與錄音收聽"}, {id: "il-archaic-corpus", "name": "中央研究院上古漢語標記語料庫", "english_name": "Academia Sinica Archaic Chinese Tagged Corpus", "institute": "語言學研究所", "institute_code": "IL", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://ascdc.digitalarchives.tw/site.php?type=3731", "description": "先秦兩漢文言經典（左傳、論語、孟子、史記）之全文斷詞與詞性標記（Part-of-Speech Tagging）語料庫。", "teaching_focus": "高中文言文虛詞（之、乎、者、也）用法統計、古代漢語語法結構分析。", "tags": ["上古漢語", "語法標記", "文言文虛詞", "詞性標記", "語料庫"], "access_detail": "全開放免登入"}, {id: "il-early-modern-corpus", "name": "中央研究院近代漢語標記語料庫", "english_name": "Academia Sinica Early Modern Chinese Tagged Corpus", "institute": "語言學研究所", "institute_code": "IL", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://ascdc.digitalarchives.tw/site.php?type=3731", "description": "收錄唐宋話本、元明清通俗白話小說（紅樓夢、水滸傳、西遊記）之標記語料，研究近代白話文法形成。", "teaching_focus": "古典小說白話文詞彙流變、明清口語語法現象與語料庫驅動學習。", "tags": ["近代漢語", "白話小說", "明清口語", "紅樓夢語料", "語法流變"], "access_detail": "全開放免登入"}, {id: "il-chinese-dialects", "name": "漢語方言資料庫 (方言語音地圖)", "english_name": "Chinese Dialect Database & Audio Map", "institute": "語言學研究所", "institute_code": "IL", "category": "語言演變、文字學與語料庫", "research_topic": "語言演變、文字學與語料庫", "access_tier": "全開放免IP", "url": "https://www.ling.sinica.edu.tw/item/zh-tw?code=list&ids=19", "description": "記錄中國大陸南方沿海與臺灣閩方言、客家方言、官話方言各測點之語音錄音與音韻比對地圖。", "teaching_focus": "地理方言學教學：方言語音過渡區、移民路徑與方言分布關係探討。", "tags": ["方言地圖", "語音學", "閩客方言", "音韻學", "移民語言"], "access_detail": "全開放免登入"}, {id: "rchss-twhgis", "name": "臺灣百年歷史地圖系統 (GIS Center)", "english_name": "Taiwan Centennial Historical Maps", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://gissrv4.sinica.edu.tw/", "description": "將清代堡圖、日治地形圖、美軍航照、現代空照與地籍圖精準疊合於Google Maps，支援透明度滑動對比。", "teaching_focus": "全臺各級學校地理與歷史探究與實作王牌工具：滑動比對校園家鄉百年河道、聚落與地景變遷。", "tags": ["百年地圖", "古地圖疊圖", "臺灣堡圖", "美軍航照", "空間地景"], "access_detail": "全開放免登入，支援電腦與平板手勢操作"}, {id: "rchss-poetry-gis", "name": "全臺詩地理資訊系統 (WebGIS)", "english_name": "Taiwan Classical Poetry WebGIS", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://gis.rchss.sinica.edu.tw/application/", "description": "將臺灣古典詩（明鄭沈光文、清代郁永河至日治漢詩社）在歷史地圖上精確定位詩人行腳與地景題詠。", "teaching_focus": "國文與歷史跨科教材：詩人眼中的臺灣八景、番社採風與清代臺灣旅行路線探訪。", "tags": ["全臺詩", "古典文學GIS", "郁永河", "文學地圖", "臺灣地景"], "access_detail": "全開放免登入"}, {id: "rchss-spatial-planning", "name": "臺灣戰後空間規劃史料資料庫", "english_name": "Taiwan Post-War Spatial Planning Database", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://gis.rchss.sinica.edu.tw/application/", "description": "典藏戰後都市計畫草案、區域計畫圖、十大建設港口公路工程測繪圖與土地利用規劃公文。", "teaching_focus": "高中地理都市發展單元：戰後都市擴張、工業區劃設與區域發展不平衡議題探討。", "tags": ["都市計畫", "十大建設", "空間規劃", "國土利用", "地理工程"], "access_detail": "全開放線上查詢"}, {id: "rchss-religion-gis", "name": "臺灣宗教地景地理資訊系統", "english_name": "Taiwan Religious Geography WebGIS", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "地理空間、時空軌跡與 GIS", "research_topic": "地理空間、時空軌跡與 GIS", "access_tier": "全開放免IP", "url": "https://gis.rchss.sinica.edu.tw/application/", "description": "調查建置全臺灣各鄉鎮寺廟、基督教堂、天主教堂之GPS精確座標、主祀神祇、建廟年代與祭祀圈網絡。", "teaching_focus": "宗教地理學與鄉土考察：移民原鄉神祇分布（媽祖、開漳聖王、三山國王）與族群聚落界線。", "tags": ["寺廟地圖", "民間信仰", "祭祀圈", "宗教地理", "移民神祇"], "access_detail": "全開放線上系統"}, {id: "rchss-srda", "name": "學術調查研究資料庫 (SRDA)", "english_name": "Survey Research Data Archive", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://srda.sinica.edu.tw/", "description": "臺灣最具權威的社會科學實證調查數據庫，收錄家庭動態、社會變遷、青少年追蹤大型問卷與統計資料檔。", "teaching_focus": "高中公民與大學社會統計教學：引導學生下載真實問卷數據，練習交叉分析與實證論文寫作。", "tags": ["社會調查", "問卷數據", "抽樣分析", "實證研究", "開放數據"], "access_detail": "全網註冊帳號後可免費下載資料檔與問卷"}, {id: "ios-tesd", "name": "臺灣經驗實證調查資料平台 (TESD)", "english_name": "Taiwan Empirical Survey Data (TESD)", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://tesd.survey.sinica.edu.tw/database/tscs", "description": "現代化實證資料平臺，提供免寫程式的線上即時圖表生成工具，隨選歷年變遷數據生成長條圖與交叉表。", "teaching_focus": "高中社會科探究與實作課堂快速生成分析圖表，培養數據判讀與批判思考素養。", "tags": ["線上統計", "免寫程式", "圖表生成", "社會數據", "課堂練習"], "access_detail": "全開放免登入即時線上分析"}, {id: "rchss-tihd", "name": "臺灣原住民族家戶結構基礎開放資料庫 (TIHD)", "english_name": "Taiwan Indigenous Peoples Household Structure Database", "institute": "人文社會科學研究中心", "institute_code": "RCHSS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.rchss.sinica.edu.tw/main/pages/762", "description": "收錄臺灣原住民族各族群人口統計、家庭結構、城鄉遷移與部落戶籍長週期實證數據集。", "teaching_focus": "原住民都市遷移、當代部落少子化與族群人口結構轉型專題探討。", "tags": ["原住民人口", "家戶結構", "都市原住民", "部落人口", "社會指標"], "access_detail": "全網開放數據集下載"}, {id: "ios-tscs", "name": "臺灣社會變遷基本調查資料庫 (TSCS)", "english_name": "Taiwan Social Change Survey Database", "institute": "社會學研究所", "institute_code": "IOS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www2.ios.sinica.edu.tw/sc/", "description": "自1984年起推動，以五年為週期持續追蹤臺灣家庭、性別分工、社會不平等、宗教與政治文化變遷之40年抽樣大庫。", "teaching_focus": "高中公民「家庭型態與性別角色演變」實證教材：以數據對比1985與2020年臺灣人婚育態度。", "tags": ["社會變遷", "貫時性數據", "性別分工", "家庭結構", "40年調查"], "access_detail": "問卷報告與統計檔案全面公開下載"}, {id: "ios-hongkong", "name": "香港研究資料庫 (Hong Kong Studies Database)", "english_name": "Hong Kong Studies Database", "institute": "社會學研究所", "institute_code": "IOS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www2.ios.sinica.edu.tw/hk_database/", "description": "中研院社會所建立，專門典藏香港當代社會轉型、歷史文獻、民間出版品與社會運動一手紀錄。", "teaching_focus": "當代公民社會、香港一國兩制變遷、跨境移民與東亞地緣政治研析。", "tags": ["香港研究", "當代社會", "公民社會", "地緣政治", "一手檔案"], "access_detail": "公開書目檢索，實體資料於人文社科聯圖典藏"}, {id: "ieas-aep", "name": "《經濟論文》(Academia Economic Papers) 全文庫", "english_name": "Academia Economic Papers Full-text", "institute": "經濟研究所", "institute_code": "IEAS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.econ.sinica.edu.tw/aep", "description": "創立於1973年之國際權威經濟學期刊（TSSCI/Scopus收錄），涵蓋數理經濟、產業經濟與國際貿易實證研究。", "teaching_focus": "大學經濟系中高階課程教材：貿易關稅計量模型、勞動工資定價與市場結構分析。", "tags": ["經濟學", "計量經濟", "產業分析", "TSSCI", "全文下載"], "access_detail": "官方網站PDF免費開放下載"}, {id: "ieas-tefp", "name": "《臺灣經濟預測與政策》期刊資料庫", "english_name": "Taiwan Economic Forecast and Policy", "institute": "經濟研究所", "institute_code": "IEAS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.econ.sinica.edu.tw/TEFP", "description": "中研院每季發布之臺灣總體經濟計量模型景氣預測報告，權威預測GDP成長率、通貨膨脹、央行貨幣政策效應。", "teaching_focus": "高中公民與大學經濟學：即時景氣循環指標判讀、政府財政與貨幣政策工具評估。", "tags": ["GDP預測", "通貨膨脹", "景氣循環", "貨幣政策", "總體經濟"], "access_detail": "全文免費開放下載"}, {id: "ips-abs", "name": "亞洲民主動態調查 (Asian Barometer Survey)", "english_name": "Asian Barometer Survey (ABS)", "institute": "政治學研究所", "institute_code": "IPS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://asianbarometer.org/", "description": "跨國比較東亞、東南亞、南亞十餘國公民對民主體制信任、政府清廉度、法治意識與政治參與之大型實證調查。", "teaching_focus": "高中公民比較政治學：亞洲各國民主化退潮現象、公民意識與威權韌性比較。", "tags": ["民主調查", "跨國比較", "比較政治", "公民意識", "亞洲政治"], "access_detail": "官方網站開放問卷報告與學術資料申請"}, {id: "iias-law-journal", "name": "《中研院法學期刊》(Academia Sinica Law Journal)", "english_name": "Academia Sinica Law Journal", "institute": "法律學研究所", "institute_code": "IIAS", "category": "社會變遷、經濟法政與實證調查", "research_topic": "社會變遷、經濟法政與實證調查", "access_tier": "全開放免IP", "url": "https://www.iias.sinica.edu.tw/publication_list/9", "description": "臺灣國家級法學頂尖專刊（TSSCI收錄），深度研討憲法人權、行政法、科技法律、AI法制與司法實證研究。", "teaching_focus": "高中公民「憲政體制與人權保障」、當代AI人工智慧演算法監管與個人隱私權法理思辨。", "tags": ["憲法", "人權保障", "科技法律", "AI規範", "法學期刊"], "access_detail": "歷期論文全文PDF免費開放下載"}, {id: "ascdc-openmuseum", "name": "開放博物館 (Open Museum)", "english_name": "Open Museum", "institute": "數位文化中心", "institute_code": "ASCDC", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "全開放免IP", "url": "https://openmuseum.tw/", "description": "匯聚全院人文與自然逾117萬件珍貴藏品、800+檔主題特展，為臺灣最具規模的無邊界數位博物生態系。", "teaching_focus": "中小學通識教育線上展覽導覽、跨學科主題閱讀與科普探究教材。", "tags": ["線上特展", "百萬藏品", "跨機構合作", "知識平權", "數位博物館"], "access_detail": "全網開放免登入"}, {id: "ascdc-plaza", "name": "開放博物館．參與平台", "english_name": "Open Museum Plaza (Curating Platform)", "institute": "數位文化中心", "institute_code": "ASCDC", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "全開放免IP", "url": "https://plaza.openmuseum.tw/", "description": "提供學生與教師自由運用全站開放藏品，使用「時間模組」、「故事地圖模組」與「圖片標記」工具親自策展。", "teaching_focus": "108課綱高中探究與實作王牌工具：學生親自擔任策展人，產出數位策展成果充實學習歷程檔案。", "tags": ["學生策展", "學習歷程", "時間軸模組", "故事地圖", "探究與實作"], "access_detail": "免費註冊會員即可開始線上策展創作"}, {id: "ascdc-dadh", "name": "數位人文研究平台 (DADH)", "english_name": "Digital Humanities Research Platform", "institute": "數位文化中心", "institute_code": "ASCDC", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "全開放免IP", "url": "https://dh.ascdc.sinica.edu.tw/", "description": "文史哲與資訊科學跨領域工具：自動斷詞、命名實體辨識（NER）、關聯網絡圖與時空視覺化探勘平臺。", "teaching_focus": "高中語文資優與大學數位人文入門：將古籍文集轉化為社會關係網絡圖，觀察歷史人物交友圈。", "tags": ["文本探勘", "自然語言處理", "關係網絡圖", "命名實體", "數位人文"], "access_detail": "全網開放，支援個人自訂文本上傳分析"}, {id: "as-research-stories", "name": "研之有物 (Research Stories 科普旗艦)", "english_name": "Research Stories Academia Sinica", "institute": "院本部", "institute_code": "ASCDC", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "全開放免IP", "url": "https://research.sinica.edu.tw/", "description": "中研院官方跨三大領域（數理、生命、人文）科普轉譯媒體，將最新學術論文轉譯為通俗易懂的生動圖文報導。", "teaching_focus": "全臺灣中小學探究與實作素養閱讀材料、高中歷史與社會科學專題課前引導講義。", "tags": ["科普轉譯", "跨領域", "研之有物", "閱讀素養", "前沿研究"], "access_detail": "全網開放自由閱讀"}, {id: "as-depositar", "name": "研究資料寄存所 (depositar)", "english_name": "depositar Open Research Data Repository", "institute": "跨學組 (資訊所✕人社中心)", "institute_code": "RCHSS", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "全開放免IP", "url": "https://data.depositar.io/", "description": "全臺首座符合國際FAIR原則之跨領域開放研究資料庫，典藏臺灣墓碑銘文、地方文史調查、歷史氣候生態數據集。", "teaching_focus": "開放科學（Open Science）與開放數據概念教學，大專院校與高中專題原始資料集取用。", "tags": ["開放數據", "研究資料", "墓碑典藏", "歷史數據", "FAIR原則"], "access_detail": "全網開放自由檢索與數據集下載"}, {id: "south-rhhss-library", "name": "中研院南部院區「數位圖書檔案室」", "english_name": "South Campus Digital Library & Archives Room", "institute": "南部院區", "institute_code": "SouthCampus", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "院區/南院共享", "url": "https://rhhss.sinica.edu.tw/pages/4554", "description": "臺南歸仁沙崙基地，全面連線全院採購之95%電子資料庫、近代史所與臺灣史所檔案館檢索系統，南部師生新泉源。", "teaching_focus": "中南部各級學校師生實體研習與專題調閱基地：就近在台南調閱列印全院微縮膠卷與付費資料庫。", "tags": ["南部院區", "臺南沙崙", "資源共享", "檔案調閱", "地方學術新泉源"], "access_detail": "南部學人與師生持身分證件登記即可進館使用"}, {id: "south-exhibition", "name": "「南方・島嶼・人文」中研院南部院區特展", "english_name": "Southern Lands, Islands, Humanities Exhibition", "institute": "南部院區", "institute_code": "SouthCampus", "category": "臺灣在地歷史與民間檔案", "research_topic": "臺灣在地歷史與民間檔案", "access_tier": "全開放免IP", "url": "https://archives.ith.sinica.edu.tw/news_con.php?no=399", "description": "南院開幕首展，結合歷史檔案、短片、沉浸式環境聲音與AI語音導覽，聚焦南部開港、熱蘭遮城周邊與海洋島嶼史。", "teaching_focus": "臺灣南部地方史教學：西拉雅族群移動、安平開港貿易與海洋文化傳承。", "tags": ["南院特展", "海洋島嶼", "AI語音導覽", "西拉雅", "安平開港"], "access_detail": "線上展覽與實體展館同步開放"}, {id: "ext-wanqing-periodicals", "name": "全國報刊索引：晚清期刊全文數據庫 (1833-1911)", "english_name": "Late Qing Dynasty Periodical Full-text Database", "institute": "全院圖書館 (人文組)", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "院區/南院共享", "url": "https://aslib.sinica.edu.tw/posts/157776", "description": "收錄1833至1911年間300餘種晚清期刊、53萬篇文獻，涵蓋《萬國公報》、《點石齋畫報》、《新民叢報》等維新變法經典刊物。", "teaching_focus": "晚清思想啟蒙、西方科技制度引進、傳教士報刊與辛亥革命前夕輿論變遷一手史料。", "tags": ["晚清期刊", "萬國公報", "新民叢報", "維新變法", "全國報刊索引"], "access_detail": "目錄公開檢索，全文影像需中研院院內IP或台南南部院區數位圖檔室連線"}, {id: "ext-minguo-periodicals", "name": "全國報刊索引：民國期刊全文數據庫 (1911-1949)", "english_name": "Republic of China Periodical Full-text Database", "institute": "全院圖書館 (人文組)", "institute_code": "MH", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "院區/南院共享", "url": "https://aslib.sinica.edu.tw/posts/157776", "description": "收錄民國時期22,215種期刊、逾1,000萬篇文獻，為全世界研究民國政治、軍事、外交、文史哲與社會最龐大數據庫。", "teaching_focus": "五四新文化運動、抗日戰爭後方輿論、近代教育改革與文學流派爭鳴一手文獻。", "tags": ["民國期刊", "五四思潮", "抗戰文獻", "民國文化", "全國報刊索引"], "access_detail": "可線上查書目摘要，全文可至南院圖檔室或大學圖書館調閱"}, {id: "ext-dacheng-magazines", "name": "大成老舊刊全文數據庫 (清末至民國)", "english_name": "Dacheng Old Periodicals Full-text Database", "institute": "全院圖書館 (人文組)", "institute_code": "LitPhil", "category": "近代中國與檔案文獻", "research_topic": "近代中國與檔案文獻", "access_tier": "院區/南院共享", "url": "https://aslib.sinica.edu.tw/posts/157776", "description": "收錄清末至1949年間7,000餘種期刊、13萬餘期，涵蓋各學門早期學術刊物、地方志刊物與通俗通告。", "teaching_focus": "近代知識轉型、民間社會生活考證與早期地方專題研究小論文必備資料庫。", "tags": ["大成老舊刊", "民國刊物", "文史雜誌", "通俗生活", "學術期刊"], "access_detail": "中研院網域／南院數位圖檔室共享"}, {id: "ext-diaolong-ancient", "name": "雕龍中日古籍全文數據庫", "english_name": "Diaolong Sino-Japanese Ancient Books Database", "institute": "全院圖書館 (人文組)", "institute_code": "IHP", "category": "中國古典與考古文獻", "research_topic": "中國古典與考古文獻", "access_tier": "院區/南院共享", "url": "https://aslib.sinica.edu.tw/posts/157776", "description": "超大型中國古籍全文庫，收錄六道書庫、四庫全書、地方志、清代歷朝硃卷、道藏與中日文化交流文獻。", "teaching_focus": "地方志方物考證、古代科舉人物硃卷家譜履歷、道教文獻經典對勘。", "tags": ["雕龍古籍", "地方志", "科舉硃卷", "道藏", "四庫全書"], "access_detail": "全院網域／南院數位圖檔室共享授權"}, {id: "ext-cnki", "name": "CNKI 中國知網學術文獻總庫 (人文社科)", "english_name": "China National Knowledge Infrastructure (CNKI)", "institute": "全院圖書館 (人文組)", "institute_code": "RCHSS", "category": "跨領域策展、數位人文與科普", "research_topic": "跨領域策展、數位人文與科普", "access_tier": "院區/南院共享", "url": "https://aslib.sinica.edu.tw/posts/187333", "description": "收錄全球最大之當代中文學術期刊、博碩士論文、會議論文及報紙全文，為人文社會科學前沿研究必查文獻庫。", "teaching_focus": "中高階歷史與社會科學專案：掌握當代學界最新研究現狀、文獻回顧與學術爭辯。", "tags": ["CNKI", "中國知網", "中文期刊", "博碩士論文", "文獻回顧"], "access_detail": "中研院網域／台南南院數位圖檔室連線使用"}, {id: "ext-jstor", "name": "JSTOR 國際人文社會核心期刊典藏庫", "english_name": "JSTOR Arts & Sciences Digital Archive", "institute": "全院圖書館 (人文組)", "institute_code": "EA", "category": "外國史、西洋思潮與國際關係", "research_topic": "外國史、西洋思潮與國際關係", "access_tier": "院區/南院共享", "url": "https://www.ea.sinica.edu.tw/DigitalJournal.aspx", "description": "收錄全球逾千種歷史、哲學、文學、人類學、社會學頂尖期刊自創刊號起之完整回溯檔案。", "teaching_focus": "世界歷史經典論文研讀、國際歷史學界權威論述引證。", "tags": ["JSTOR", "世界史", "國際期刊", "人文社科", "回溯文獻"], "access_detail": "院區網域／台南沙崙南院數位圖檔室共享"}];
+    const researchTopics = [{id: "語言、文字與語料庫", name: "語言、文字與語料庫", icon: "🏷️", desc: "語言、文字與語料庫"}, {id: "經濟、法政與國際思潮", name: "經濟、法政與國際思潮", icon: "🏷️", desc: "經濟、法政與國際思潮"}, {id: "族群、人類學與民俗", name: "族群、人類學與民俗", icon: "🏷️", desc: "族群、人類學與民俗"}, {id: "跨領域策展與公眾轉譯", name: "跨領域策展與公眾轉譯", icon: "🏷️", desc: "跨領域策展與公眾轉譯"}, {id: "社會變遷與民主調查", name: "社會變遷與民主調查", icon: "🏷️", desc: "社會變遷與民主調查"}, {id: "地理空間與數位人文", name: "地理空間與數位人文", icon: "🏷️", desc: "地理空間與數位人文"}, {id: "歷史與考古文獻", name: "歷史與考古文獻", icon: "🏷️", desc: "歷史與考古文獻"}, {id: "ALL", "name": "全部研究領域", "icon": "🌐", "desc": "涵蓋中研院人文社會組 12 單位、跨學組中心、全院圖書館 300+ 資料庫體系"}, {id: "中國古典與考古文獻", "name": "中國古典與考古文獻", "icon": "🏛️", "desc": "殷墟甲骨、商周青銅器、居延漢簡、武梁祠畫像石、內閣大庫公文、善本古籍與歷代食貨志"}, {id: "近代中國與檔案文獻", "name": "近代中國與檔案文獻", "icon": "📜", "desc": "晚清總理衙門外交照會、民國外交部檔案、婦女與性別史、胡適書信手稿與晚清民國期刊"}, {id: "臺灣在地歷史與民間檔案", "name": "臺灣在地歷史與民間檔案", "icon": "🏝️", "desc": "臺灣民間古契書、日治總督府檔案、仕紳日記考訂、日治寫真帖老照片與南部海洋島嶼文史"}, {id: "外國史、西洋思潮與國際關係", "name": "外國史、西洋思潮與國際關係", "icon": "🌍", "desc": "西洋哲學思潮、英國歷史期刊(1680-1930)、牛津傳記、西方傳教士檔案、東亞國際史與冷戰檔案"}, {id: "地理空間、時空軌跡與 GIS", "name": "地理空間、時空軌跡與 GIS", "icon": "🗺️", "desc": "臺灣百年歷史疊圖、全臺詩地景GIS、歷代僧侶遊方時空軌跡、六朝疾病情感地圖與戰後空間規劃"}, {id: "族群文化、人類學與民俗", "name": "族群文化、人類學與民俗", "icon": "🏺", "desc": "臺灣南島原住民族、平埔契約文書、漢人民間信仰田野、祭儀影音與西南少數民族調查"}, {id: "語言演變、文字學與語料庫", "name": "語言演變、文字學與語料庫", "icon": "🔤", "desc": "漢字六書演變、閩客方言發音辭典、瀕危南島語言耆老錄音、上古近代漢語句法語料庫"}, {id: "社會變遷、經濟法政與實證調查", "name": "社會變遷、經濟法政與實證調查", "icon": "📊", "desc": "40年臺灣社會變遷調查、臺灣GDP景氣預測、亞洲民主比較、憲政科技法學與香港研究庫"}, {id: "跨領域策展、數位人文與科普", "name": "跨領域策展、數位人文與科普", "icon": "🎨", "desc": "開放博物館百萬藏品、時間軸線上策展、研之有物科普旗艦、研究資料寄存所與NLP文本探勘"}];
+    const advisorPresets = [{"label": "🏫 雲林與在地百年地景變遷", "query": "臺灣百年歷史地圖 家鄉聚落與河道演變 空間地景 地方志 臺灣古文書", "title": "高中探究與實作：在地家鄉百年地貌與古籍契約演變", "roadmap": "建議第一步先利用【臺灣百年歷史地圖】輸入地名（如斗六、虎尾或古坑），疊合日治「臺灣堡圖」與現代衛星空照觀察河道與街廓；第二步透過【臺灣古文書整合查詢系統】查找清代至日治該地的地契或地方行政公文；第三步可至【開放博物館．參與平台】以故事地圖形式完成小論文展覽。"}, {"label": "📜 日治教育、青年留學與菁英日記", "query": "日治時期 學校教育 臺灣總督府職員錄 旅券出境 個人日記 林獻堂 寫真帖", "title": "臺灣史專題：日治時期臺灣青年留學潮與教育體制", "roadmap": "首先至【臺灣總督府職員錄系統】搜尋當時老學校的日臺籍教職員名冊，再利用【臺灣總督府旅券系統】查找赴日留學生檔案；接著進入【臺灣日記知識庫】查閱林獻堂日記中對公學校與文化運動的記載，並對照【日治時期寫真帖資料庫】的老照片。"}, {"label": "🏺 商周青銅禮器與銘文考釋", "query": "商周青銅器 考古 銘文 饕餮紋 3D模型 青銅器拓片 漢籍", "title": "歷史科物質文化：商周禮樂文明與青銅器物拓本考據", "roadmap": "直接打開【3D 考古文物櫥窗】在螢幕上 360 度旋轉放大觀察商周青銅鼎的饕餮紋與鑄造範線；接著利用【青銅器拓片資料庫】閱讀毛公鼎或散氏盤的金文拓本；最後進入【漢籍電子文獻資料庫】搜尋正史《周禮》與《史記》，進行二重證據法考證。"}, {"label": "🏛️ 漢代邊塞烽燧屯戍與居延漢簡", "query": "居延漢簡 簡牘字典 漢代 邊塞 烽燧 屯戍 河西走廊", "title": "秦漢史專題：烽燧萬里——居延漢簡中的邊防防線與戍卒生活", "roadmap": "進入【簡牘字典（史語所藏居延漢簡資料庫）】調閱漢簡高清彩色圖版與紅外線掃描影像，觀察戍卒的請假條、出入關符券與糧餉帳冊；再搭配【漢代石刻畫象拓本資料庫】了解漢代邊防生活日常。"}, {"label": "🌍 英國工業革命、維多利亞思潮與西方傳教", "query": "British Periodicals 英國歷史 歐美研究 使信月刊 馬雅各 西洋史 Oxford DNB", "title": "世界史高階專題：19世紀英國維多利亞時代思潮與海外宣教觀察", "roadmap": "利用【British Periodicals (英國歷史期刊庫)】檢索19世紀英國本土對於工業革命勞工問題的政論；再透過【英國長老教會《使信月刊》宣教歷史庫】閱讀英國傳教士馬雅各、巴克禮在臺灣南部建立西醫院與現代學校的一手英文報告。"}, {"label": "👩‍🎓 民國新女性與婦女解放運動", "query": "民國婦女與性別史 民國期刊 全國報刊索引 女子教育 天足運動 胡適", "title": "近代思想史：走出閨閣——晚清民初女性教育與女權思潮", "roadmap": "在【民國婦女與性別史資料庫】查閱清末女子學堂章程與女權宣言；再利用【全國報刊索引：民國期刊庫】檢索《婦女雜誌》與五四時期的女性投稿文章；並對照【胡適數位典藏】中關於女子教育的演講與書信。"}, {"label": "🦠 六朝古人的瘟疫恐懼與人情偏方", "query": "疾病感覺地圖 魏晉南北朝 六朝小說 瘟疫 社會恐慌 隔離 情感", "title": "跨領域生命教育：六朝古人的疾病恐懼與社會病理學", "roadmap": "進入【疾病：感覺地圖】點選「社會與倫理」主題短文，在地圖上查看筆記小說記載的傳染病事件；並與高中公民科的現代公共衛生防疫、疫苗政策及社會歧視心理進行跨時代批判性對話。"}, {"label": "🐫 絲路文化交流與玄奘西行軌跡", "query": "遊方歷代僧傳 高僧傳 絲路 佛教傳播 玄奘 西域 時空地圖", "title": "世界史專題：穿越蔥嶺——歷代僧侶的遊方軌跡與絲路傳播", "roadmap": "在【遊方：歷代僧傳】互動地圖中選取僧人（如法顯、玄奘），跟隨其動態路線觀察行經西域三十六國的地理節點；結合地理科的高原氣候與商道變遷，分析宗教如何在地理屏障下跨國界傳播。"}, {"label": "📈 戰後經濟起飛與科技矽島政策", "query": "李國鼎 科技產業 竹科 半導體 近代史 經濟預測 臺灣經濟", "title": "臺灣現代經濟史：從加工出口區到半導體矽島政策決策", "roadmap": "在【李國鼎先生數位資料庫】調閱 1970 年代李國鼎先生推動工研院與新竹科學園區的手稿與訪談；再搭配經濟所【臺灣經濟預測與政策】研究報告，探討政府產業政策在總體經濟轉型中的關鍵角色。"}, {"label": "🔤 漢字形體流變與六書造字法則", "query": "小學堂 文字學 甲骨文 金文 小篆 六書 造字 語料庫", "title": "高中國文學科：從甲骨文到楷書——漢字造字法則探索", "roadmap": "引導學生在【小學堂文字學資料庫】鍵入課文生字，觀察其殷商甲骨文、金文到小篆的構形演變；分析象形、指事、會意、形聲的造字規律，作為生動的自主學習歷程作業。"}, {"label": "📊 臺灣近40年家庭與性別平等變遷", "query": "臺灣社會變遷基本調查 TSCS 實證調查 性別分工 家庭結構 公民認同 SRDA", "title": "公民與社會科：大數據看臺灣——40年家庭與性別角色演進", "roadmap": "進入【臺灣經驗實證調查平台 (TESD)】，直接使用線上統計分析工具選取 1985 年與 2020 年的「性別角色與家庭分工」問卷數據，即時生成跨年代對比長條圖，鍛鍊學生用實證數據說話的社會科學素養。"}, {"label": "🎨 108課綱探究實作線上策展", "query": "開放博物館 參與平台 學生線上策展 時間軸 故事地圖 學習歷程", "title": "多元選修與自主學習：在開放博物館策劃一場歷史特展", "roadmap": "學生註冊【開放博物館．參與平台】，從中研院逾 117 萬件開放授權藏品中選定主題，利用內建的「時間軸模組」與「地圖模組」編排策展敘事，產出具備超高質感的數位學習歷程檔案。"}];
 
-    // Pre-set Quick Research Topics for Advisor
-    const advisorPresets = [
-      {
-        label: "🏫 雲林與在地百年地景變遷",
-        query: "臺灣百年歷史地圖 家鄉聚落與河道演變 空間地景 地方志",
-        title: "高中探究與實作：在地家鄉百年地貌與古蹟演變",
-        roadmap: "建議第一步先利用【臺灣百年歷史地圖】輸入地名（如斗六、虎尾或古坑），疊合日治「臺灣堡圖」與現代衛星空照觀察河道與街廓；第二步透過【臺灣史檔案資源系統】與【地圖數位典藏】查找清代至日治該地的地契或地方行政公文，完成一份有圖有真相的在地文史小論文。"
-      },
-      {
-        label: "📜 日治時期現代教育與知識分子日記",
-        query: "日治時期 學校教育 臺灣總督府職員錄 個人日記 文化協會 林獻堂",
-        title: "臺灣史專題：日治時期臺灣青年留學潮與教育體制",
-        roadmap: "首先至【臺灣總督府職員錄與旅券查詢系統】搜尋當時老學校的日臺籍教職員與赴日留學生名冊；接著進入【臺灣日記知識庫】查閱林獻堂或張麗俊日記中對教育改革與公學校活動的當日感想，還原知識分子的心路歷程。"
-      },
-      {
-        label: "🏺 商周青銅禮器與紋飾考證",
-        query: "商周青銅器 考古 銘文 饕餮紋 3D模型",
-        title: "歷史科物質文化：商周禮樂文明與青銅器物考據",
-        roadmap: "直接打開【3D 考古文物櫥窗】在螢幕上 360 度旋轉並放大觀察商周青銅鼎的饕餮紋、範線與銘文細節；接著利用【漢籍電子文獻資料庫】搜尋正史《史記·殷本紀》或《周禮》，進行器物與傳世文獻的「二重證據法」考據。"
-      },
-      {
-        label: "🦠 古代瘟疫與社會人情偏方",
-        query: "疾病感覺地圖 魏晉南北朝 六朝小說 瘟疫 社會恐慌 隔離",
-        title: "跨領域生命教育：六朝古人的疾病恐懼與社會病理",
-        roadmap: "進入【疾病：感覺地圖】點選「社會與倫理」及「情感與生死」主題短文，在地圖上查看筆記小說記載的傳染病事件；並與高中公民科的現代公共衛生防疫、疫苗政策及社會歧視心理進行跨時代批判性對話。"
-      },
-      {
-        label: "🐫 絲路文化交流與玄奘取經",
-        query: "遊方歷代僧傳 高僧傳 絲路 佛教傳播 玄奘 西域 時空地圖",
-        title: "世界史專題：穿越蔥嶺——歷代僧侶的遊方軌跡與絲路傳播",
-        roadmap: "在【遊方：歷代僧傳】互動地圖中選取僧人（如法顯、玄奘），跟隨其動態路線觀察行經西域三十六國的地理節點；結合地理科的高原氣候與商道變遷，分析宗教如何在地理屏障下跨國界傳播。"
-      },
-      {
-        label: "📈 戰後經濟起飛與科技矽島",
-        query: "李國鼎 科技產業 竹科 半導體 近代史 經濟預測",
-        title: "臺灣現代經濟史：從加工出口區到半導體矽島政策",
-        roadmap: "在【李國鼎先生數位資料庫】調閱 1970 年代李國鼎先生推動工研院與新竹科學園區的第一手政策手稿與訪談錄音；再搭配經濟所【臺灣經濟預測與政策】研究報告，探討政府產業政策在總體經濟轉型中的關鍵角色。"
-      },
-      {
-        label: "🔤 漢字形體流變與六書造字",
-        query: "小學堂 文字學 甲骨文 金文 小篆 六書 造字 語料庫",
-        title: "高中國文學科：從甲骨文到楷書——漢字造字法則探索",
-        roadmap: "引導學生在【小學堂文字學資料庫】鍵入課文生字（如「天」、「祭」、「孝」），觀察其殷商甲骨文、金文到小篆的構形演變；分析象形、指事、會意、形聲的造字規律，作為生動的趣味自主學習歷程作業。"
-      },
-      {
-        label: "📊 臺灣近40年家庭與性別平等變遷",
-        query: "臺灣社會變遷基本調查 TSCS 實證調查 性別分工 家庭結構 公民認同",
-        title: "公民與社會科：大數據看臺灣——40年家庭與性別角色演進",
-        roadmap: "進入【臺灣經驗實證調查平台 (TESD)】，直接使用線上統計分析工具選取 1985 年與 2020 年的「性別角色與家庭分工」問卷數據，即時生成跨年代對比長條圖，鍛鍊學生用實證數據說話的社會科學素養。"
-      },
-      {
-        label: "🎨 108課綱探究實作線上策展",
-        query: "開放博物館 參與平台 學生線上策展 時間軸 故事地圖 學習歷程",
-        title: "多元選修與自主學習：在開放博物館策劃一場歷史特展",
-        roadmap: "學生註冊【開放博物館．參與平台】，從中研院逾 117 萬件開放授權藏品中選定主題（如日治老照片、臺灣瀕危動物），利用內建的「時間軸模組」與「地圖模組」編排策展敘事，產出具備超高質感的數位學習歷程檔案。"
-      }
-    ];
-
-    // Database Dataset
-    const databases = [
-      // 1. 歷史語言研究所 (IHP)
-      {
-        id: "ihp-hanji",
-        name: "漢籍電子文獻資料庫 (Scripta Sinica)",
-        english_name: "Scripta Sinica Database",
-        institute: "歷史語言研究所",
-        institute_code: "IHP",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://hanji.sinica.edu.tw/",
-        description: "華人世界最具規模的古代典籍全文資料庫，字數超過6.8億字，涵蓋經、史、子、集、地方志、食貨志與歷代重要史籍，提供精確字詞檢索與古籍標點。",
-        teaching_focus: "國文與歷史科核心教材。適合引導高中與大學生進行「史籍互證」、「歷史名詞貫時性流變」考據，探討歷代食貨志或正史列傳。",
-        tags: ["正史", "二十四史", "四庫全書", "文獻考據", "古籍檢索"],
-        access_detail: "全開放（免費申請帳號或直接使用公開書目查詢）"
-      },
-      {
-        id: "ihp-3d-archaeology",
-        name: "3D 考古文物櫥窗",
-        english_name: "3D Archaeology Showcase",
-        institute: "歷史語言研究所",
-        institute_code: "IHP",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archeodata.sinica.edu.tw/1_2/3DAA/",
-        description: "採用高解析攝影測量技術建立商周青銅器、居延漢簡、史前陶石玉器之 3D 模型，突破傳統 2D 圖錄死角，還原文物背後的考古出土脈絡。",
-        teaching_focus: "中學歷史科「商周青銅文明與考古發現」最佳互動教材！學生可在平板上 360 度旋轉青銅器觀察饕餮紋、銘文與鑄造接縫，開展探究與實作。",
-        tags: ["青銅器", "商周", "考古學", "3D模型", "物質文化"],
-        access_detail: "線上自由閱覽，免登入，支援手機與平板觸控操作"
-      },
-      {
-        id: "ihp-archaeodata",
-        name: "考古資料數位典藏創新計畫資料庫",
-        english_name: "Digital Archives of Archaeological Data",
-        institute: "歷史語言研究所",
-        institute_code: "IHP",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archeodata.sinica.edu.tw/",
-        description: "完整整合中研院庫藏之臺灣與中原考古遺址、出土標本、田野工作紀錄與發掘地圖，是臺灣考古學最權威的學術資源網絡。",
-        teaching_focus: "臺灣史前文化（十三行、卑南、圓山遺址）之地理分布與物質生活教學，可結合臺灣地形圖探討先民聚落發展。",
-        tags: ["遺址發掘", "史前文化", "陶器", "臺灣考古", "田野筆記"],
-        access_detail: "線上公開查詢，部分原始測繪圖檔需申請授權"
-      },
-      {
-        id: "ihp-xiaoxue",
-        name: "小學堂文字學資料庫",
-        english_name: "Xiaoxue Character Database",
-        institute: "歷史語言研究所",
-        institute_code: "IHP",
-        category: "語言、文字與語料庫",
-        research_topic: "語言、文字與語料庫",
-        access_tier: "全開放免IP",
-        url: "https://xiaoxue.iis.sinica.edu.tw/",
-        description: "整合甲骨文、金文、楚系簡帛、小篆到隸書等漢字形體演變逾22萬字，並收錄上古音、中古音及《廣韻》、《說文解字》等龐大字書音義索引。",
-        teaching_focus: "高中國文與大學文字學課程神器！讓學生輸入任意漢字，即刻看見從甲骨文到楷書的字形演變，進行「六書造字法則」趣味自主學習。",
-        tags: ["甲骨文", "金文", "六書", "字形演變", "聲韻學"],
-        access_detail: "全開放免登入，支援正異體字、古文字字形比對"
-      },
-      {
-        id: "ihp-digiarch",
-        name: "史語所數位資源整合檢索系統",
-        english_name: "IHP Digital Archives Integration System",
-        institute: "歷史語言研究所",
-        institute_code: "IHP",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://digiarch.sinica.edu.tw/ihp/index.jsp",
-        description: "一站式跨庫查詢史語所藏內閣大庫檔案、明清公文、善本書籍、少數民族文物及拓片碑帖等龐大館藏。",
-        teaching_focus: "歷史專案研究與小論文撰寫。引導學生進行清代奏摺公文程式解析，或拓片書法藝術鑑賞。",
-        tags: ["明清檔案", "內閣大庫", "善本古籍", "石刻拓片", "一站式檢索"],
-        access_detail: "公開書目檢索，數位全文影像視典藏等級開放"
-      },
-
-      // 2. 近代史研究所 (MH)
-      {
-        id: "mh-archives-portal",
-        name: "近代史研究所檔案館入口網",
-        english_name: "MH Archives Portal",
-        institute: "近代史研究所",
-        institute_code: "MH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archives.sinica.edu.tw/",
-        description: "近現代中國與近代臺灣最關鍵的外交、經濟與名人檔案總庫，收錄外務部、總理各國事務衙門、外交部檔案及眾多近代政商人物文書。",
-        teaching_focus: "近現代史「不平等條約與晚清外交交涉」、「冷戰時期東亞政治」專題教學，提供第一手官方照會與合約原件。",
-        tags: ["外交檔案", "總理衙門", "民國史", "晚清條約", "檔案目錄"],
-        access_detail: "入口網全面開放檢索，影像授權依近用規範提供"
-      },
-      {
-        id: "mh-search-sys",
-        name: "近史所檔案館館藏檢索系統",
-        english_name: "MH Archives Catalog System",
-        institute: "近代史研究所",
-        institute_code: "MH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "院區/南院共享",
-        url: "https://archives.sinica.edu.tw/redirect/71",
-        description: "新一代近代史全文檢索系統，涵蓋外交部、經濟部、財政部及民間政商名家檔案數位影像，支援線上調閱申請。",
-        teaching_focus: "大學專題研討與高中自主學習成果製作，可用於「戰後經濟重建」、「石油危機與經建計畫」專題研究。",
-        tags: ["經濟檔案", "部會公文", "影像閱覽", "歷史小論文"],
-        access_detail: "南港本院與南部院區數位圖檔室皆已連線開放閱覽與列印"
-      },
-      {
-        id: "mh-ktli",
-        name: "李國鼎先生數位資料庫",
-        english_name: "K. T. Li Digital Database",
-        institute: "近代史研究所",
-        institute_code: "MH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archives.sinica.edu.tw/",
-        description: "收錄「臺灣科技教父」李國鼎先生一生手稿、政策建言、大事年表、珍貴家庭與公務照片及歷史訪談音檔。",
-        teaching_focus: "臺灣現代經濟史、竹科半導體產業發展史教學。可用於探討 1970 年代臺灣如何從農業代工轉型為科技矽島。",
-        tags: ["科技產業", "竹科", "臺灣經濟奇蹟", "口述歷史", "名人檔案"],
-        access_detail: "入口網專題資料庫免費公開"
-      },
-      {
-        id: "mh-diplomatic",
-        name: "近代外交與經濟重要檔案典藏",
-        english_name: "Modern Diplomatic & Economic Archives",
-        institute: "近代史研究所",
-        institute_code: "MH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "院區/南院共享",
-        url: "https://archives.sinica.edu.tw/collection/3",
-        description: "珍藏包括導淮委員會水利檔案、中俄界約、抗戰時期軍事經濟動員公文等罕見近現代歷史原始紀錄。",
-        teaching_focus: "地理與歷史科跨領域教學：以「黃河導淮與治水工程」探討近代國家治理能力與流域地理環境的互動。",
-        tags: ["水利工程", "中俄邊界", "近代地理", "政府公文"],
-        access_detail: "南院數位圖書檔案室共享調閱，北院館藏原件"
-      },
-
-      // 3. 臺灣史研究所 (ITH)
-      {
-        id: "ith-tais",
-        name: "臺灣史檔案資源系統",
-        english_name: "Taiwan Archival Information System",
-        institute: "臺灣史研究所",
-        institute_code: "ITH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "院區/南院共享",
-        url: "https://tais.ith.sinica.edu.tw/",
-        description: "全臺最具代表性的臺灣民間文書與機關檔案資料庫，典藏契書、帳冊、家書、日治寫真帖、地方公文書及古地圖。",
-        teaching_focus: "臺灣史必備核心教材！帶領學生閱讀清代地契（如番契、胎借契）與日治時期文書，學習解讀第一手庶民生活歷史。",
-        tags: ["古文書", "土地地契", "家族檔案", "日治寫真", "地方行政"],
-        access_detail: "線上開放部分全宗瀏覽；到館/列印權限於南港本院與南部院區數位圖檔室全面開放"
-      },
-      {
-        id: "ith-archives-net",
-        name: "臺灣歷史檔案資源網",
-        english_name: "Taiwan History Archives Web",
-        institute: "臺灣史研究所",
-        institute_code: "ITH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archives.ith.sinica.edu.tw/",
-        description: "臺史所檔案館的入口門戶，每月發布檔案選粹、時事策展故事與歷史知識短文，提供臺灣史料解讀指南。",
-        teaching_focus: "適合中小學歷史科課堂導讀。網站每期推出的「檔案故事」深入淺出，可直接作為課前引言與補充講義。",
-        tags: ["歷史故事", "科普轉譯", "檔案導讀", "臺灣記憶"],
-        access_detail: "全開放免登入"
-      },
-      {
-        id: "ith-diary",
-        name: "臺灣日記知識庫",
-        english_name: "Taiwan Diary Knowledge Base",
-        institute: "臺灣史研究所",
-        institute_code: "ITH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://taco.ith.sinica.edu.tw/tdk/",
-        description: "由臺史所日記解讀班逐日考訂之臺灣重要人物日記全文，如林獻堂《灌園先生日記》、張麗俊《水竹居主人日記》等。",
-        teaching_focus: "歷史人物微觀視角教學。讓學生查詢 1920 年代臺灣議會設置請願運動、二二八事件或日治殖民日常，感受歷史當事人的即時心理。",
-        tags: ["林獻堂", "日記考訂", "微觀歷史", "文化協會", "士紳社會"],
-        access_detail: "開放全文檢索與註解比對（維護期間以臺史所公告為準）"
-      },
-      {
-        id: "ith-gov-travel",
-        name: "臺灣總督府職員錄與旅券查詢系統",
-        english_name: "Taiwan Governor-General Directory & Passports",
-        institute: "臺灣史研究所",
-        institute_code: "ITH",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archives.ith.sinica.edu.tw/",
-        description: "收錄日治時期臺灣總督府各級文官、警察、教師、技師職員名冊，以及臺人赴海外（如赴日留學、前往南洋）之護照（旅券）申請紀錄。",
-        teaching_focus: "引導學生尋找家鄉老學校日治時期校長教師，或研究臺灣青年赴日留學潮的歷史足跡，極佳之在地文史探究教材。",
-        tags: ["日治職員", "海外留學", "護照紀錄", "家族文史", "地方教育"],
-        access_detail: "全網開放檢索"
-      },
-
-      // 4. 中國文哲研究所 (LitPhil)
-      {
-        id: "litphil-disease-map",
-        name: "疾病：感覺地圖",
-        english_name: "Disease: Sensory Map",
-        institute: "中國文哲研究所",
-        institute_code: "LitPhil",
-        category: "地理空間與數位人文",
-        research_topic: "地理空間與數位人文",
-        access_tier: "全開放免IP",
-        url: "https://dh-illnesses.litphil.sinica.edu.tw/",
-        description: "文哲所劉苑如研究員團隊建置，結合魏晉南北朝筆記小說與僧傳文本，探勘古人對疾病的恐懼、倫理、跨物種情感與社會病理學，並以 GIS 空間呈現。",
-        teaching_focus: "國文與生命教育跨領域教學！引導學生分析古人如何面對瘟疫、社交距離與生離死別，並與當代傳染病社會心理做深刻對話。",
-        tags: ["六朝小說", "疾病歷史", "情感史", "GIS地圖", "數位人文"],
-        access_detail: "全開放免登入，內含主題研究短文與地圖可直接互動"
-      },
-      {
-        id: "litphil-youfun-map",
-        name: "遊方：歷代僧傳",
-        english_name: "Travels: Biographies of Monks",
-        institute: "中國文哲研究所",
-        institute_code: "LitPhil",
-        category: "地理空間與數位人文",
-        research_topic: "地理空間與數位人文",
-        access_tier: "全開放免IP",
-        url: "https://youfun.litphil.sinica.edu.tw/",
-        description: "梳理跨越千年的歷代僧人傳記，透過自然語言標記萃取僧人遊方動機、出走路徑與弘法成果，並在歷史地圖上動態重現其空間軌跡。",
-        teaching_focus: "世界史／中國史「佛教傳播與絲路交通」教學。讓學生在互動地圖上跟隨僧人翻越蔥嶺、沿古代商道行進，深化地理與宗教傳播理解。",
-        tags: ["高僧傳", "絲路", "佛教傳播", "空間人文", "時空軌跡"],
-        access_detail: "全開放免登入，提供視覺化動態路線與事件查詢"
-      },
-      {
-        id: "litphil-library-db",
-        name: "文哲所哲學與文學專題資料庫",
-        english_name: "LitPhil Academic Database & E-Books",
-        institute: "中國文哲研究所",
-        institute_code: "LitPhil",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "院區/南院共享",
-        url: "https://www.litphil.sinica.edu.tw/library/posts/4235",
-        description: "典藏宋明理學、儒家哲學、先秦諸子、明清詞曲文集與近現代華人思想之專業電子文獻與全文電子書。",
-        teaching_focus: "大學中文系、哲學系經典研讀課程。提供高精確度之校勘版本比對與學術論文參考文獻。",
-        tags: ["儒學", "道家", "宋明理學", "古典文學", "文集考證"],
-        access_detail: "中研院 IP / 南部院區數位圖檔室共享"
-      },
-
-      // 5. 民族學研究所 (IOE)
-      {
-        id: "ioe-digital-archive",
-        name: "民族學研究所數位典藏系統",
-        english_name: "IOE Digital Archives",
-        institute: "民族學研究所",
-        institute_code: "IOE",
-        category: "族群、人類學與民俗",
-        research_topic: "族群、人類學與民俗",
-        access_tier: "全開放免IP",
-        url: "https://ianthro.ioe.sinica.edu.tw/",
-        description: "典藏臺灣南島原住民、平埔族群、漢人民間信仰及太平洋南島民族之珍貴文物照片、宗教田野影音、古文契書與民族學報告。",
-        teaching_focus: "原住民族歷史與多元文化教育核心資源。可直接展示泰雅族織布、排灣族琉璃珠與陶壺的文化意涵，支援族群文化專案。",
-        tags: ["臺灣原住民", "平埔族群", "民間信仰", "民族誌", "田野影音"],
-        access_detail: "開放公眾查詢與研究利用"
-      },
-      {
-        id: "ioe-openmuseum",
-        name: "民族學研究所數位博物館",
-        english_name: "Museum of the Institute of Ethnology",
-        institute: "民族學研究所",
-        institute_code: "IOE",
-        category: "族群、人類學與民俗",
-        research_topic: "族群、人類學與民俗",
-        access_tier: "全開放免IP",
-        url: "https://mioe.openmuseum.tw/",
-        description: "民族所與開放博物館合作建置之線上虛擬博物館，常設展包括《臺灣原住民族文化展》、《臺灣漢人民間信仰》等沉浸式策展。",
-        teaching_focus: "中學社會科或藝術科「虛擬參訪」。學生不需出門即可線上走訪民族學博物館各展廳，完成展覽學習單。",
-        tags: ["線上博物館", "原民常設展", "神祇祭祀", "文化平權"],
-        access_detail: "全開放免登入，支援高解析展件欣賞與多媒體語音"
-      },
-      {
-        id: "ioe-pepo-cluster",
-        name: "臺灣原住民數位知識聚落（平埔文化專題）",
-        english_name: "Indigenous Knowledge Cluster & Plains Tribes",
-        institute: "民族學研究所",
-        institute_code: "IOE",
-        category: "族群、人類學與民俗",
-        research_topic: "族群、人類學與民俗",
-        access_tier: "全開放免IP",
-        url: "http://www.ianthro.org/",
-        description: "聚焦西拉雅、巴宰、噶瑪蘭等平埔族群歷史文獻、語言復振紀錄、地方文史工作室協作成果與珍稀契約文書。",
-        teaching_focus: "在地鄉土教育與原住民族語言身分認同專題。適合作為引導學生探討平埔正名運動與歷史記憶的教材。",
-        tags: ["平埔族群", "西拉雅", "族群復振", "地方文史", "番契地圖"],
-        access_detail: "全開放免登入"
-      },
-
-      // 6. 語言學研究所 (IL)
-      {
-        id: "il-digital-studio",
-        name: "語言學研究所數位語言資源工作室",
-        english_name: "Digital Linguistic Resources Studio",
-        institute: "語言學研究所",
-        institute_code: "IL",
-        category: "語言、文字與語料庫",
-        research_topic: "語言、文字與語料庫",
-        access_tier: "全開放免IP",
-        url: "https://www.ling.sinica.edu.tw/item/zh-tw?code=list&ids=19",
-        description: "統籌中研院語言學所各大語料庫與詞彙庫研發成果，涵蓋現代漢語、上古漢語、南島語言及跨方言句法分析資源。",
-        teaching_focus: "高中語文資優班或大學語言學導論教學：介紹如何以「語料庫驅動」方式觀察語言規律與詞性搭配。",
-        tags: ["語料庫", "詞彙庫", "語言學", "語法分析", "計算語言學"],
-        access_detail: "入口網站公開各專案連結與使用規範"
-      },
-      {
-        id: "il-min-hakka",
-        name: "中央研究院閩客語辭典與文獻語料庫",
-        english_name: "AS Min and Hakka Dictionaries & Corpora",
-        institute: "語言學研究所",
-        institute_code: "IL",
-        category: "語言、文字與語料庫",
-        research_topic: "語言、文字與語料庫",
-        access_tier: "全開放免IP",
-        url: "https://minhakka2.ling.sinica.edu.tw/",
-        description: "彙整臺灣閩南語與客家語歷史文獻、地方方言調查、教會羅馬字文獻及現代閩客辭典之綜合型發音與用詞語料庫。",
-        teaching_focus: "本土語文教學（閩南語、客家語）必備教材！提供音字對照、古白話辭彙考證與生動例句。",
-        tags: ["閩南語", "客家語", "本土語言", "方言語音", "辭典檢索"],
-        access_detail: "全開放免費線上使用"
-      },
-      {
-        id: "il-formosan",
-        name: "臺灣南島語言數位典藏與語料庫",
-        english_name: "Formosan Languages Digital Archives",
-        institute: "語言學研究所",
-        institute_code: "IL",
-        category: "語言、文字與語料庫",
-        research_topic: "語言、文字與語料庫",
-        access_tier: "全開放免IP",
-        url: "https://ascdc.digitalarchives.tw/site.php?type=3731",
-        description: "長期蒐集臺灣十餘種南島語言之原住民耆老錄音音檔、國際音標對齊逐字稿、故事神話與跨語言詞法句法分析。",
-        teaching_focus: "南島語系起源與臺灣「南島語原鄉假說」教學。讓學生親耳聆聽濒危南島語言母語發音與傳說故事。",
-        tags: ["南島語", "原住民語言", "口傳神話", "語音採集", "文化保育"],
-        access_detail: "數位文化中心典藏網全開放"
-      },
-
-      // 7. 人文社會科學研究中心 (RCHSS)
-      {
-        id: "rchss-srda",
-        name: "學術調查研究資料庫 (SRDA)",
-        english_name: "Survey Research Data Archive",
-        institute: "人文社會科學研究中心",
-        institute_code: "RCHSS",
-        category: "社會變遷與民主調查",
-        research_topic: "社會變遷與民主調查",
-        access_tier: "全開放免IP",
-        url: "https://srda.sinica.edu.tw/",
-        description: "臺灣最權威的社會科學實證調查資料典藏庫，收錄臺灣社會變遷、家庭動態、青少年成長歷程及國科會各項大型抽樣問卷資料與原始統計檔。",
-        teaching_focus: "高中公民與社會科、大學社會學與統計學方法教學。引導學生使用真實問卷數據進行交叉分析，培養實證素養與批判思考。",
-        tags: ["抽樣調查", "社會數據", "問卷分析", "實證研究", "開放數據"],
-        access_detail: "會員註冊後可免費下載資料檔與問卷編碼簿"
-      },
-      {
-        id: "rchss-twhgis",
-        name: "臺灣百年歷史地圖 (GIS Center)",
-        english_name: "Taiwan Centennial Historical Maps",
-        institute: "人文社會科學研究中心",
-        institute_code: "RCHSS",
-        category: "地理空間與數位人文",
-        research_topic: "地理空間與數位人文",
-        access_tier: "全開放免IP",
-        url: "https://gissrv4.sinica.edu.tw/",
-        description: "地理資訊科學研究專題中心代表作，將清代堡圖、日治時期地形圖、二戰美軍航照及現代衛星空照完美對齊於 Google 地圖上，支援多圖層透明度滑動對比。",
-        teaching_focus: "全臺灣中小學地理與歷史科最受歡迎的教學工具！學生可直接搜尋自己的學校或家鄉，滑動對比一百年前後的河道、聚落與地景變遷。",
-        tags: ["古地圖", "疊圖分析", "空間地景", "臺灣堡圖", "美軍航照"],
-        access_detail: "全開放免登入，支援電腦與行動裝置瀏覽及 WMTS 圖磚"
-      },
-      {
-        id: "rchss-mapsearch",
-        name: "地圖數位典藏整合查詢系統",
-        english_name: "Map Digital Archive Search System",
-        institute: "人文社會科學研究中心",
-        institute_code: "RCHSS",
-        category: "地理空間與數位人文",
-        research_topic: "地理空間與數位人文",
-        access_tier: "全開放免IP",
-        url: "https://gis.rchss.sinica.edu.tw/mapsearch/",
-        description: "整合國內外各大機構所藏之珍稀古地圖、戰略測量圖、都市計畫圖與航照圖影像，提供豐富的測繪年代與空間詮釋資料。",
-        teaching_focus: "高中探究與實作「空間環境與都市發展」專案。引導學生考證日治市區改正或戰後都市擴張痕跡。",
-        tags: ["測量圖", "都市計畫", "航照影像", "測繪史", "地理空間"],
-        access_detail: "全開放免登入"
-      },
-      {
-        id: "rchss-gis-apps",
-        name: "人社中心 GIS 加值應用系統網",
-        english_name: "RCHSS WebGIS Applications Portal",
-        institute: "人文社會科學研究中心",
-        institute_code: "RCHSS",
-        category: "地理空間與數位人文",
-        research_topic: "地理空間與數位人文",
-        access_tier: "全開放免IP",
-        url: "https://gis.rchss.sinica.edu.tw/application/",
-        description: "涵蓋鄭和航海圖 WebGIS、全臺詩地理資訊系統、臺灣戰後空間規劃史料資料庫等多項跨學科地理資訊加值平臺。",
-        teaching_focus: "歷史文學與地理整合教學。例如以「全臺詩 GIS」在地圖上定位古典詩人行腳與地景詠懷，生動展現文學空間感。",
-        tags: ["鄭和航海", "古典詩詞GIS", "空間規劃", "跨領域教學"],
-        access_detail: "全開放免登入"
-      },
-
-      // 8. 數位文化中心 (ASCDC)
-      {
-        id: "ascdc-openmuseum",
-        name: "開放博物館 (Open Museum)",
-        english_name: "Open Museum",
-        institute: "數位文化中心",
-        institute_code: "ASCDC",
-        category: "跨領域策展與公眾轉譯",
-        research_topic: "跨領域策展與公眾轉譯",
-        access_tier: "全開放免IP",
-        url: "https://openmuseum.tw/",
-        description: "匯聚中研院與全臺近百家館所珍貴藏品逾 117 萬件、主題特展 800 餘檔，融匯歷史、生物、藝術、民俗之數位知識生態系。",
-        teaching_focus: "各科通識、線上展覽與自學最佳園地。教師可直接運用現成高品質科普展（如臺灣生態多樣性、歷史記憶特展）作為互動教材。",
-        tags: ["百萬藏品", "線上特展", "跨領域科普", "數位展覽", "知識平權"],
-        access_detail: "全網開放自由瀏覽，免安裝任何軟體"
-      },
-      {
-        id: "ascdc-plaza",
-        name: "開放博物館．參與平台",
-        english_name: "Open Museum Plaza (Curating Platform)",
-        institute: "數位文化中心",
-        institute_code: "ASCDC",
-        category: "跨領域策展與公眾轉譯",
-        research_topic: "跨領域策展與公眾轉譯",
-        access_tier: "全開放免IP",
-        url: "https://plaza.openmuseum.tw/",
-        description: "讓全民化身數位策展人的互動平台！提供時間軸模組、故事地圖模組、標記故事與多媒體整合工具，自由取用開放授權藏品創作展覽。",
-        teaching_focus: "108 課綱「探究與實作」及「學習歷程檔案」王牌工具！讓學生不再只繳交死板紙本報告，而是能親自上線策劃一場公開數位展覽。",
-        tags: ["學生策展", "學習歷程", "時間軸工具", "互動地圖", "探究與實作"],
-        access_detail: "全開放免費註冊會員即可開始線上策展"
-      },
-      {
-        id: "ascdc-databases",
-        name: "數位文化中心資料庫總覽網",
-        english_name: "ASCDC Databases Directory",
-        institute: "數位文化中心",
-        institute_code: "ASCDC",
-        category: "跨領域策展與公眾轉譯",
-        research_topic: "跨領域策展與公眾轉譯",
-        access_tier: "全開放免IP",
-        url: "https://ascdc.sinica.edu.tw/databases.jsp",
-        description: "系統性盤點並整合中研院歷年來逾百個數位典藏成果、專業資料庫及跨領域數位人文研究入口。",
-        teaching_focus: "高階專題研究、研究生資料檢索必備書籤。方便快速指引學生找到對應專門領域的數位典藏子資料庫。",
-        tags: ["資料庫總表", "數位典藏", "學術導航", "研究索引"],
-        access_detail: "全開放免登入"
-      },
-      {
-        id: "ascdc-dadh",
-        name: "數位人文研究平台 (DADH)",
-        english_name: "Digital Humanities Research Platform",
-        institute: "數位文化中心",
-        institute_code: "ASCDC",
-        category: "地理空間與數位人文",
-        research_topic: "地理空間與數位人文",
-        access_tier: "全開放免IP",
-        url: "https://dh.ascdc.sinica.edu.tw/",
-        description: "提供文本自動斷詞、詞性標記、命名實體辨識（NER）、關聯網絡圖分析與時間空間視覺化等現代數位人文探勘技術。",
-        teaching_focus: "大學及高中語文與資訊跨領域「數位人文入門」教案。引導學生上傳文言文文本進行實體抽取與人際社交網絡分析。",
-        tags: ["文本探勘", "自然語言處理", "命名實體", "關係網絡", "社會網絡分析"],
-        access_detail: "全開放，支援個人上傳自訂文本進行探勘"
-      },
-
-      // 9. 社會學研究所 (IOS)
-      {
-        id: "ios-tscs",
-        name: "臺灣社會變遷基本調查資料庫 (TSCS)",
-        english_name: "Taiwan Social Change Survey Database",
-        institute: "社會學研究所",
-        institute_code: "IOS",
-        category: "社會變遷與民主調查",
-        research_topic: "社會變遷與民主調查",
-        access_tier: "全開放免IP",
-        url: "https://www2.ios.sinica.edu.tw/sc/",
-        description: "自1984年起推動，以五年為週期持續追蹤臺灣家庭、性別、階層、宗教、環境與政治文化等長達 40 年之貫時性抽樣調查大庫。",
-        teaching_focus: "公民與社會科「臺灣社會結構變遷」主題教學。透過 1980 年代至今的數據對比，讓學生客觀分析臺灣家庭型態與性別角色演變。",
-        tags: ["社會變遷", "貫時性數據", "家庭結構", "性別平等", "公民認同"],
-        access_detail: "問卷報告及研究資料庫全面公開下載"
-      },
-      {
-        id: "ios-tesd",
-        name: "臺灣經驗實證調查資料平台 (TESD)",
-        english_name: "Taiwan Empirical Survey Data (TESD)",
-        institute: "社會學研究所",
-        institute_code: "IOS",
-        category: "社會變遷與民主調查",
-        research_topic: "社會變遷與民主調查",
-        access_tier: "全開放免IP",
-        url: "https://tesd.survey.sinica.edu.tw/database/tscs",
-        description: "國科會與中研院合作建置之現代化資料平台，整合線上統計分析、互動圖表生成與跨年度跨主題比較工具。",
-        teaching_focus: "免裝統計軟體即可在線上生成圓餅圖、長條圖與交叉表，非常適合作為高中社會科資料分析課堂練習。",
-        tags: ["線上統計", "視覺化圖表", "免寫程式", "高中公民練習"],
-        access_detail: "全開放線上即時統計分析"
-      },
-      {
-        id: "ios-publications",
-        name: "中研院社會學研究所學術出版與專題",
-        english_name: "Institute of Sociology Publications",
-        institute: "社會學研究所",
-        institute_code: "IOS",
-        category: "社會變遷與民主調查",
-        research_topic: "社會變遷與民主調查",
-        access_tier: "全開放免IP",
-        url: "https://www.ios.sinica.edu.tw/",
-        description: "收錄社會所重要學術成果、研討會論文、專書出版目錄及《台灣社會學》代表性前沿研究。",
-        teaching_focus: "高三選修社會或大學社會系導論延伸閱讀，了解臺灣勞動市場、族群關係與數位社會的深入探討。",
-        tags: ["社會學期刊", "數位社會", "勞動經濟", "社會不平等"],
-        access_detail: "開放查詢與專文摘要閱覽"
-      },
-
-      // 10. 經濟研究所 (IEAS)
-      {
-        id: "ieas-aep",
-        name: "《經濟論文》(Academia Economic Papers) 資料庫",
-        english_name: "Academia Economic Papers Full-text",
-        institute: "經濟研究所",
-        institute_code: "IEAS",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "全開放免IP",
-        url: "https://www.econ.sinica.edu.tw/aep",
-        description: "中研院經濟所於1973年創刊之國際權威經濟學期刊（TSSCI/Scopus收錄），提供理論經濟、計量經濟與實證政策研究全文下載。",
-        teaching_focus: "大學經濟系中高階課程教材。提供精確的數理經濟模型推導、貨幣政策效應與國際貿易計量分析範例。",
-        tags: ["經濟學", "計量經濟", "貨幣政策", "TSSCI", "全文下載"],
-        access_detail: "官方網站提供各期論文 PDF 免費開放下載"
-      },
-      {
-        id: "ieas-tefp",
-        name: "《臺灣經濟預測與政策》期刊資料庫",
-        english_name: "Taiwan Economic Forecast and Policy",
-        institute: "經濟研究所",
-        institute_code: "IEAS",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "全開放免IP",
-        url: "https://www.econ.sinica.edu.tw/TEFP",
-        description: "結合總體經濟計量模型對臺灣未來景氣、GDP成長率、物價通膨、勞動市場與國際貿易走勢進行權威實證預測與政策建言。",
-        teaching_focus: "高中公民與大學經濟學「景氣循環與政府總體財政政策」即時教材。讓學生藉由真實預測報告認識經濟指標意義。",
-        tags: ["GDP預測", "通貨膨脹", "財政政策", "總體經濟", "時事分析"],
-        access_detail: "全文免費開放下載"
-      },
-      {
-        id: "ieas-library-db",
-        name: "經濟研究所圖書館電子資源資料庫",
-        english_name: "IEAS Library Electronic Databases",
-        institute: "經濟研究所",
-        institute_code: "IEAS",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "院區/南院共享",
-        url: "https://www.econ.sinica.edu.tw/library/pages/104",
-        description: "涵蓋全球主要金融經濟資料庫（如 AREMOS 臺灣經濟統計、IMF、OECD 數據庫及國際頂級經濟期刊）。",
-        teaching_focus: "大專院校專題論文資料檢索與計量實習教材。",
-        tags: ["金融數據", "統計資料庫", "AREMOS", "跨國指標"],
-        access_detail: "中研院網域 / 南部院區數位圖檔室共享"
-      },
-
-      // 11. 政治學研究所 (IPS)
-      {
-        id: "ips-abs",
-        name: "亞洲民主動態調查 (Asian Barometer Survey)",
-        english_name: "Asian Barometer Survey (ABS)",
-        institute: "政治學研究所",
-        institute_code: "IPS",
-        category: "社會變遷與民主調查",
-        research_topic: "社會變遷與民主調查",
-        access_tier: "全開放免IP",
-        url: "https://asianbarometer.org/",
-        description: "由政治學研究所特聘研究員主持的大型跨國比較調查項目，涵蓋東亞與南亞十餘個國家民眾對民主體制評價、政府信任及政治參與。",
-        teaching_focus: "高中公民與大學政治學「比較政府與民主化進程」教材。提供第一手國際調查數據，比較不同國家對公民權利與法治的認知。",
-        tags: ["民主化", "跨國調查", "公民意識", "政經體制", "國際比較"],
-        access_detail: "開放官方問卷報告與學術申請資料釋出"
-      },
-      {
-        id: "ips-research-portal",
-        name: "政治學研究所學術研究成果網",
-        english_name: "IPSAS Research Publications & Projects",
-        institute: "政治學研究所",
-        institute_code: "IPS",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "全開放免IP",
-        url: "https://www.ipsas.sinica.edu.tw/",
-        description: "聚焦憲政體制、兩岸關係、國際地緣政治、選舉制度與民主治理之代表性研究專書與論文彙整。",
-        teaching_focus: "高中公民「憲政體制與選舉制度運作」補充教材，幫助學生跳脫教條式理論，理解制度運作的現實動力。",
-        tags: ["憲政主義", "國際關係", "選舉制度", "地緣政治"],
-        access_detail: "全網開放瀏覽"
-      },
-
-      // 12. 法律學研究所 (IIAS)
-      {
-        id: "iias-law-journal",
-        name: "《中研院法學期刊》(Academia Sinica Law Journal)",
-        english_name: "Academia Sinica Law Journal",
-        institute: "法律學研究所",
-        institute_code: "IIAS",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "全開放免IP",
-        url: "https://www.iias.sinica.edu.tw/publication_list/9",
-        description: "臺灣頂尖的法學學術專刊（TSSCI 收錄），涵蓋憲法人權、行政法、科技法律、刑事正義與法律實證研究全文。",
-        teaching_focus: "高中公民「法治與人權保障」及法律系案例研討教材。深入探討 AI 法律規範、言論自由邊界與數位隱私權爭議。",
-        tags: ["憲法學", "科技法律", "人權保障", "法學期刊", "全文下載"],
-        access_detail: "官方網站歷期專文 PDF 全文免費下載"
-      },
-      {
-        id: "iias-portal",
-        name: "法律學研究所法學研究與學術活動網",
-        english_name: "IIAS Legal Research Resources",
-        institute: "法律學研究所",
-        institute_code: "IIAS",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "全開放免IP",
-        url: "https://www.iias.sinica.edu.tw/",
-        description: "提供法律所各項跨領域法學工作坊實錄、重大法律政策建言及法學專書系列資訊。",
-        teaching_focus: "法治素養教學：例如針對重大修憲、死刑釋憲或資訊隱私權爭議，引導學生研讀研究員發表的專業分析評論。",
-        tags: ["司法改革", "法律政策", "法治教育", "憲政研討"],
-        access_detail: "全網開放瀏覽"
-      },
-
-      // 13. 歐美研究所 (EA)
-      {
-        id: "ea-euramerica",
-        name: "《歐美研究》(EurAmerica) 季刊全文資料庫",
-        english_name: "EurAmerica Full-text Database",
-        institute: "歐美研究所",
-        institute_code: "EA",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "全開放免IP",
-        url: "https://euramerica-ch.ea.sinica.edu.tw/",
-        description: "創刊逾半世紀之頂尖歐美哲學、文學、歷史、文化與國際政治國際化期刊（THCI/TSSCI核心），每期論文皆提供中英雙語全文 PDF 下載。",
-        teaching_focus: "高階英語閱讀、歐美文學經典鑑賞及西洋現代思潮研析教材，適合探討啟蒙哲學、後殖民文學或歐美外交政策。",
-        tags: ["西洋哲學", "歐美文學", "西洋歷史", "THCI", "雙語全文"],
-        access_detail: "全文完全開放免費下載"
-      },
-      {
-        id: "ea-library-db",
-        name: "歐美研究所圖書館學術資料庫",
-        english_name: "Institute of European and American Studies Library",
-        institute: "歐美研究所",
-        institute_code: "EA",
-        category: "經濟、法政與國際思潮",
-        research_topic: "經濟、法政與國際思潮",
-        access_tier: "院區/南院共享",
-        url: "https://www.ea.sinica.edu.tw/DigitalJournal.aspx",
-        description: "專門典藏歐美各國人文社會研究大型外文全文資料庫（如 JSTOR、Project MUSE、ProQuest 及 Cambridge Core 等）。",
-        teaching_focus: "大專院校外文系、歷史系師生進階國際文獻檢索與論文寫作研讀。",
-        tags: ["外文學術期刊", "JSTOR", "歐洲研究", "美國研究"],
-        access_detail: "中研院 IP / 南部院區數位圖檔室連線共享"
-      },
-
-      // 14. 南部院區專題基地 (South Campus)
-      {
-        id: "south-rhhss-library",
-        name: "中研院南部院區「數位圖書檔案室」",
-        english_name: "South Campus Digital Library & Archives Room",
-        institute: "南部院區",
-        institute_code: "SouthCampus",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "院區/南院共享",
-        url: "https://rhhss.sinica.edu.tw/pages/4554",
-        description: "位於臺南歸仁沙崙，設有高速網路與專用檢索席位，全面連線中研院本院各所採購之 95% 以上電子資料庫及近史所、臺史所檔案館館藏檢索系統。",
-        teaching_focus: "中南部各級學校教師與學生進行專題研究時的最佳實體基地！免除搭高鐵北上南港舟車勞頓，可就近在台南調閱列印珍貴特藏史料。",
-        tags: ["南部院區", "臺南沙崙", "資源共享", "檔案調閱", "地方學術新泉源"],
-        access_detail: "南部學人與師生可持證登記進館，享有與南港本院同等之數位檢索調閱權限"
-      },
-      {
-        id: "south-exhibition",
-        name: "「南方・島嶼・人文」中研院南部院區特展",
-        english_name: "Southern Lands, Islands, Humanities Exhibition",
-        institute: "南部院區",
-        institute_code: "SouthCampus",
-        category: "歷史與考古文獻",
-        research_topic: "歷史與考古文獻",
-        access_tier: "全開放免IP",
-        url: "https://archives.ith.sinica.edu.tw/news_con.php?no=399",
-        description: "中研院南部院區人文社會基地開幕首展，結合歷史檔案、短片、沉浸式環境聲音與 AI 語音導覽，展現南部在地文史與海洋島嶼脈絡。",
-        teaching_focus: "本土鄉土教育與南部地方史教材！適合帶領學生探討安平開港、熱蘭遮城周邊演進與西拉雅族群移動史。",
-        tags: ["南院首展", "海洋臺灣", "AI語音導覽", "南部在地歷史"],
-        access_detail: "線上展覽與實體展覽同步開放大眾參觀"
-      }
-    ];
-
-    // State
-    let currentView = "browse"; // 'browse' or 'advisor'
+    let currentView = "browse";
     let currentSearch = "";
     let currentCategory = "ALL";
     let currentAccess = "ALL";
@@ -1260,7 +491,6 @@
     let onlyFavorites = false;
     let favorites = [];
 
-    // Load favorites safely
     try {
       const stored = localStorage.getItem("as_db_favorites");
       if (stored) {
@@ -1270,7 +500,6 @@
       favorites = [];
     }
 
-    // View Navigation Buttons
     const tabBrowseBtn = document.getElementById("tabBrowseBtn");
     const tabAdvisorBtn = document.getElementById("tabAdvisorBtn");
     const browseView = document.getElementById("browseView");
@@ -1301,7 +530,6 @@
     });
     advisorBackToBrowseBtn.addEventListener("click", () => switchView("browse"));
 
-    // DOM Elements
     const databasesGrid = document.getElementById("databasesGrid");
     const emptyState = document.getElementById("emptyState");
     const searchInput = document.getElementById("searchInput");
@@ -1317,13 +545,16 @@
     const instituteFilterContainer = document.getElementById("instituteFilterContainer");
     const topicButtonsContainer = document.getElementById("topicButtonsContainer");
 
-    // Topic Banner Elements
+    const crossSearchTermLabel = document.getElementById("crossSearchTermLabel");
+    const crossSearchLibBtn = document.getElementById("crossSearchLibBtn");
+    const crossSearchOpenMuseumBtn = document.getElementById("crossSearchOpenMuseumBtn");
+    const crossSearchAscdcBtn = document.getElementById("crossSearchAscdcBtn");
+
     const topicBanner = document.getElementById("topicBanner");
     const topicBannerIcon = document.getElementById("topicBannerIcon");
     const topicBannerTitle = document.getElementById("topicBannerTitle");
     const topicBannerDesc = document.getElementById("topicBannerDesc");
 
-    // Modal Elements
     const detailModal = document.getElementById("detailModal");
     const closeModalBtn = document.getElementById("closeModalBtn");
     const modalTitle = document.getElementById("modalTitle");
@@ -1342,13 +573,11 @@
     const modalFavoriteBtn = document.getElementById("modalFavoriteBtn");
     const modalFavoriteText = document.getElementById("modalFavoriteText");
 
-    // Guide Modal Elements
     const guideModal = document.getElementById("guideModal");
     const guideModalBtn = document.getElementById("guideModalBtn");
     const closeGuideModalBtn = document.getElementById("closeGuideModalBtn");
     const confirmGuideBtn = document.getElementById("confirmGuideBtn");
 
-    // Toast Element
     const toast = document.getElementById("toast");
     const toastIcon = document.getElementById("toastIcon");
     const toastMessage = document.getElementById("toastMessage");
@@ -1366,7 +595,6 @@
       }, 2500);
     }
 
-    // Distinct Institutes list
     const institutesList = [
       { code: "ALL", name: "全部單位" },
       { code: "IHP", name: "歷史語言研究所 (史語所)" },
@@ -1375,17 +603,16 @@
       { code: "LitPhil", name: "中國文哲研究所 (文哲所)" },
       { code: "IOE", name: "民族學研究所 (民族所)" },
       { code: "IL", name: "語言學研究所 (語言所)" },
+      { code: "EA", name: "歐美研究所 (歐美所)" },
       { code: "RCHSS", name: "人社科學研究中心 (人社中心)" },
-      { code: "ASCDC", name: "數位文化中心" },
+      { code: "ASCDC", name: "數位文化中心 / 院本部" },
       { code: "IOS", name: "社會學研究所 (社會所)" },
       { code: "IEAS", name: "經濟研究所 (經濟所)" },
       { code: "IPS", name: "政治學研究所 (政治所)" },
       { code: "IIAS", name: "法律學研究所 (法律所)" },
-      { code: "EA", name: "歐美研究所 (歐美所)" },
       { code: "SouthCampus", name: "南部院區基地" }
     ];
 
-    // Render Research Topic Buttons
     function renderTopicButtons() {
       topicButtonsContainer.innerHTML = researchTopics.map(topic => {
         const isActive = currentCategory === topic.id;
@@ -1435,7 +662,6 @@
       }
     }
 
-    // Render Institute Filter Badges
     function renderInstituteFilters() {
       instituteFilterContainer.innerHTML = institutesList.map(inst => {
         const isActive = currentInstitute === inst.code;
@@ -1460,7 +686,6 @@
       });
     }
 
-    // Toggle Favorite helper
     function toggleFavorite(id) {
       const idx = favorites.indexOf(id);
       if (idx > -1) {
@@ -1488,7 +713,6 @@
       }
     }
 
-    // Active Database Detail
     let activeDb = null;
 
     function openModal(db) {
@@ -1504,7 +728,6 @@
       modalAccessDetail.textContent = db.access_detail;
       modalVisitLink.href = db.url;
 
-      // Access badge color
       if (db.access_tier === "全開放免IP") {
         modalAccessBadge.className = "text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200";
       } else if (db.access_tier === "院區/南院共享") {
@@ -1513,12 +736,10 @@
         modalAccessBadge.className = "text-xs font-bold px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-200";
       }
 
-      // Tags
       modalTags.innerHTML = db.tags.map(tag => 
         `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-xs">#${tag}</span>`
       ).join("");
 
-      // Favorite button inside modal
       const isFav = favorites.includes(db.id);
       modalFavoriteText.textContent = isFav ? "已在收藏中 (點擊取消)" : "加入我的收藏";
 
@@ -1531,11 +752,22 @@
       activeDb = null;
     }
 
-    // Filter Logic
     function getFilteredDatabases() {
       const q = currentSearch.trim().toLowerCase();
+
+      if (q) {
+        crossSearchTermLabel.textContent = `「${q}」`;
+        crossSearchLibBtn.href = `https://aslib.sinica.edu.tw/search?query=${encodeURIComponent(q)}`;
+        crossSearchOpenMuseumBtn.href = `https://openmuseum.tw/search?q=${encodeURIComponent(q)}`;
+        crossSearchAscdcBtn.href = `https://ascdc.digitalarchives.tw/site.php?query=${encodeURIComponent(q)}`;
+      } else {
+        crossSearchTermLabel.textContent = "（請輸入關鍵字查看穿透）";
+        crossSearchLibBtn.href = "https://aslib.sinica.edu.tw/";
+        crossSearchOpenMuseumBtn.href = "https://openmuseum.tw/";
+        crossSearchAscdcBtn.href = "https://ascdc.digitalarchives.tw/";
+      }
+
       return databases.filter(db => {
-        // Search query
         if (q) {
           const matchName = db.name.toLowerCase().includes(q);
           const matchEn = db.english_name.toLowerCase().includes(q);
@@ -1549,27 +781,22 @@
           }
         }
 
-        // Research Topic filter
         if (currentCategory !== "ALL" && db.research_topic !== currentCategory) {
           return false;
         }
 
-        // Access Tier filter
         if (currentAccess !== "ALL" && db.access_tier !== currentAccess) {
           return false;
         }
 
-        // Institute filter
         if (currentInstitute !== "ALL" && db.institute_code !== currentInstitute) {
           return false;
         }
 
-        // Teaching focus only
         if (onlyTeaching && !db.teaching_focus) {
           return false;
         }
 
-        // Favorites only
         if (onlyFavorites && !favorites.includes(db.id)) {
           return false;
         }
@@ -1578,7 +805,6 @@
       });
     }
 
-    // Render Cards
     function renderDatabases() {
       const list = getFilteredDatabases();
       activeCount.textContent = `顯示 ${list.length} 個資源（共 ${databases.length} 個）`;
@@ -1603,7 +829,6 @@
           <div class="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-xl transition-all duration-200 flex flex-col justify-between overflow-hidden group">
             <div class="p-5 flex-1 flex flex-col">
               
-              <!-- Card Top Meta: Research Topic & Institute & Access -->
               <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2.5">
                 <div class="flex items-center gap-1.5 flex-wrap">
                   <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-100 flex items-center gap-1">
@@ -1618,7 +843,6 @@
                 </span>
               </div>
 
-              <!-- Database Title as Direct Clickable Link -->
               <h3 class="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition leading-snug">
                 <a href="${db.url}" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-start justify-between gap-1.5" title="點擊直接前往：${db.name}">
                   <span>${db.name}</span>
@@ -1630,12 +854,10 @@
               
               <p class="text-[11px] text-slate-400 mb-3 truncate font-mono">${db.english_name}</p>
 
-              <!-- Description -->
               <p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
                 ${db.description}
               </p>
 
-              <!-- Teaching Highlight Box -->
               <div class="mt-auto bg-amber-50/70 border border-amber-200/70 rounded-xl p-3 text-xs text-amber-900 mb-2">
                 <div class="font-bold text-[11px] text-amber-800 flex items-center gap-1 mb-1">
                   <span>🎓</span> 教材推薦與課堂應用：
@@ -1645,7 +867,6 @@
                 </p>
               </div>
 
-              <!-- Tags -->
               <div class="flex flex-wrap gap-1 mt-1">
                 ${db.tags.slice(0, 3).map(tag => `
                   <span class="text-[10px] px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded">#${tag}</span>
@@ -1654,7 +875,6 @@
 
             </div>
 
-            <!-- Card Bottom Bar -->
             <div class="bg-slate-50 px-5 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
               <button data-detail-id="${db.id}" class="detail-btn text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
                 <span>詳細簡介</span>
@@ -1686,7 +906,6 @@
         `;
       }).join("");
 
-      // Bind Card Action Listeners
       document.querySelectorAll(".detail-btn").forEach(btn => {
         btn.addEventListener("click", () => {
           const id = btn.getAttribute("data-detail-id");
@@ -1711,7 +930,6 @@
     const quickTopicPresets = document.getElementById("quickTopicPresets");
     const advisorResultsBox = document.getElementById("advisorResultsBox");
 
-    // Render preset buttons
     quickTopicPresets.innerHTML = advisorPresets.map((preset, idx) => `
       <button data-preset-idx="${idx}" class="preset-btn px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 text-slate-700 text-xs font-semibold border border-slate-200 transition">
         ${preset.label}
@@ -1722,7 +940,7 @@
       btn.addEventListener("click", () => {
         const idx = parseInt(btn.getAttribute("data-preset-idx"));
         const preset = advisorPresets[idx];
-        advisorQueryInput.value = preset.label.replace(/^[^a-zA-Z一-龥]+/, "");
+        advisorQueryInput.value = preset.label.replace(/^[^a-zA-Z\u4e00-\u9fa5]+/, "");
         runAdvisor(preset.query, preset.title, preset.roadmap);
       });
     });
@@ -1745,10 +963,8 @@
 
     function runAdvisor(customQuery, overrideTitle = null, overrideRoadmap = null) {
       const rawText = customQuery.toLowerCase();
-      // Split words and sanitize
-      const terms = rawText.split(/[\s,，、。]+/).filter(t => t.length > 0);
+      const terms = rawText.split(/[\\s,，、。]+/).filter(t => t.length > 0);
 
-      // Score each database
       const scored = databases.map(db => {
         let score = 0;
         const nameL = db.name.toLowerCase();
@@ -1759,24 +975,30 @@
         const tagsStr = db.tags.join(" ").toLowerCase();
 
         terms.forEach(t => {
-          if (nameL.includes(t)) score += 15;
-          if (tagsStr.includes(t)) score += 12;
+          if (nameL.includes(t)) score += 18;
+          if (tagsStr.includes(t)) score += 14;
           if (teachL.includes(t)) score += 10;
           if (topicL.includes(t)) score += 8;
-          if (descL.includes(t)) score += 5;
+          if (descL.includes(t)) score += 6;
           if (instL.includes(t)) score += 4;
         });
 
-        // Topic-specific bonuses
-        if ((rawText.includes("地圖") || rawText.includes("地理") || rawText.includes("地景") || rawText.includes("空間")) && db.id === "rchss-twhgis") score += 25;
-        if ((rawText.includes("日記") || rawText.includes("林獻堂") || rawText.includes("士紳")) && db.id === "ith-diary") score += 25;
+        if ((rawText.includes("地圖") || rawText.includes("地理") || rawText.includes("地景")) && db.id === "rchss-twhgis") score += 25;
+        if ((rawText.includes("日記") || rawText.includes("林獻堂")) && db.id === "ith-diary") score += 25;
         if ((rawText.includes("青銅") || rawText.includes("3d") || rawText.includes("考古")) && db.id === "ihp-3d-archaeology") score += 25;
+        if ((rawText.includes("漢簡") || rawText.includes("居延")) && db.id === "ihp-juyan-dict") score += 30;
+        if ((rawText.includes("甲骨") || rawText.includes("殷墟")) && db.id === "ihp-jiagu-rubbings") score += 30;
+        if ((rawText.includes("畫像") || rawText.includes("武梁祠")) && db.id === "ihp-han-stone-rubbings") score += 30;
+        if ((rawText.includes("寫真帖") || rawText.includes("老照片")) && db.id === "ith-photo-albums") score += 30;
+        if ((rawText.includes("婦女") || rawText.includes("性別")) && db.id === "mh-women-history") score += 30;
+        if ((rawText.includes("胡適") || rawText.includes("新文化")) && db.id === "mh-hushi") score += 30;
         if ((rawText.includes("病") || rawText.includes("疫") || rawText.includes("瘟疫")) && db.id === "litphil-disease-map") score += 25;
         if ((rawText.includes("僧") || rawText.includes("佛") || rawText.includes("絲路") || rawText.includes("玄奘")) && db.id === "litphil-youfun-map") score += 25;
+        if ((rawText.includes("英國") || rawText.includes("維多利亞") || rawText.includes("外國史")) && db.id === "ea-british-periodicals") score += 25;
+        if ((rawText.includes("傳教士") || rawText.includes("馬雅各") || rawText.includes("長老教會")) && db.id === "ea-presbyterian-mission") score += 30;
         if ((rawText.includes("半導體") || rawText.includes("科技") || rawText.includes("李國鼎")) && db.id === "mh-ktli") score += 25;
-        if ((rawText.includes("字") || rawText.includes("甲骨") || rawText.includes("六書")) && db.id === "ihp-xiaoxue") score += 25;
+        if ((rawText.includes("字") || rawText.includes("六書")) && db.id === "ihp-xiaoxue") score += 25;
         if ((rawText.includes("策展") || rawText.includes("探究") || rawText.includes("學習歷程")) && db.id === "ascdc-plaza") score += 25;
-        if ((rawText.includes("社會變遷") || rawText.includes("問卷") || rawText.includes("性別")) && (db.id === "ios-tscs" || db.id === "ios-tesd")) score += 20;
 
         return { db, score };
       });
@@ -1784,10 +1006,9 @@
       scored.sort((a, b) => b.score - a.score);
       const topMatches = scored.filter(s => s.score > 0).slice(0, 4);
 
-      // Fallback if no exact match
       const recommendations = topMatches.length > 0 
         ? topMatches.map(s => s.db)
-        : [databases[0], databases[1], databases[9], databases[17]]; // Hanji, 3D archaeology, Taiwan history, Open museum
+        : [databases[0], databases[2], databases[20], databases[26]];
 
       renderAdvisorOutput(advisorQueryInput.value || customQuery, recommendations, overrideTitle, overrideRoadmap);
     }
@@ -1877,9 +1098,6 @@
       advisorResultsBox.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    // ==========================================
-    // FILTER CONTROLS & LISTENERS
-    // ==========================================
     searchInput.addEventListener("input", (e) => {
       currentSearch = e.target.value;
       if (currentSearch) {
@@ -1944,13 +1162,11 @@
       renderDatabases();
     });
 
-    // Modal Close
     closeModalBtn.addEventListener("click", closeModal);
     detailModal.addEventListener("click", (e) => {
       if (e.target === detailModal) closeModal();
     });
 
-    // Modal Favorite Button
     modalFavoriteBtn.addEventListener("click", () => {
       if (activeDb) {
         toggleFavorite(activeDb.id);
@@ -1959,7 +1175,6 @@
       }
     });
 
-    // Copy URL Button with Fallback
     modalCopyUrlBtn.addEventListener("click", () => {
       if (!activeDb) return;
       const url = activeDb.url;
@@ -1996,7 +1211,6 @@
       document.body.removeChild(textarea);
     }
 
-    // Guide Modal Listeners
     guideModalBtn.addEventListener("click", () => {
       guideModal.classList.remove("hidden");
     });
@@ -2010,7 +1224,6 @@
       if (e.target === guideModal) guideModal.classList.add("hidden");
     });
 
-    // Keyboard ESC listener
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (!detailModal.classList.contains("hidden")) closeModal();
@@ -2018,7 +1231,6 @@
       }
     });
 
-    // Initialize UI
     renderTopicButtons();
     renderInstituteFilters();
     updateFavoritesUI();
