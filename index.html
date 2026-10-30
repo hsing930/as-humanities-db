@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中央研究院人文社會科學數位資源與資料庫導覽 - 智慧選庫建議版</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(12px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header & Navigation -->
+  <header class="glass-nav sticky top-0 z-40 text-white shadow-lg border-b border-slate-700/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-indigo-600 flex items-center justify-center shadow-md font-bold text-lg text-white">
+          中
+        </div>
+        <div>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
+            中央研究院人文類數位資料庫導覽
+            <span class="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">智慧選庫建議版</span>
+          </h1>
+          <p class="text-xs text-slate-400 hidden sm:block">輸入您的研究課題，智能推薦最合適的史料資料庫與教學轉化路徑</p>
+        </div>
+      </div>
+      
+      <!-- Quick Action Controls -->
+      <div class="flex items-center gap-2.5">
+        <button id="toggleFavoritesBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium transition text-amber-400">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+          <span id="favoritesLabel">我的收藏 (0)</span>
+        </button>
+        <button id="guideModalBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium transition shadow-sm">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>南北院區近用指南</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mode Navigation Tabs -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-2 border-t border-slate-800 pt-2 pb-1">
+      <button id="tabBrowseBtn" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center gap-2 bg-indigo-600 text-white shadow-sm">
+        <span>📚</span> 資料庫全庫檢索與主題導覽
+      </button>
+      <button id="tabAdvisorBtn" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center gap-2 bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700">
+        <span class="animate-pulse">💡</span> 研究課題智能選庫與教案建議
+        <span class="px-1.5 py-0.5 rounded text-[10px] bg-amber-500 text-slate-900 font-extrabold uppercase">推薦</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero & Statistics Banner -->
+  <section class="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-8 px-4 sm:px-6 lg:px-8 border-b border-slate-700">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-indigo-500 transition">
+          <div class="text-xs text-slate-400 font-medium">七大研究核心領域</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-white mt-1" id="statTotalDatabases">40</div>
+          <div class="text-xs text-indigo-400 mt-1">歷史考古、GIS空間、社會實證</div>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-emerald-500 transition">
+          <div class="text-xs text-slate-400 font-medium">全民全開放 (免IP)</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1" id="statOpenAccess">27</div>
+          <div class="text-xs text-slate-400 mt-1">無須帳號隨時隨地可連</div>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-amber-500 transition">
+          <div class="text-xs text-slate-400 font-medium">南北院區連線共享</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1" id="statSouthCampus">13</div>
+          <div class="text-xs text-slate-400 mt-1">台南沙崙數位圖檔室同步</div>
+        </div>
+        <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4 shadow-sm hover:border-rose-500 transition">
+          <div class="text-xs text-slate-400 font-medium">課堂教材教案標註</div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-rose-400 mt-1" id="statTeachingFocus">40</div>
+          <div class="text-xs text-slate-400 mt-1">108課綱探究與實作指引</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 1: Browse & Filter Databases (Default) -->
+  <div id="browseView">
+    <!-- Filter & Search Controls -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 z-20 w-full">
+      <div class="bg-white rounded-2xl shadow-xl border border-slate-200/80 p-5 space-y-4">
+        
+        <!-- Top Row: Search & Select Filters -->
+        <div class="flex flex-col md:flex-row gap-3 items-center justify-between">
+          <div class="relative w-full md:w-96">
+            <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input type="text" id="searchInput" placeholder="搜尋研究內容、史料名、關鍵字、教學科目..." 
+              class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-slate-50 focus:bg-white transition" />
+            <button id="clearSearchBtn" class="hidden absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 p-0.5">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Filter Selects -->
+          <div class="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+            <!-- Research Topic Filter (Category Filter) -->
+            <select id="categoryFilter" class="px-3 py-2 rounded-xl border border-slate-300 text-xs sm:text-sm font-medium bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="ALL">全部研究內容領域 (全部)</option>
+              <option value="歷史與考古文獻">歷史與考古文獻 (出土文物、古籍、近代與臺灣檔案)</option>
+              <option value="地理空間與數位人文">地理空間與數位人文 (GIS歷史地圖、時空軌跡、情感病理)</option>
+              <option value="族群、人類學與民俗">族群、人類學與民俗 (原住民族、平埔文書、民間信仰)</option>
+              <option value="語言、文字與語料庫">語言、文字與語料庫 (古漢字演變、閩客方言、南島語)</option>
+              <option value="社會變遷與民主調查">社會變遷與民主調查 (長期社會抽樣、亞洲民主、公民調查)</option>
+              <option value="經濟、法政與國際思潮">經濟、法政與國際思潮 (景氣預測、人權科技法、歐美思潮)</option>
+              <option value="跨領域策展與公眾轉譯">跨領域策展與公眾轉譯 (百萬藏品、學生線上策展、科普)</option>
+            </select>
+
+            <!-- Access Tier Select -->
+            <select id="accessFilter" class="px-3 py-2 rounded-xl border border-slate-300 text-xs sm:text-sm font-medium bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+              <option value="ALL">全部近用權限 (全部)</option>
+              <option value="全開放免IP">全開放免 IP (全民共享)</option>
+              <option value="院區/南院共享">院區/南院共享 (需連線中研院)</option>
+              <option value="到館授權">到館授權 (特定檔案)</option>
+            </select>
+
+            <!-- Teaching Only Toggle -->
+            <label class="flex items-center gap-1.5 cursor-pointer bg-slate-100 hover:bg-slate-200 px-3 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-700 transition select-none">
+              <input type="checkbox" id="teachingCheckbox" class="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500" />
+              <span>精選推薦教材</span>
+            </label>
+
+            <!-- Reset Filter Button -->
+            <button id="resetFiltersBtn" class="px-3 py-2 rounded-xl text-xs font-medium text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 transition border border-transparent hover:border-indigo-200">
+              重設篩選
+            </button>
+          </div>
+        </div>
+
+        <!-- Research Topic Quick Buttons -->
+        <div class="pt-2 border-t border-slate-100">
+          <div class="text-xs font-semibold text-slate-500 mb-2 flex items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+              <strong>研究內容主題分類：</strong>點選切換特定研究範疇
+            </span>
+            <span id="activeCount" class="text-indigo-600 font-bold">顯示 40 個資源</span>
+          </div>
+          <div id="topicButtonsContainer" class="flex flex-wrap gap-1.5 mb-2">
+            <!-- Dynamically populated research topic buttons -->
+          </div>
+        </div>
+
+        <!-- Institute Secondary Filter -->
+        <div class="pt-2 border-t border-slate-100">
+          <div class="text-xs font-semibold text-slate-500 mb-1.5">
+            <span>次要篩選：依所屬單位（12所中心 + 數位文化中心 + 南部院區）</span>
+          </div>
+          <div id="instituteFilterContainer" class="flex flex-wrap gap-1.5 custom-scrollbar max-h-24 overflow-y-auto">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Main Content: Databases Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+      
+      <!-- Smart Advisor Callout Banner inside Browse View -->
+      <div class="mb-6 p-4 rounded-2xl bg-gradient-to-r from-indigo-900 to-indigo-800 text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-amber-400 text-slate-900 flex items-center justify-center font-bold text-xl flex-shrink-0">
+            💡
+          </div>
+          <div>
+            <h3 class="font-bold text-sm sm:text-base text-white">不知道該選哪一個資料庫？讓 AI 依研究課題為您導航！</h3>
+            <p class="text-xs text-indigo-200 mt-0.5">輸入師生想探討的具體課題（如日治教育、家鄉地景、古文疾病等），立即自動配對最佳資料庫與研究路徑。</p>
+          </div>
+        </div>
+        <button id="calloutOpenAdvisorBtn" class="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs rounded-xl transition shadow flex-shrink-0 flex items-center gap-1.5">
+          <span>開啟研究課題智慧選庫建議</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-sm my-6">
+        <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto text-slate-400 mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-700">查無符合條件的數位資源</h3>
+        <p class="text-sm text-slate-500 mt-1">請嘗試縮減關鍵字、放寬篩選權限或切換研究主題</p>
+        <button id="emptyResetBtn" class="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-medium rounded-lg hover:bg-indigo-500 transition">
+          重設所有篩選條件
+        </button>
+      </div>
+
+      <!-- Active Research Topic Section Header -->
+      <div id="topicBanner" class="hidden mb-6 p-4 rounded-2xl bg-indigo-50/80 border border-indigo-200/80">
+        <div class="flex items-center gap-2">
+          <span id="topicBannerIcon" class="text-2xl">🏛️</span>
+          <div>
+            <h2 id="topicBannerTitle" class="text-base font-bold text-indigo-950">研究領域名稱</h2>
+            <p id="topicBannerDesc" class="text-xs text-indigo-800 mt-0.5">該研究領域的學術焦點、涵蓋資料類型與教學價值。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div id="databasesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Database cards dynamically generated here -->
+      </div>
+    </main>
+  </div>
+
+  <!-- VIEW 2: Smart Research Topic Advisor (New Feature) -->
+  <div id="advisorView" class="hidden flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="bg-white rounded-3xl shadow-xl border border-slate-200/80 p-6 sm:p-8 space-y-6">
+      
+      <!-- Advisor Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+        <div>
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold mb-2">
+            <span>✨</span> 課題導航與史料選庫顧問
+          </div>
+          <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">您或學生想探討什麼研究課題？</h2>
+          <p class="text-sm text-slate-500 mt-1">無論是高中探究與實作、小論文撰寫、課堂備課或大學專題，輸入題目即可為您配對合適資料庫與研究路徑。</p>
+        </div>
+        <button id="advisorBackToBrowseBtn" class="text-xs font-bold text-slate-600 hover:text-indigo-600 px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition flex items-center gap-1.5 self-start md:self-auto">
+          <span>← 返回全庫導覽清單</span>
+        </button>
+      </div>
+
+      <!-- Search Input Area -->
+      <div class="space-y-3">
+        <label for="advisorQueryInput" class="block text-xs font-bold text-slate-700 uppercase tracking-wider">輸入想研究的課題或教學主題關鍵字：</label>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <input type="text" id="advisorQueryInput" 
+              placeholder="例如：日治時期臺灣教育與學校史、雲林家鄉百年地景變遷、古代疫情恐慌與偏方、商周青銅紋飾、半導體產業崛起..." 
+              class="w-full px-4 py-3.5 rounded-2xl border-2 border-indigo-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 text-sm font-medium transition" />
+          </div>
+          <button id="advisorSearchBtn" class="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm rounded-2xl shadow-lg shadow-indigo-600/20 transition flex items-center justify-center gap-2">
+            <span>🔍 智能配對與產生建議</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Pre-set Common Research Topics -->
+      <div>
+        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-2">或點選熱門研究範例快速查看配對建議：</span>
+        <div id="quickTopicPresets" class="flex flex-wrap gap-2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Advisor Results Output Container -->
+      <div id="advisorResultsBox" class="hidden space-y-6 pt-4 border-t border-slate-100">
+        <!-- Results will be injected here -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="space-y-1 text-center md:text-left">
+        <p class="font-semibold text-slate-300">中央研究院 人文社會科學數位典藏與研究資料庫專題整理（智慧選庫與研究課題導航版）</p>
+        <p>整理依據：《數位地景：解碼中研院的四重歷史透鏡》與中研院各所檔案館、數位文化中心官方資源</p>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>© 中央研究院 Academia Sinica</span>
+        <span>•</span>
+        <a href="https://www.sinica.edu.tw" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition">中研院官網</a>
+        <span>•</span>
+        <a href="https://ascdc.sinica.edu.tw" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400 transition">數位文化中心</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Detail Modal -->
+  <div id="detailModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative flex flex-col">
+      <div class="sticky top-0 bg-white/95 backdrop-blur px-6 py-4 border-b border-slate-100 flex items-center justify-between z-10">
+        <div class="flex items-center gap-2">
+          <span id="modalTopicBadge" class="text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-100 text-indigo-800">研究領域</span>
+          <span id="modalInstituteBadge" class="text-xs font-bold px-2.5 py-1 rounded-md bg-slate-100 text-slate-800">單位</span>
+          <span id="modalAccessBadge" class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800">權限</span>
+        </div>
+        <button id="closeModalBtn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-5">
+        <div>
+          <h2 id="modalTitle" class="text-xl font-bold text-slate-900 leading-snug">資料庫名稱</h2>
+          <p id="modalEnglishName" class="text-xs text-slate-400 mt-0.5">English Title</p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">資料庫研究內容與核心典藏</h4>
+          <p id="modalDescription" class="text-sm text-slate-700 leading-relaxed bg-slate-50 p-3.5 rounded-xl border border-slate-200/70"></p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold text-amber-700 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a10.978 10.978 0 00-.25 2.449c0 4.148 2.68 7.842 6.64 9.176a1 1 0 00.62 0c3.96-1.334 6.64-5.028 6.64-9.176 0-.84-.088-1.66-.25-2.449l2.644-1.131a1 1 0 000-1.84l-7-3zM10 4.218l4.829 2.07L10 8.358 5.171 6.288 10 4.218zM6.993 9.428l2.507 1.074a1 1 0 001 0l2.507-1.074c.162.772.243 1.57.243 2.372 0 3.167-2.012 6.012-5 7.112-2.988-1.1-5-3.945-5-7.112 0-.802.081-1.6.243-2.372z"/>
+            </svg>
+            課堂教材推薦與教學轉化指南
+          </h4>
+          <div id="modalTeachingFocus" class="text-sm text-slate-800 leading-relaxed bg-amber-50/60 p-4 rounded-xl border border-amber-200/80"></div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+            <span class="text-slate-400 block font-medium">所屬單位</span>
+            <span id="modalInstituteFullName" class="font-semibold text-slate-800 mt-0.5 block"></span>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+            <span class="text-slate-400 block font-medium">南北近用方式</span>
+            <span id="modalAccessDetail" class="font-semibold text-slate-800 mt-0.5 block"></span>
+          </div>
+        </div>
+
+        <div>
+          <span class="text-xs text-slate-400 block mb-1 font-medium">相關標籤</span>
+          <div id="modalTags" class="flex flex-wrap gap-1.5"></div>
+        </div>
+      </div>
+
+      <div class="sticky bottom-0 bg-slate-50 px-6 py-3.5 border-t border-slate-200 flex items-center justify-between gap-3">
+        <button id="modalCopyUrlBtn" class="px-3.5 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 bg-white border border-slate-300 rounded-xl hover:bg-slate-100 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+          <span id="modalCopyText">複製連結</span>
+        </button>
+        <div class="flex items-center gap-2">
+          <button id="modalFavoriteBtn" class="px-3.5 py-2 text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 rounded-xl hover:bg-amber-100 transition flex items-center gap-1.5">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            <span id="modalFavoriteText">加入收藏</span>
+          </button>
+          <a id="modalVisitLink" href="#" target="_blank" rel="noopener noreferrer" 
+            class="px-5 py-2 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-md transition flex items-center gap-1.5">
+            <span>前往原典資料庫</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guide Modal (North vs South Campus Access) -->
+  <div id="guideModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-slate-200 relative p-6 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+          <span>🏛️</span> 中研院南北院區資源近用指南
+        </h3>
+        <button id="closeGuideModalBtn" class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100 transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm text-slate-700 leading-relaxed">
+        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200">
+          <h4 class="font-bold text-emerald-900 flex items-center gap-1.5 mb-1">
+            <span>🟢</span> 基座層級：全民全開放資源（免 IP 限制）
+          </h4>
+          <p class="text-xs text-emerald-800">
+            不限中研院網域，全台各級中小學、大學師生及社會大眾皆可隨時自由使用。<br>
+            <strong>代表項目：</strong>開放博物館、3D 考古文物櫥窗、疾病感覺地圖、遊方歷代僧傳、臺灣百年歷史地圖、小學堂文字學資料庫。最適合線上教學與課堂投影演示。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-amber-50 border border-amber-200">
+          <h4 class="font-bold text-amber-900 flex items-center gap-1.5 mb-1">
+            <span>🟡</span> 中層級：中研院院區共享資源（限院內 IP / 南院共享）
+          </h4>
+          <p class="text-xs text-amber-800">
+            <strong>南部院區數位圖檔室</strong>（台南歸仁沙崙）已正式啟用，連線開放中研院本院各所採購之 95% 以上電子資料庫、近代史所檔案館與臺灣史所檔案館之授權檢索系統，南部師生無需北上南港即可閱覽與列印。
+          </p>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-100 border border-slate-300">
+          <h4 class="font-bold text-slate-900 flex items-center gap-1.5 mb-1">
+            <span>🔴</span> 頂層級：限制性原始檔案（北部院區限定）
+          </h4>
+          <p class="text-xs text-slate-700">
+            涉及法令隱私、外交機密或原件保護之特定原件與微縮膠卷，依規定仍須親至南港本院（歷史語言研究所傅斯年圖書館、近代史所檔案館、臺史所檔案館）辦理到館申請與抄錄。
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex justify-end">
+        <button id="confirmGuideBtn" class="px-5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-xl transition">
+          我知道了
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-2.5 rounded-xl shadow-2xl text-xs font-medium flex items-center gap-2 transform transition-all duration-300 opacity-0 translate-y-3 pointer-events-none">
+    <span id="toastIcon">✓</span>
+    <span id="toastMessage">已更新</span>
+  </div>
+
+  <script>
+    // Research Topic Definitions
+    const researchTopics = [
+      {
+        id: "ALL",
+        name: "全部研究領域",
+        icon: "🌐",
+        desc: "涵蓋中研院人文社會組七大研究範疇與 40 個專業資料庫"
+      },
+      {
+        id: "歷史與考古文獻",
+        name: "歷史與考古文獻",
+        icon: "🏛️",
+        desc: "商周出土文物、歷代古籍善本、明清內閣大庫、近代外交經濟公文與臺灣民間古文書"
+      },
+      {
+        id: "地理空間與數位人文",
+        name: "地理空間與數位人文",
+        icon: "🗺️",
+        desc: "百年疊圖GIS、僧人遊方空間軌跡、六朝疾病情感地圖與自然語言文本探勘"
+      },
+      {
+        id: "族群、人類學與民俗",
+        name: "族群、人類學與民俗",
+        icon: "🏺",
+        desc: "臺灣南島原住民、平埔族群歷史契約、漢人民間信仰田野與跨國民族誌"
+      },
+      {
+        id: "語言、文字與語料庫",
+        name: "語言、文字與語料庫",
+        icon: "🔤",
+        desc: "甲骨金文六書演變、閩客方言發音辭典、南島語言瀕危錄音與上古現代語料庫"
+      },
+      {
+        id: "社會變遷與民主調查",
+        name: "社會變遷與民主調查",
+        icon: "📊",
+        desc: "40年臺灣社會變遷長期貫時調查、跨國亞洲民主動態與社會科學實證數據庫"
+      },
+      {
+        id: "經濟、法政與國際思潮",
+        name: "經濟、法政與國際思潮",
+        icon: "⚖️",
+        desc: "臺灣總體經濟預測、TSSCI頂尖經濟與法學期刊、憲政人權及歐美哲學思潮"
+      },
+      {
+        id: "跨領域策展與公眾轉譯",
+        name: "跨領域策展與公眾轉譯",
+        icon: "🎨",
+        desc: "開放博物館百萬跨機構藏品、時間軸與故事地圖策展工具及全民知識平權平臺"
+      }
+    ];
+
+    // Pre-set Quick Research Topics for Advisor
+    const advisorPresets = [
+      {
+        label: "🏫 雲林與在地百年地景變遷",
+        query: "臺灣百年歷史地圖 家鄉聚落與河道演變 空間地景 地方志",
+        title: "高中探究與實作：在地家鄉百年地貌與古蹟演變",
+        roadmap: "建議第一步先利用【臺灣百年歷史地圖】輸入地名（如斗六、虎尾或古坑），疊合日治「臺灣堡圖」與現代衛星空照觀察河道與街廓；第二步透過【臺灣史檔案資源系統】與【地圖數位典藏】查找清代至日治該地的地契或地方行政公文，完成一份有圖有真相的在地文史小論文。"
+      },
+      {
+        label: "📜 日治時期現代教育與知識分子日記",
+        query: "日治時期 學校教育 臺灣總督府職員錄 個人日記 文化協會 林獻堂",
+        title: "臺灣史專題：日治時期臺灣青年留學潮與教育體制",
+        roadmap: "首先至【臺灣總督府職員錄與旅券查詢系統】搜尋當時老學校的日臺籍教職員與赴日留學生名冊；接著進入【臺灣日記知識庫】查閱林獻堂或張麗俊日記中對教育改革與公學校活動的當日感想，還原知識分子的心路歷程。"
+      },
+      {
+        label: "🏺 商周青銅禮器與紋飾考證",
+        query: "商周青銅器 考古 銘文 饕餮紋 3D模型",
+        title: "歷史科物質文化：商周禮樂文明與青銅器物考據",
+        roadmap: "直接打開【3D 考古文物櫥窗】在螢幕上 360 度旋轉並放大觀察商周青銅鼎的饕餮紋、範線與銘文細節；接著利用【漢籍電子文獻資料庫】搜尋正史《史記·殷本紀》或《周禮》，進行器物與傳世文獻的「二重證據法」考據。"
+      },
+      {
+        label: "🦠 古代瘟疫與社會人情偏方",
+        query: "疾病感覺地圖 魏晉南北朝 六朝小說 瘟疫 社會恐慌 隔離",
+        title: "跨領域生命教育：六朝古人的疾病恐懼與社會病理",
+        roadmap: "進入【疾病：感覺地圖】點選「社會與倫理」及「情感與生死」主題短文，在地圖上查看筆記小說記載的傳染病事件；並與高中公民科的現代公共衛生防疫、疫苗政策及社會歧視心理進行跨時代批判性對話。"
+      },
+      {
+        label: "🐫 絲路文化交流與玄奘取經",
+        query: "遊方歷代僧傳 高僧傳 絲路 佛教傳播 玄奘 西域 時空地圖",
+        title: "世界史專題：穿越蔥嶺——歷代僧侶的遊方軌跡與絲路傳播",
+        roadmap: "在【遊方：歷代僧傳】互動地圖中選取僧人（如法顯、玄奘），跟隨其動態路線觀察行經西域三十六國的地理節點；結合地理科的高原氣候與商道變遷，分析宗教如何在地理屏障下跨國界傳播。"
+      },
+      {
+        label: "📈 戰後經濟起飛與科技矽島",
+        query: "李國鼎 科技產業 竹科 半導體 近代史 經濟預測",
+        title: "臺灣現代經濟史：從加工出口區到半導體矽島政策",
+        roadmap: "在【李國鼎先生數位資料庫】調閱 1970 年代李國鼎先生推動工研院與新竹科學園區的第一手政策手稿與訪談錄音；再搭配經濟所【臺灣經濟預測與政策】研究報告，探討政府產業政策在總體經濟轉型中的關鍵角色。"
+      },
+      {
+        label: "🔤 漢字形體流變與六書造字",
+        query: "小學堂 文字學 甲骨文 金文 小篆 六書 造字 語料庫",
+        title: "高中國文學科：從甲骨文到楷書——漢字造字法則探索",
+        roadmap: "引導學生在【小學堂文字學資料庫】鍵入課文生字（如「天」、「祭」、「孝」），觀察其殷商甲骨文、金文到小篆的構形演變；分析象形、指事、會意、形聲的造字規律，作為生動的趣味自主學習歷程作業。"
+      },
+      {
+        label: "📊 臺灣近40年家庭與性別平等變遷",
+        query: "臺灣社會變遷基本調查 TSCS 實證調查 性別分工 家庭結構 公民認同",
+        title: "公民與社會科：大數據看臺灣——40年家庭與性別角色演進",
+        roadmap: "進入【臺灣經驗實證調查平台 (TESD)】，直接使用線上統計分析工具選取 1985 年與 2020 年的「性別角色與家庭分工」問卷數據，即時生成跨年代對比長條圖，鍛鍊學生用實證數據說話的社會科學素養。"
+      },
+      {
+        label: "🎨 108課綱探究實作線上策展",
+        query: "開放博物館 參與平台 學生線上策展 時間軸 故事地圖 學習歷程",
+        title: "多元選修與自主學習：在開放博物館策劃一場歷史特展",
+        roadmap: "學生註冊【開放博物館．參與平台】，從中研院逾 117 萬件開放授權藏品中選定主題（如日治老照片、臺灣瀕危動物），利用內建的「時間軸模組」與「地圖模組」編排策展敘事，產出具備超高質感的數位學習歷程檔案。"
+      }
+    ];
+
+    // Database Dataset
+    const databases = [
+      // 1. 歷史語言研究所 (IHP)
+      {
+        id: "ihp-hanji",
+        name: "漢籍電子文獻資料庫 (Scripta Sinica)",
+        english_name: "Scripta Sinica Database",
+        institute: "歷史語言研究所",
+        institute_code: "IHP",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://hanji.sinica.edu.tw/",
+        description: "華人世界最具規模的古代典籍全文資料庫，字數超過6.8億字，涵蓋經、史、子、集、地方志、食貨志與歷代重要史籍，提供精確字詞檢索與古籍標點。",
+        teaching_focus: "國文與歷史科核心教材。適合引導高中與大學生進行「史籍互證」、「歷史名詞貫時性流變」考據，探討歷代食貨志或正史列傳。",
+        tags: ["正史", "二十四史", "四庫全書", "文獻考據", "古籍檢索"],
+        access_detail: "全開放（免費申請帳號或直接使用公開書目查詢）"
+      },
+      {
+        id: "ihp-3d-archaeology",
+        name: "3D 考古文物櫥窗",
+        english_name: "3D Archaeology Showcase",
+        institute: "歷史語言研究所",
+        institute_code: "IHP",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archeodata.sinica.edu.tw/1_2/3DAA/",
+        description: "採用高解析攝影測量技術建立商周青銅器、居延漢簡、史前陶石玉器之 3D 模型，突破傳統 2D 圖錄死角，還原文物背後的考古出土脈絡。",
+        teaching_focus: "中學歷史科「商周青銅文明與考古發現」最佳互動教材！學生可在平板上 360 度旋轉青銅器觀察饕餮紋、銘文與鑄造接縫，開展探究與實作。",
+        tags: ["青銅器", "商周", "考古學", "3D模型", "物質文化"],
+        access_detail: "線上自由閱覽，免登入，支援手機與平板觸控操作"
+      },
+      {
+        id: "ihp-archaeodata",
+        name: "考古資料數位典藏創新計畫資料庫",
+        english_name: "Digital Archives of Archaeological Data",
+        institute: "歷史語言研究所",
+        institute_code: "IHP",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archeodata.sinica.edu.tw/",
+        description: "完整整合中研院庫藏之臺灣與中原考古遺址、出土標本、田野工作紀錄與發掘地圖，是臺灣考古學最權威的學術資源網絡。",
+        teaching_focus: "臺灣史前文化（十三行、卑南、圓山遺址）之地理分布與物質生活教學，可結合臺灣地形圖探討先民聚落發展。",
+        tags: ["遺址發掘", "史前文化", "陶器", "臺灣考古", "田野筆記"],
+        access_detail: "線上公開查詢，部分原始測繪圖檔需申請授權"
+      },
+      {
+        id: "ihp-xiaoxue",
+        name: "小學堂文字學資料庫",
+        english_name: "Xiaoxue Character Database",
+        institute: "歷史語言研究所",
+        institute_code: "IHP",
+        category: "語言、文字與語料庫",
+        research_topic: "語言、文字與語料庫",
+        access_tier: "全開放免IP",
+        url: "https://xiaoxue.iis.sinica.edu.tw/",
+        description: "整合甲骨文、金文、楚系簡帛、小篆到隸書等漢字形體演變逾22萬字，並收錄上古音、中古音及《廣韻》、《說文解字》等龐大字書音義索引。",
+        teaching_focus: "高中國文與大學文字學課程神器！讓學生輸入任意漢字，即刻看見從甲骨文到楷書的字形演變，進行「六書造字法則」趣味自主學習。",
+        tags: ["甲骨文", "金文", "六書", "字形演變", "聲韻學"],
+        access_detail: "全開放免登入，支援正異體字、古文字字形比對"
+      },
+      {
+        id: "ihp-digiarch",
+        name: "史語所數位資源整合檢索系統",
+        english_name: "IHP Digital Archives Integration System",
+        institute: "歷史語言研究所",
+        institute_code: "IHP",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://digiarch.sinica.edu.tw/ihp/index.jsp",
+        description: "一站式跨庫查詢史語所藏內閣大庫檔案、明清公文、善本書籍、少數民族文物及拓片碑帖等龐大館藏。",
+        teaching_focus: "歷史專案研究與小論文撰寫。引導學生進行清代奏摺公文程式解析，或拓片書法藝術鑑賞。",
+        tags: ["明清檔案", "內閣大庫", "善本古籍", "石刻拓片", "一站式檢索"],
+        access_detail: "公開書目檢索，數位全文影像視典藏等級開放"
+      },
+
+      // 2. 近代史研究所 (MH)
+      {
+        id: "mh-archives-portal",
+        name: "近代史研究所檔案館入口網",
+        english_name: "MH Archives Portal",
+        institute: "近代史研究所",
+        institute_code: "MH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archives.sinica.edu.tw/",
+        description: "近現代中國與近代臺灣最關鍵的外交、經濟與名人檔案總庫，收錄外務部、總理各國事務衙門、外交部檔案及眾多近代政商人物文書。",
+        teaching_focus: "近現代史「不平等條約與晚清外交交涉」、「冷戰時期東亞政治」專題教學，提供第一手官方照會與合約原件。",
+        tags: ["外交檔案", "總理衙門", "民國史", "晚清條約", "檔案目錄"],
+        access_detail: "入口網全面開放檢索，影像授權依近用規範提供"
+      },
+      {
+        id: "mh-search-sys",
+        name: "近史所檔案館館藏檢索系統",
+        english_name: "MH Archives Catalog System",
+        institute: "近代史研究所",
+        institute_code: "MH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "院區/南院共享",
+        url: "https://archives.sinica.edu.tw/redirect/71",
+        description: "新一代近代史全文檢索系統，涵蓋外交部、經濟部、財政部及民間政商名家檔案數位影像，支援線上調閱申請。",
+        teaching_focus: "大學專題研討與高中自主學習成果製作，可用於「戰後經濟重建」、「石油危機與經建計畫」專題研究。",
+        tags: ["經濟檔案", "部會公文", "影像閱覽", "歷史小論文"],
+        access_detail: "南港本院與南部院區數位圖檔室皆已連線開放閱覽與列印"
+      },
+      {
+        id: "mh-ktli",
+        name: "李國鼎先生數位資料庫",
+        english_name: "K. T. Li Digital Database",
+        institute: "近代史研究所",
+        institute_code: "MH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archives.sinica.edu.tw/",
+        description: "收錄「臺灣科技教父」李國鼎先生一生手稿、政策建言、大事年表、珍貴家庭與公務照片及歷史訪談音檔。",
+        teaching_focus: "臺灣現代經濟史、竹科半導體產業發展史教學。可用於探討 1970 年代臺灣如何從農業代工轉型為科技矽島。",
+        tags: ["科技產業", "竹科", "臺灣經濟奇蹟", "口述歷史", "名人檔案"],
+        access_detail: "入口網專題資料庫免費公開"
+      },
+      {
+        id: "mh-diplomatic",
+        name: "近代外交與經濟重要檔案典藏",
+        english_name: "Modern Diplomatic & Economic Archives",
+        institute: "近代史研究所",
+        institute_code: "MH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "院區/南院共享",
+        url: "https://archives.sinica.edu.tw/collection/3",
+        description: "珍藏包括導淮委員會水利檔案、中俄界約、抗戰時期軍事經濟動員公文等罕見近現代歷史原始紀錄。",
+        teaching_focus: "地理與歷史科跨領域教學：以「黃河導淮與治水工程」探討近代國家治理能力與流域地理環境的互動。",
+        tags: ["水利工程", "中俄邊界", "近代地理", "政府公文"],
+        access_detail: "南院數位圖書檔案室共享調閱，北院館藏原件"
+      },
+
+      // 3. 臺灣史研究所 (ITH)
+      {
+        id: "ith-tais",
+        name: "臺灣史檔案資源系統",
+        english_name: "Taiwan Archival Information System",
+        institute: "臺灣史研究所",
+        institute_code: "ITH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "院區/南院共享",
+        url: "https://tais.ith.sinica.edu.tw/",
+        description: "全臺最具代表性的臺灣民間文書與機關檔案資料庫，典藏契書、帳冊、家書、日治寫真帖、地方公文書及古地圖。",
+        teaching_focus: "臺灣史必備核心教材！帶領學生閱讀清代地契（如番契、胎借契）與日治時期文書，學習解讀第一手庶民生活歷史。",
+        tags: ["古文書", "土地地契", "家族檔案", "日治寫真", "地方行政"],
+        access_detail: "線上開放部分全宗瀏覽；到館/列印權限於南港本院與南部院區數位圖檔室全面開放"
+      },
+      {
+        id: "ith-archives-net",
+        name: "臺灣歷史檔案資源網",
+        english_name: "Taiwan History Archives Web",
+        institute: "臺灣史研究所",
+        institute_code: "ITH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archives.ith.sinica.edu.tw/",
+        description: "臺史所檔案館的入口門戶，每月發布檔案選粹、時事策展故事與歷史知識短文，提供臺灣史料解讀指南。",
+        teaching_focus: "適合中小學歷史科課堂導讀。網站每期推出的「檔案故事」深入淺出，可直接作為課前引言與補充講義。",
+        tags: ["歷史故事", "科普轉譯", "檔案導讀", "臺灣記憶"],
+        access_detail: "全開放免登入"
+      },
+      {
+        id: "ith-diary",
+        name: "臺灣日記知識庫",
+        english_name: "Taiwan Diary Knowledge Base",
+        institute: "臺灣史研究所",
+        institute_code: "ITH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://taco.ith.sinica.edu.tw/tdk/",
+        description: "由臺史所日記解讀班逐日考訂之臺灣重要人物日記全文，如林獻堂《灌園先生日記》、張麗俊《水竹居主人日記》等。",
+        teaching_focus: "歷史人物微觀視角教學。讓學生查詢 1920 年代臺灣議會設置請願運動、二二八事件或日治殖民日常，感受歷史當事人的即時心理。",
+        tags: ["林獻堂", "日記考訂", "微觀歷史", "文化協會", "士紳社會"],
+        access_detail: "開放全文檢索與註解比對（維護期間以臺史所公告為準）"
+      },
+      {
+        id: "ith-gov-travel",
+        name: "臺灣總督府職員錄與旅券查詢系統",
+        english_name: "Taiwan Governor-General Directory & Passports",
+        institute: "臺灣史研究所",
+        institute_code: "ITH",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archives.ith.sinica.edu.tw/",
+        description: "收錄日治時期臺灣總督府各級文官、警察、教師、技師職員名冊，以及臺人赴海外（如赴日留學、前往南洋）之護照（旅券）申請紀錄。",
+        teaching_focus: "引導學生尋找家鄉老學校日治時期校長教師，或研究臺灣青年赴日留學潮的歷史足跡，極佳之在地文史探究教材。",
+        tags: ["日治職員", "海外留學", "護照紀錄", "家族文史", "地方教育"],
+        access_detail: "全網開放檢索"
+      },
+
+      // 4. 中國文哲研究所 (LitPhil)
+      {
+        id: "litphil-disease-map",
+        name: "疾病：感覺地圖",
+        english_name: "Disease: Sensory Map",
+        institute: "中國文哲研究所",
+        institute_code: "LitPhil",
+        category: "地理空間與數位人文",
+        research_topic: "地理空間與數位人文",
+        access_tier: "全開放免IP",
+        url: "https://dh-illnesses.litphil.sinica.edu.tw/",
+        description: "文哲所劉苑如研究員團隊建置，結合魏晉南北朝筆記小說與僧傳文本，探勘古人對疾病的恐懼、倫理、跨物種情感與社會病理學，並以 GIS 空間呈現。",
+        teaching_focus: "國文與生命教育跨領域教學！引導學生分析古人如何面對瘟疫、社交距離與生離死別，並與當代傳染病社會心理做深刻對話。",
+        tags: ["六朝小說", "疾病歷史", "情感史", "GIS地圖", "數位人文"],
+        access_detail: "全開放免登入，內含主題研究短文與地圖可直接互動"
+      },
+      {
+        id: "litphil-youfun-map",
+        name: "遊方：歷代僧傳",
+        english_name: "Travels: Biographies of Monks",
+        institute: "中國文哲研究所",
+        institute_code: "LitPhil",
+        category: "地理空間與數位人文",
+        research_topic: "地理空間與數位人文",
+        access_tier: "全開放免IP",
+        url: "https://youfun.litphil.sinica.edu.tw/",
+        description: "梳理跨越千年的歷代僧人傳記，透過自然語言標記萃取僧人遊方動機、出走路徑與弘法成果，並在歷史地圖上動態重現其空間軌跡。",
+        teaching_focus: "世界史／中國史「佛教傳播與絲路交通」教學。讓學生在互動地圖上跟隨僧人翻越蔥嶺、沿古代商道行進，深化地理與宗教傳播理解。",
+        tags: ["高僧傳", "絲路", "佛教傳播", "空間人文", "時空軌跡"],
+        access_detail: "全開放免登入，提供視覺化動態路線與事件查詢"
+      },
+      {
+        id: "litphil-library-db",
+        name: "文哲所哲學與文學專題資料庫",
+        english_name: "LitPhil Academic Database & E-Books",
+        institute: "中國文哲研究所",
+        institute_code: "LitPhil",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "院區/南院共享",
+        url: "https://www.litphil.sinica.edu.tw/library/posts/4235",
+        description: "典藏宋明理學、儒家哲學、先秦諸子、明清詞曲文集與近現代華人思想之專業電子文獻與全文電子書。",
+        teaching_focus: "大學中文系、哲學系經典研讀課程。提供高精確度之校勘版本比對與學術論文參考文獻。",
+        tags: ["儒學", "道家", "宋明理學", "古典文學", "文集考證"],
+        access_detail: "中研院 IP / 南部院區數位圖檔室共享"
+      },
+
+      // 5. 民族學研究所 (IOE)
+      {
+        id: "ioe-digital-archive",
+        name: "民族學研究所數位典藏系統",
+        english_name: "IOE Digital Archives",
+        institute: "民族學研究所",
+        institute_code: "IOE",
+        category: "族群、人類學與民俗",
+        research_topic: "族群、人類學與民俗",
+        access_tier: "全開放免IP",
+        url: "https://ianthro.ioe.sinica.edu.tw/",
+        description: "典藏臺灣南島原住民、平埔族群、漢人民間信仰及太平洋南島民族之珍貴文物照片、宗教田野影音、古文契書與民族學報告。",
+        teaching_focus: "原住民族歷史與多元文化教育核心資源。可直接展示泰雅族織布、排灣族琉璃珠與陶壺的文化意涵，支援族群文化專案。",
+        tags: ["臺灣原住民", "平埔族群", "民間信仰", "民族誌", "田野影音"],
+        access_detail: "開放公眾查詢與研究利用"
+      },
+      {
+        id: "ioe-openmuseum",
+        name: "民族學研究所數位博物館",
+        english_name: "Museum of the Institute of Ethnology",
+        institute: "民族學研究所",
+        institute_code: "IOE",
+        category: "族群、人類學與民俗",
+        research_topic: "族群、人類學與民俗",
+        access_tier: "全開放免IP",
+        url: "https://mioe.openmuseum.tw/",
+        description: "民族所與開放博物館合作建置之線上虛擬博物館，常設展包括《臺灣原住民族文化展》、《臺灣漢人民間信仰》等沉浸式策展。",
+        teaching_focus: "中學社會科或藝術科「虛擬參訪」。學生不需出門即可線上走訪民族學博物館各展廳，完成展覽學習單。",
+        tags: ["線上博物館", "原民常設展", "神祇祭祀", "文化平權"],
+        access_detail: "全開放免登入，支援高解析展件欣賞與多媒體語音"
+      },
+      {
+        id: "ioe-pepo-cluster",
+        name: "臺灣原住民數位知識聚落（平埔文化專題）",
+        english_name: "Indigenous Knowledge Cluster & Plains Tribes",
+        institute: "民族學研究所",
+        institute_code: "IOE",
+        category: "族群、人類學與民俗",
+        research_topic: "族群、人類學與民俗",
+        access_tier: "全開放免IP",
+        url: "http://www.ianthro.org/",
+        description: "聚焦西拉雅、巴宰、噶瑪蘭等平埔族群歷史文獻、語言復振紀錄、地方文史工作室協作成果與珍稀契約文書。",
+        teaching_focus: "在地鄉土教育與原住民族語言身分認同專題。適合作為引導學生探討平埔正名運動與歷史記憶的教材。",
+        tags: ["平埔族群", "西拉雅", "族群復振", "地方文史", "番契地圖"],
+        access_detail: "全開放免登入"
+      },
+
+      // 6. 語言學研究所 (IL)
+      {
+        id: "il-digital-studio",
+        name: "語言學研究所數位語言資源工作室",
+        english_name: "Digital Linguistic Resources Studio",
+        institute: "語言學研究所",
+        institute_code: "IL",
+        category: "語言、文字與語料庫",
+        research_topic: "語言、文字與語料庫",
+        access_tier: "全開放免IP",
+        url: "https://www.ling.sinica.edu.tw/item/zh-tw?code=list&ids=19",
+        description: "統籌中研院語言學所各大語料庫與詞彙庫研發成果，涵蓋現代漢語、上古漢語、南島語言及跨方言句法分析資源。",
+        teaching_focus: "高中語文資優班或大學語言學導論教學：介紹如何以「語料庫驅動」方式觀察語言規律與詞性搭配。",
+        tags: ["語料庫", "詞彙庫", "語言學", "語法分析", "計算語言學"],
+        access_detail: "入口網站公開各專案連結與使用規範"
+      },
+      {
+        id: "il-min-hakka",
+        name: "中央研究院閩客語辭典與文獻語料庫",
+        english_name: "AS Min and Hakka Dictionaries & Corpora",
+        institute: "語言學研究所",
+        institute_code: "IL",
+        category: "語言、文字與語料庫",
+        research_topic: "語言、文字與語料庫",
+        access_tier: "全開放免IP",
+        url: "https://minhakka2.ling.sinica.edu.tw/",
+        description: "彙整臺灣閩南語與客家語歷史文獻、地方方言調查、教會羅馬字文獻及現代閩客辭典之綜合型發音與用詞語料庫。",
+        teaching_focus: "本土語文教學（閩南語、客家語）必備教材！提供音字對照、古白話辭彙考證與生動例句。",
+        tags: ["閩南語", "客家語", "本土語言", "方言語音", "辭典檢索"],
+        access_detail: "全開放免費線上使用"
+      },
+      {
+        id: "il-formosan",
+        name: "臺灣南島語言數位典藏與語料庫",
+        english_name: "Formosan Languages Digital Archives",
+        institute: "語言學研究所",
+        institute_code: "IL",
+        category: "語言、文字與語料庫",
+        research_topic: "語言、文字與語料庫",
+        access_tier: "全開放免IP",
+        url: "https://ascdc.digitalarchives.tw/site.php?type=3731",
+        description: "長期蒐集臺灣十餘種南島語言之原住民耆老錄音音檔、國際音標對齊逐字稿、故事神話與跨語言詞法句法分析。",
+        teaching_focus: "南島語系起源與臺灣「南島語原鄉假說」教學。讓學生親耳聆聽濒危南島語言母語發音與傳說故事。",
+        tags: ["南島語", "原住民語言", "口傳神話", "語音採集", "文化保育"],
+        access_detail: "數位文化中心典藏網全開放"
+      },
+
+      // 7. 人文社會科學研究中心 (RCHSS)
+      {
+        id: "rchss-srda",
+        name: "學術調查研究資料庫 (SRDA)",
+        english_name: "Survey Research Data Archive",
+        institute: "人文社會科學研究中心",
+        institute_code: "RCHSS",
+        category: "社會變遷與民主調查",
+        research_topic: "社會變遷與民主調查",
+        access_tier: "全開放免IP",
+        url: "https://srda.sinica.edu.tw/",
+        description: "臺灣最權威的社會科學實證調查資料典藏庫，收錄臺灣社會變遷、家庭動態、青少年成長歷程及國科會各項大型抽樣問卷資料與原始統計檔。",
+        teaching_focus: "高中公民與社會科、大學社會學與統計學方法教學。引導學生使用真實問卷數據進行交叉分析，培養實證素養與批判思考。",
+        tags: ["抽樣調查", "社會數據", "問卷分析", "實證研究", "開放數據"],
+        access_detail: "會員註冊後可免費下載資料檔與問卷編碼簿"
+      },
+      {
+        id: "rchss-twhgis",
+        name: "臺灣百年歷史地圖 (GIS Center)",
+        english_name: "Taiwan Centennial Historical Maps",
+        institute: "人文社會科學研究中心",
+        institute_code: "RCHSS",
+        category: "地理空間與數位人文",
+        research_topic: "地理空間與數位人文",
+        access_tier: "全開放免IP",
+        url: "https://gissrv4.sinica.edu.tw/",
+        description: "地理資訊科學研究專題中心代表作，將清代堡圖、日治時期地形圖、二戰美軍航照及現代衛星空照完美對齊於 Google 地圖上，支援多圖層透明度滑動對比。",
+        teaching_focus: "全臺灣中小學地理與歷史科最受歡迎的教學工具！學生可直接搜尋自己的學校或家鄉，滑動對比一百年前後的河道、聚落與地景變遷。",
+        tags: ["古地圖", "疊圖分析", "空間地景", "臺灣堡圖", "美軍航照"],
+        access_detail: "全開放免登入，支援電腦與行動裝置瀏覽及 WMTS 圖磚"
+      },
+      {
+        id: "rchss-mapsearch",
+        name: "地圖數位典藏整合查詢系統",
+        english_name: "Map Digital Archive Search System",
+        institute: "人文社會科學研究中心",
+        institute_code: "RCHSS",
+        category: "地理空間與數位人文",
+        research_topic: "地理空間與數位人文",
+        access_tier: "全開放免IP",
+        url: "https://gis.rchss.sinica.edu.tw/mapsearch/",
+        description: "整合國內外各大機構所藏之珍稀古地圖、戰略測量圖、都市計畫圖與航照圖影像，提供豐富的測繪年代與空間詮釋資料。",
+        teaching_focus: "高中探究與實作「空間環境與都市發展」專案。引導學生考證日治市區改正或戰後都市擴張痕跡。",
+        tags: ["測量圖", "都市計畫", "航照影像", "測繪史", "地理空間"],
+        access_detail: "全開放免登入"
+      },
+      {
+        id: "rchss-gis-apps",
+        name: "人社中心 GIS 加值應用系統網",
+        english_name: "RCHSS WebGIS Applications Portal",
+        institute: "人文社會科學研究中心",
+        institute_code: "RCHSS",
+        category: "地理空間與數位人文",
+        research_topic: "地理空間與數位人文",
+        access_tier: "全開放免IP",
+        url: "https://gis.rchss.sinica.edu.tw/application/",
+        description: "涵蓋鄭和航海圖 WebGIS、全臺詩地理資訊系統、臺灣戰後空間規劃史料資料庫等多項跨學科地理資訊加值平臺。",
+        teaching_focus: "歷史文學與地理整合教學。例如以「全臺詩 GIS」在地圖上定位古典詩人行腳與地景詠懷，生動展現文學空間感。",
+        tags: ["鄭和航海", "古典詩詞GIS", "空間規劃", "跨領域教學"],
+        access_detail: "全開放免登入"
+      },
+
+      // 8. 數位文化中心 (ASCDC)
+      {
+        id: "ascdc-openmuseum",
+        name: "開放博物館 (Open Museum)",
+        english_name: "Open Museum",
+        institute: "數位文化中心",
+        institute_code: "ASCDC",
+        category: "跨領域策展與公眾轉譯",
+        research_topic: "跨領域策展與公眾轉譯",
+        access_tier: "全開放免IP",
+        url: "https://openmuseum.tw/",
+        description: "匯聚中研院與全臺近百家館所珍貴藏品逾 117 萬件、主題特展 800 餘檔，融匯歷史、生物、藝術、民俗之數位知識生態系。",
+        teaching_focus: "各科通識、線上展覽與自學最佳園地。教師可直接運用現成高品質科普展（如臺灣生態多樣性、歷史記憶特展）作為互動教材。",
+        tags: ["百萬藏品", "線上特展", "跨領域科普", "數位展覽", "知識平權"],
+        access_detail: "全網開放自由瀏覽，免安裝任何軟體"
+      },
+      {
+        id: "ascdc-plaza",
+        name: "開放博物館．參與平台",
+        english_name: "Open Museum Plaza (Curating Platform)",
+        institute: "數位文化中心",
+        institute_code: "ASCDC",
+        category: "跨領域策展與公眾轉譯",
+        research_topic: "跨領域策展與公眾轉譯",
+        access_tier: "全開放免IP",
+        url: "https://plaza.openmuseum.tw/",
+        description: "讓全民化身數位策展人的互動平台！提供時間軸模組、故事地圖模組、標記故事與多媒體整合工具，自由取用開放授權藏品創作展覽。",
+        teaching_focus: "108 課綱「探究與實作」及「學習歷程檔案」王牌工具！讓學生不再只繳交死板紙本報告，而是能親自上線策劃一場公開數位展覽。",
+        tags: ["學生策展", "學習歷程", "時間軸工具", "互動地圖", "探究與實作"],
+        access_detail: "全開放免費註冊會員即可開始線上策展"
+      },
+      {
+        id: "ascdc-databases",
+        name: "數位文化中心資料庫總覽網",
+        english_name: "ASCDC Databases Directory",
+        institute: "數位文化中心",
+        institute_code: "ASCDC",
+        category: "跨領域策展與公眾轉譯",
+        research_topic: "跨領域策展與公眾轉譯",
+        access_tier: "全開放免IP",
+        url: "https://ascdc.sinica.edu.tw/databases.jsp",
+        description: "系統性盤點並整合中研院歷年來逾百個數位典藏成果、專業資料庫及跨領域數位人文研究入口。",
+        teaching_focus: "高階專題研究、研究生資料檢索必備書籤。方便快速指引學生找到對應專門領域的數位典藏子資料庫。",
+        tags: ["資料庫總表", "數位典藏", "學術導航", "研究索引"],
+        access_detail: "全開放免登入"
+      },
+      {
+        id: "ascdc-dadh",
+        name: "數位人文研究平台 (DADH)",
+        english_name: "Digital Humanities Research Platform",
+        institute: "數位文化中心",
+        institute_code: "ASCDC",
+        category: "地理空間與數位人文",
+        research_topic: "地理空間與數位人文",
+        access_tier: "全開放免IP",
+        url: "https://dh.ascdc.sinica.edu.tw/",
+        description: "提供文本自動斷詞、詞性標記、命名實體辨識（NER）、關聯網絡圖分析與時間空間視覺化等現代數位人文探勘技術。",
+        teaching_focus: "大學及高中語文與資訊跨領域「數位人文入門」教案。引導學生上傳文言文文本進行實體抽取與人際社交網絡分析。",
+        tags: ["文本探勘", "自然語言處理", "命名實體", "關係網絡", "社會網絡分析"],
+        access_detail: "全開放，支援個人上傳自訂文本進行探勘"
+      },
+
+      // 9. 社會學研究所 (IOS)
+      {
+        id: "ios-tscs",
+        name: "臺灣社會變遷基本調查資料庫 (TSCS)",
+        english_name: "Taiwan Social Change Survey Database",
+        institute: "社會學研究所",
+        institute_code: "IOS",
+        category: "社會變遷與民主調查",
+        research_topic: "社會變遷與民主調查",
+        access_tier: "全開放免IP",
+        url: "https://www2.ios.sinica.edu.tw/sc/",
+        description: "自1984年起推動，以五年為週期持續追蹤臺灣家庭、性別、階層、宗教、環境與政治文化等長達 40 年之貫時性抽樣調查大庫。",
+        teaching_focus: "公民與社會科「臺灣社會結構變遷」主題教學。透過 1980 年代至今的數據對比，讓學生客觀分析臺灣家庭型態與性別角色演變。",
+        tags: ["社會變遷", "貫時性數據", "家庭結構", "性別平等", "公民認同"],
+        access_detail: "問卷報告及研究資料庫全面公開下載"
+      },
+      {
+        id: "ios-tesd",
+        name: "臺灣經驗實證調查資料平台 (TESD)",
+        english_name: "Taiwan Empirical Survey Data (TESD)",
+        institute: "社會學研究所",
+        institute_code: "IOS",
+        category: "社會變遷與民主調查",
+        research_topic: "社會變遷與民主調查",
+        access_tier: "全開放免IP",
+        url: "https://tesd.survey.sinica.edu.tw/database/tscs",
+        description: "國科會與中研院合作建置之現代化資料平台，整合線上統計分析、互動圖表生成與跨年度跨主題比較工具。",
+        teaching_focus: "免裝統計軟體即可在線上生成圓餅圖、長條圖與交叉表，非常適合作為高中社會科資料分析課堂練習。",
+        tags: ["線上統計", "視覺化圖表", "免寫程式", "高中公民練習"],
+        access_detail: "全開放線上即時統計分析"
+      },
+      {
+        id: "ios-publications",
+        name: "中研院社會學研究所學術出版與專題",
+        english_name: "Institute of Sociology Publications",
+        institute: "社會學研究所",
+        institute_code: "IOS",
+        category: "社會變遷與民主調查",
+        research_topic: "社會變遷與民主調查",
+        access_tier: "全開放免IP",
+        url: "https://www.ios.sinica.edu.tw/",
+        description: "收錄社會所重要學術成果、研討會論文、專書出版目錄及《台灣社會學》代表性前沿研究。",
+        teaching_focus: "高三選修社會或大學社會系導論延伸閱讀，了解臺灣勞動市場、族群關係與數位社會的深入探討。",
+        tags: ["社會學期刊", "數位社會", "勞動經濟", "社會不平等"],
+        access_detail: "開放查詢與專文摘要閱覽"
+      },
+
+      // 10. 經濟研究所 (IEAS)
+      {
+        id: "ieas-aep",
+        name: "《經濟論文》(Academia Economic Papers) 資料庫",
+        english_name: "Academia Economic Papers Full-text",
+        institute: "經濟研究所",
+        institute_code: "IEAS",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "全開放免IP",
+        url: "https://www.econ.sinica.edu.tw/aep",
+        description: "中研院經濟所於1973年創刊之國際權威經濟學期刊（TSSCI/Scopus收錄），提供理論經濟、計量經濟與實證政策研究全文下載。",
+        teaching_focus: "大學經濟系中高階課程教材。提供精確的數理經濟模型推導、貨幣政策效應與國際貿易計量分析範例。",
+        tags: ["經濟學", "計量經濟", "貨幣政策", "TSSCI", "全文下載"],
+        access_detail: "官方網站提供各期論文 PDF 免費開放下載"
+      },
+      {
+        id: "ieas-tefp",
+        name: "《臺灣經濟預測與政策》期刊資料庫",
+        english_name: "Taiwan Economic Forecast and Policy",
+        institute: "經濟研究所",
+        institute_code: "IEAS",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "全開放免IP",
+        url: "https://www.econ.sinica.edu.tw/TEFP",
+        description: "結合總體經濟計量模型對臺灣未來景氣、GDP成長率、物價通膨、勞動市場與國際貿易走勢進行權威實證預測與政策建言。",
+        teaching_focus: "高中公民與大學經濟學「景氣循環與政府總體財政政策」即時教材。讓學生藉由真實預測報告認識經濟指標意義。",
+        tags: ["GDP預測", "通貨膨脹", "財政政策", "總體經濟", "時事分析"],
+        access_detail: "全文免費開放下載"
+      },
+      {
+        id: "ieas-library-db",
+        name: "經濟研究所圖書館電子資源資料庫",
+        english_name: "IEAS Library Electronic Databases",
+        institute: "經濟研究所",
+        institute_code: "IEAS",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "院區/南院共享",
+        url: "https://www.econ.sinica.edu.tw/library/pages/104",
+        description: "涵蓋全球主要金融經濟資料庫（如 AREMOS 臺灣經濟統計、IMF、OECD 數據庫及國際頂級經濟期刊）。",
+        teaching_focus: "大專院校專題論文資料檢索與計量實習教材。",
+        tags: ["金融數據", "統計資料庫", "AREMOS", "跨國指標"],
+        access_detail: "中研院網域 / 南部院區數位圖檔室共享"
+      },
+
+      // 11. 政治學研究所 (IPS)
+      {
+        id: "ips-abs",
+        name: "亞洲民主動態調查 (Asian Barometer Survey)",
+        english_name: "Asian Barometer Survey (ABS)",
+        institute: "政治學研究所",
+        institute_code: "IPS",
+        category: "社會變遷與民主調查",
+        research_topic: "社會變遷與民主調查",
+        access_tier: "全開放免IP",
+        url: "https://asianbarometer.org/",
+        description: "由政治學研究所特聘研究員主持的大型跨國比較調查項目，涵蓋東亞與南亞十餘個國家民眾對民主體制評價、政府信任及政治參與。",
+        teaching_focus: "高中公民與大學政治學「比較政府與民主化進程」教材。提供第一手國際調查數據，比較不同國家對公民權利與法治的認知。",
+        tags: ["民主化", "跨國調查", "公民意識", "政經體制", "國際比較"],
+        access_detail: "開放官方問卷報告與學術申請資料釋出"
+      },
+      {
+        id: "ips-research-portal",
+        name: "政治學研究所學術研究成果網",
+        english_name: "IPSAS Research Publications & Projects",
+        institute: "政治學研究所",
+        institute_code: "IPS",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "全開放免IP",
+        url: "https://www.ipsas.sinica.edu.tw/",
+        description: "聚焦憲政體制、兩岸關係、國際地緣政治、選舉制度與民主治理之代表性研究專書與論文彙整。",
+        teaching_focus: "高中公民「憲政體制與選舉制度運作」補充教材，幫助學生跳脫教條式理論，理解制度運作的現實動力。",
+        tags: ["憲政主義", "國際關係", "選舉制度", "地緣政治"],
+        access_detail: "全網開放瀏覽"
+      },
+
+      // 12. 法律學研究所 (IIAS)
+      {
+        id: "iias-law-journal",
+        name: "《中研院法學期刊》(Academia Sinica Law Journal)",
+        english_name: "Academia Sinica Law Journal",
+        institute: "法律學研究所",
+        institute_code: "IIAS",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "全開放免IP",
+        url: "https://www.iias.sinica.edu.tw/publication_list/9",
+        description: "臺灣頂尖的法學學術專刊（TSSCI 收錄），涵蓋憲法人權、行政法、科技法律、刑事正義與法律實證研究全文。",
+        teaching_focus: "高中公民「法治與人權保障」及法律系案例研討教材。深入探討 AI 法律規範、言論自由邊界與數位隱私權爭議。",
+        tags: ["憲法學", "科技法律", "人權保障", "法學期刊", "全文下載"],
+        access_detail: "官方網站歷期專文 PDF 全文免費下載"
+      },
+      {
+        id: "iias-portal",
+        name: "法律學研究所法學研究與學術活動網",
+        english_name: "IIAS Legal Research Resources",
+        institute: "法律學研究所",
+        institute_code: "IIAS",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "全開放免IP",
+        url: "https://www.iias.sinica.edu.tw/",
+        description: "提供法律所各項跨領域法學工作坊實錄、重大法律政策建言及法學專書系列資訊。",
+        teaching_focus: "法治素養教學：例如針對重大修憲、死刑釋憲或資訊隱私權爭議，引導學生研讀研究員發表的專業分析評論。",
+        tags: ["司法改革", "法律政策", "法治教育", "憲政研討"],
+        access_detail: "全網開放瀏覽"
+      },
+
+      // 13. 歐美研究所 (EA)
+      {
+        id: "ea-euramerica",
+        name: "《歐美研究》(EurAmerica) 季刊全文資料庫",
+        english_name: "EurAmerica Full-text Database",
+        institute: "歐美研究所",
+        institute_code: "EA",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "全開放免IP",
+        url: "https://euramerica-ch.ea.sinica.edu.tw/",
+        description: "創刊逾半世紀之頂尖歐美哲學、文學、歷史、文化與國際政治國際化期刊（THCI/TSSCI核心），每期論文皆提供中英雙語全文 PDF 下載。",
+        teaching_focus: "高階英語閱讀、歐美文學經典鑑賞及西洋現代思潮研析教材，適合探討啟蒙哲學、後殖民文學或歐美外交政策。",
+        tags: ["西洋哲學", "歐美文學", "西洋歷史", "THCI", "雙語全文"],
+        access_detail: "全文完全開放免費下載"
+      },
+      {
+        id: "ea-library-db",
+        name: "歐美研究所圖書館學術資料庫",
+        english_name: "Institute of European and American Studies Library",
+        institute: "歐美研究所",
+        institute_code: "EA",
+        category: "經濟、法政與國際思潮",
+        research_topic: "經濟、法政與國際思潮",
+        access_tier: "院區/南院共享",
+        url: "https://www.ea.sinica.edu.tw/DigitalJournal.aspx",
+        description: "專門典藏歐美各國人文社會研究大型外文全文資料庫（如 JSTOR、Project MUSE、ProQuest 及 Cambridge Core 等）。",
+        teaching_focus: "大專院校外文系、歷史系師生進階國際文獻檢索與論文寫作研讀。",
+        tags: ["外文學術期刊", "JSTOR", "歐洲研究", "美國研究"],
+        access_detail: "中研院 IP / 南部院區數位圖檔室連線共享"
+      },
+
+      // 14. 南部院區專題基地 (South Campus)
+      {
+        id: "south-rhhss-library",
+        name: "中研院南部院區「數位圖書檔案室」",
+        english_name: "South Campus Digital Library & Archives Room",
+        institute: "南部院區",
+        institute_code: "SouthCampus",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "院區/南院共享",
+        url: "https://rhhss.sinica.edu.tw/pages/4554",
+        description: "位於臺南歸仁沙崙，設有高速網路與專用檢索席位，全面連線中研院本院各所採購之 95% 以上電子資料庫及近史所、臺史所檔案館館藏檢索系統。",
+        teaching_focus: "中南部各級學校教師與學生進行專題研究時的最佳實體基地！免除搭高鐵北上南港舟車勞頓，可就近在台南調閱列印珍貴特藏史料。",
+        tags: ["南部院區", "臺南沙崙", "資源共享", "檔案調閱", "地方學術新泉源"],
+        access_detail: "南部學人與師生可持證登記進館，享有與南港本院同等之數位檢索調閱權限"
+      },
+      {
+        id: "south-exhibition",
+        name: "「南方・島嶼・人文」中研院南部院區特展",
+        english_name: "Southern Lands, Islands, Humanities Exhibition",
+        institute: "南部院區",
+        institute_code: "SouthCampus",
+        category: "歷史與考古文獻",
+        research_topic: "歷史與考古文獻",
+        access_tier: "全開放免IP",
+        url: "https://archives.ith.sinica.edu.tw/news_con.php?no=399",
+        description: "中研院南部院區人文社會基地開幕首展，結合歷史檔案、短片、沉浸式環境聲音與 AI 語音導覽，展現南部在地文史與海洋島嶼脈絡。",
+        teaching_focus: "本土鄉土教育與南部地方史教材！適合帶領學生探討安平開港、熱蘭遮城周邊演進與西拉雅族群移動史。",
+        tags: ["南院首展", "海洋臺灣", "AI語音導覽", "南部在地歷史"],
+        access_detail: "線上展覽與實體展覽同步開放大眾參觀"
+      }
+    ];
+
+    // State
+    let currentView = "browse"; // 'browse' or 'advisor'
+    let currentSearch = "";
+    let currentCategory = "ALL";
+    let currentAccess = "ALL";
+    let currentInstitute = "ALL";
+    let onlyTeaching = false;
+    let onlyFavorites = false;
+    let favorites = [];
+
+    // Load favorites safely
+    try {
+      const stored = localStorage.getItem("as_db_favorites");
+      if (stored) {
+        favorites = JSON.parse(stored);
+      }
+    } catch (e) {
+      favorites = [];
+    }
+
+    // View Navigation Buttons
+    const tabBrowseBtn = document.getElementById("tabBrowseBtn");
+    const tabAdvisorBtn = document.getElementById("tabAdvisorBtn");
+    const browseView = document.getElementById("browseView");
+    const advisorView = document.getElementById("advisorView");
+    const calloutOpenAdvisorBtn = document.getElementById("calloutOpenAdvisorBtn");
+    const advisorBackToBrowseBtn = document.getElementById("advisorBackToBrowseBtn");
+
+    function switchView(viewName) {
+      currentView = viewName;
+      if (viewName === "browse") {
+        browseView.classList.remove("hidden");
+        advisorView.classList.add("hidden");
+        tabBrowseBtn.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center gap-2 bg-indigo-600 text-white shadow-sm";
+        tabAdvisorBtn.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center gap-2 bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700";
+      } else {
+        browseView.classList.add("hidden");
+        advisorView.classList.remove("hidden");
+        tabBrowseBtn.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center gap-2 bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700";
+        tabAdvisorBtn.className = "px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition flex items-center gap-2 bg-indigo-600 text-white shadow-sm";
+      }
+    }
+
+    tabBrowseBtn.addEventListener("click", () => switchView("browse"));
+    tabAdvisorBtn.addEventListener("click", () => switchView("advisor"));
+    calloutOpenAdvisorBtn.addEventListener("click", () => {
+      switchView("advisor");
+      document.getElementById("advisorQueryInput").focus();
+    });
+    advisorBackToBrowseBtn.addEventListener("click", () => switchView("browse"));
+
+    // DOM Elements
+    const databasesGrid = document.getElementById("databasesGrid");
+    const emptyState = document.getElementById("emptyState");
+    const searchInput = document.getElementById("searchInput");
+    const clearSearchBtn = document.getElementById("clearSearchBtn");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const accessFilter = document.getElementById("accessFilter");
+    const teachingCheckbox = document.getElementById("teachingCheckbox");
+    const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+    const emptyResetBtn = document.getElementById("emptyResetBtn");
+    const toggleFavoritesBtn = document.getElementById("toggleFavoritesBtn");
+    const favoritesLabel = document.getElementById("favoritesLabel");
+    const activeCount = document.getElementById("activeCount");
+    const instituteFilterContainer = document.getElementById("instituteFilterContainer");
+    const topicButtonsContainer = document.getElementById("topicButtonsContainer");
+
+    // Topic Banner Elements
+    const topicBanner = document.getElementById("topicBanner");
+    const topicBannerIcon = document.getElementById("topicBannerIcon");
+    const topicBannerTitle = document.getElementById("topicBannerTitle");
+    const topicBannerDesc = document.getElementById("topicBannerDesc");
+
+    // Modal Elements
+    const detailModal = document.getElementById("detailModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalEnglishName = document.getElementById("modalEnglishName");
+    const modalTopicBadge = document.getElementById("modalTopicBadge");
+    const modalInstituteBadge = document.getElementById("modalInstituteBadge");
+    const modalAccessBadge = document.getElementById("modalAccessBadge");
+    const modalDescription = document.getElementById("modalDescription");
+    const modalTeachingFocus = document.getElementById("modalTeachingFocus");
+    const modalInstituteFullName = document.getElementById("modalInstituteFullName");
+    const modalAccessDetail = document.getElementById("modalAccessDetail");
+    const modalTags = document.getElementById("modalTags");
+    const modalVisitLink = document.getElementById("modalVisitLink");
+    const modalCopyUrlBtn = document.getElementById("modalCopyUrlBtn");
+    const modalCopyText = document.getElementById("modalCopyText");
+    const modalFavoriteBtn = document.getElementById("modalFavoriteBtn");
+    const modalFavoriteText = document.getElementById("modalFavoriteText");
+
+    // Guide Modal Elements
+    const guideModal = document.getElementById("guideModal");
+    const guideModalBtn = document.getElementById("guideModalBtn");
+    const closeGuideModalBtn = document.getElementById("closeGuideModalBtn");
+    const confirmGuideBtn = document.getElementById("confirmGuideBtn");
+
+    // Toast Element
+    const toast = document.getElementById("toast");
+    const toastIcon = document.getElementById("toastIcon");
+    const toastMessage = document.getElementById("toastMessage");
+    let toastTimeout;
+
+    function showToast(msg, icon = "✓") {
+      clearTimeout(toastTimeout);
+      toastMessage.textContent = msg;
+      toastIcon.textContent = icon;
+      toast.classList.remove("opacity-0", "translate-y-3", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.add("opacity-0", "translate-y-3", "pointer-events-none");
+      }, 2500);
+    }
+
+    // Distinct Institutes list
+    const institutesList = [
+      { code: "ALL", name: "全部單位" },
+      { code: "IHP", name: "歷史語言研究所 (史語所)" },
+      { code: "MH", name: "近代史研究所 (近史所)" },
+      { code: "ITH", name: "臺灣史研究所 (臺史所)" },
+      { code: "LitPhil", name: "中國文哲研究所 (文哲所)" },
+      { code: "IOE", name: "民族學研究所 (民族所)" },
+      { code: "IL", name: "語言學研究所 (語言所)" },
+      { code: "RCHSS", name: "人社科學研究中心 (人社中心)" },
+      { code: "ASCDC", name: "數位文化中心" },
+      { code: "IOS", name: "社會學研究所 (社會所)" },
+      { code: "IEAS", name: "經濟研究所 (經濟所)" },
+      { code: "IPS", name: "政治學研究所 (政治所)" },
+      { code: "IIAS", name: "法律學研究所 (法律所)" },
+      { code: "EA", name: "歐美研究所 (歐美所)" },
+      { code: "SouthCampus", name: "南部院區基地" }
+    ];
+
+    // Render Research Topic Buttons
+    function renderTopicButtons() {
+      topicButtonsContainer.innerHTML = researchTopics.map(topic => {
+        const isActive = currentCategory === topic.id;
+        const count = topic.id === "ALL" 
+          ? databases.length 
+          : databases.filter(d => d.research_topic === topic.id).length;
+
+        return `
+          <button data-topic="${topic.id}" 
+            class="topic-btn flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition ${
+              isActive 
+                ? 'bg-indigo-600 text-white shadow-md ring-2 ring-indigo-400' 
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }">
+            <span>${topic.icon}</span>
+            <span>${topic.name}</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded-full ${isActive ? 'bg-indigo-700 text-indigo-100' : 'bg-slate-200 text-slate-600'}">${count}</span>
+          </button>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".topic-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const topicId = btn.getAttribute("data-topic");
+          currentCategory = topicId;
+          categoryFilter.value = topicId;
+          updateTopicBanner();
+          renderTopicButtons();
+          renderDatabases();
+        });
+      });
+    }
+
+    function updateTopicBanner() {
+      if (currentCategory === "ALL") {
+        topicBanner.classList.add("hidden");
+      } else {
+        const topic = researchTopics.find(t => t.id === currentCategory);
+        if (topic) {
+          topicBannerIcon.textContent = topic.icon;
+          topicBannerTitle.textContent = `${topic.name} 研究領域專題`;
+          topicBannerDesc.textContent = topic.desc;
+          topicBanner.classList.remove("hidden");
+        } else {
+          topicBanner.classList.add("hidden");
+        }
+      }
+    }
+
+    // Render Institute Filter Badges
+    function renderInstituteFilters() {
+      instituteFilterContainer.innerHTML = institutesList.map(inst => {
+        const isActive = currentInstitute === inst.code;
+        return `
+          <button data-institute="${inst.code}" 
+            class="inst-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium transition ${
+              isActive 
+                ? 'bg-slate-800 text-white shadow-sm ring-1 ring-slate-800' 
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+            }">
+            ${inst.name}
+          </button>
+        `;
+      }).join("");
+
+      document.querySelectorAll(".inst-filter-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentInstitute = btn.getAttribute("data-institute");
+          renderInstituteFilters();
+          renderDatabases();
+        });
+      });
+    }
+
+    // Toggle Favorite helper
+    function toggleFavorite(id) {
+      const idx = favorites.indexOf(id);
+      if (idx > -1) {
+        favorites.splice(idx, 1);
+        showToast("已從收藏清單移除", "🗑️");
+      } else {
+        favorites.push(id);
+        showToast("已成功加入我的收藏", "★");
+      }
+      try {
+        localStorage.setItem("as_db_favorites", JSON.stringify(favorites));
+      } catch (e) {}
+      updateFavoritesUI();
+      renderDatabases();
+    }
+
+    function updateFavoritesUI() {
+      favoritesLabel.textContent = `我的收藏 (${favorites.length})`;
+      if (onlyFavorites) {
+        toggleFavoritesBtn.classList.add("bg-amber-500/20", "border-amber-400", "text-amber-300");
+        toggleFavoritesBtn.classList.remove("bg-slate-800", "text-amber-400");
+      } else {
+        toggleFavoritesBtn.classList.remove("bg-amber-500/20", "border-amber-400", "text-amber-300");
+        toggleFavoritesBtn.classList.add("bg-slate-800", "text-amber-400");
+      }
+    }
+
+    // Active Database Detail
+    let activeDb = null;
+
+    function openModal(db) {
+      activeDb = db;
+      modalTitle.textContent = db.name;
+      modalEnglishName.textContent = db.english_name;
+      modalTopicBadge.textContent = db.research_topic;
+      modalInstituteBadge.textContent = db.institute;
+      modalAccessBadge.textContent = db.access_tier;
+      modalDescription.textContent = db.description;
+      modalTeachingFocus.textContent = db.teaching_focus;
+      modalInstituteFullName.textContent = db.institute;
+      modalAccessDetail.textContent = db.access_detail;
+      modalVisitLink.href = db.url;
+
+      // Access badge color
+      if (db.access_tier === "全開放免IP") {
+        modalAccessBadge.className = "text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 border border-emerald-200";
+      } else if (db.access_tier === "院區/南院共享") {
+        modalAccessBadge.className = "text-xs font-bold px-2.5 py-1 rounded-md bg-amber-100 text-amber-800 border border-amber-200";
+      } else {
+        modalAccessBadge.className = "text-xs font-bold px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-200";
+      }
+
+      // Tags
+      modalTags.innerHTML = db.tags.map(tag => 
+        `<span class="px-2 py-0.5 bg-slate-100 text-slate-600 rounded text-xs">#${tag}</span>`
+      ).join("");
+
+      // Favorite button inside modal
+      const isFav = favorites.includes(db.id);
+      modalFavoriteText.textContent = isFav ? "已在收藏中 (點擊取消)" : "加入我的收藏";
+
+      modalCopyText.textContent = "複製連結";
+      detailModal.classList.remove("hidden");
+    }
+
+    function closeModal() {
+      detailModal.classList.add("hidden");
+      activeDb = null;
+    }
+
+    // Filter Logic
+    function getFilteredDatabases() {
+      const q = currentSearch.trim().toLowerCase();
+      return databases.filter(db => {
+        // Search query
+        if (q) {
+          const matchName = db.name.toLowerCase().includes(q);
+          const matchEn = db.english_name.toLowerCase().includes(q);
+          const matchTopic = db.research_topic.toLowerCase().includes(q);
+          const matchInst = db.institute.toLowerCase().includes(q);
+          const matchDesc = db.description.toLowerCase().includes(q);
+          const matchTeach = db.teaching_focus.toLowerCase().includes(q);
+          const matchTags = db.tags.some(t => t.toLowerCase().includes(q));
+          if (!matchName && !matchEn && !matchTopic && !matchInst && !matchDesc && !matchTeach && !matchTags) {
+            return false;
+          }
+        }
+
+        // Research Topic filter
+        if (currentCategory !== "ALL" && db.research_topic !== currentCategory) {
+          return false;
+        }
+
+        // Access Tier filter
+        if (currentAccess !== "ALL" && db.access_tier !== currentAccess) {
+          return false;
+        }
+
+        // Institute filter
+        if (currentInstitute !== "ALL" && db.institute_code !== currentInstitute) {
+          return false;
+        }
+
+        // Teaching focus only
+        if (onlyTeaching && !db.teaching_focus) {
+          return false;
+        }
+
+        // Favorites only
+        if (onlyFavorites && !favorites.includes(db.id)) {
+          return false;
+        }
+
+        return true;
+      });
+    }
+
+    // Render Cards
+    function renderDatabases() {
+      const list = getFilteredDatabases();
+      activeCount.textContent = `顯示 ${list.length} 個資源（共 ${databases.length} 個）`;
+
+      if (list.length === 0) {
+        databasesGrid.innerHTML = "";
+        emptyState.classList.remove("hidden");
+        return;
+      }
+
+      emptyState.classList.add("hidden");
+
+      databasesGrid.innerHTML = list.map(db => {
+        const isFav = favorites.includes(db.id);
+        const accessBadgeClass = db.access_tier === "全開放免IP"
+          ? "bg-emerald-50 text-emerald-700 border-emerald-200"
+          : (db.access_tier === "院區/南院共享" 
+              ? "bg-amber-50 text-amber-700 border-amber-200" 
+              : "bg-rose-50 text-rose-700 border-rose-200");
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-xl transition-all duration-200 flex flex-col justify-between overflow-hidden group">
+            <div class="p-5 flex-1 flex flex-col">
+              
+              <!-- Card Top Meta: Research Topic & Institute & Access -->
+              <div class="flex flex-wrap items-center justify-between gap-1.5 mb-2.5">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-100 flex items-center gap-1">
+                    <span>🔬</span> ${db.research_topic}
+                  </span>
+                  <span class="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-600">
+                    ${db.institute}
+                  </span>
+                </div>
+                <span class="text-[11px] font-medium px-2 py-0.5 rounded-md border ${accessBadgeClass}">
+                  ${db.access_tier}
+                </span>
+              </div>
+
+              <!-- Database Title as Direct Clickable Link -->
+              <h3 class="text-base font-bold text-slate-900 group-hover:text-indigo-600 transition leading-snug">
+                <a href="${db.url}" target="_blank" rel="noopener noreferrer" class="hover:underline flex items-start justify-between gap-1.5" title="點擊直接前往：${db.name}">
+                  <span>${db.name}</span>
+                  <svg class="w-4 h-4 text-slate-400 group-hover:text-indigo-600 flex-shrink-0 mt-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </h3>
+              
+              <p class="text-[11px] text-slate-400 mb-3 truncate font-mono">${db.english_name}</p>
+
+              <!-- Description -->
+              <p class="text-xs text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                ${db.description}
+              </p>
+
+              <!-- Teaching Highlight Box -->
+              <div class="mt-auto bg-amber-50/70 border border-amber-200/70 rounded-xl p-3 text-xs text-amber-900 mb-2">
+                <div class="font-bold text-[11px] text-amber-800 flex items-center gap-1 mb-1">
+                  <span>🎓</span> 教材推薦與課堂應用：
+                </div>
+                <p class="line-clamp-2 text-slate-700 text-[11px] leading-relaxed">
+                  ${db.teaching_focus}
+                </p>
+              </div>
+
+              <!-- Tags -->
+              <div class="flex flex-wrap gap-1 mt-1">
+                ${db.tags.slice(0, 3).map(tag => `
+                  <span class="text-[10px] px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded">#${tag}</span>
+                `).join("")}
+              </div>
+
+            </div>
+
+            <!-- Card Bottom Bar -->
+            <div class="bg-slate-50 px-5 py-3 border-t border-slate-100 flex items-center justify-between text-xs">
+              <button data-detail-id="${db.id}" class="detail-btn text-indigo-600 hover:text-indigo-800 font-semibold flex items-center gap-1">
+                <span>詳細簡介</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
+              <div class="flex items-center gap-2">
+                <button data-fav-id="${db.id}" class="fav-btn p-1.5 rounded-lg border text-xs transition ${
+                  isFav ? 'bg-amber-100 border-amber-300 text-amber-700' : 'bg-white border-slate-200 text-slate-400 hover:text-amber-500'
+                }" title="${isFav ? '已收藏' : '加入收藏'}">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                </button>
+
+                <a href="${db.url}" target="_blank" rel="noopener noreferrer" 
+                  class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg shadow-sm transition flex items-center gap-1">
+                  <span>直達</span>
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        `;
+      }).join("");
+
+      // Bind Card Action Listeners
+      document.querySelectorAll(".detail-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-detail-id");
+          const target = databases.find(d => d.id === id);
+          if (target) openModal(target);
+        });
+      });
+
+      document.querySelectorAll(".fav-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const id = btn.getAttribute("data-fav-id");
+          if (id) toggleFavorite(id);
+        });
+      });
+    }
+
+    // ==========================================
+    // SMART ADVISOR LOGIC & RECOMMENDATIONS
+    // ==========================================
+    const advisorQueryInput = document.getElementById("advisorQueryInput");
+    const advisorSearchBtn = document.getElementById("advisorSearchBtn");
+    const quickTopicPresets = document.getElementById("quickTopicPresets");
+    const advisorResultsBox = document.getElementById("advisorResultsBox");
+
+    // Render preset buttons
+    quickTopicPresets.innerHTML = advisorPresets.map((preset, idx) => `
+      <button data-preset-idx="${idx}" class="preset-btn px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 text-slate-700 text-xs font-semibold border border-slate-200 transition">
+        ${preset.label}
+      </button>
+    `).join("");
+
+    document.querySelectorAll(".preset-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const idx = parseInt(btn.getAttribute("data-preset-idx"));
+        const preset = advisorPresets[idx];
+        advisorQueryInput.value = preset.label.replace(/^[^a-zA-Z一-龥]+/, "");
+        runAdvisor(preset.query, preset.title, preset.roadmap);
+      });
+    });
+
+    advisorSearchBtn.addEventListener("click", () => {
+      const q = advisorQueryInput.value.trim();
+      if (!q) {
+        showToast("請輸入您想要研究的課題關鍵字", "💡");
+        advisorQueryInput.focus();
+        return;
+      }
+      runAdvisor(q);
+    });
+
+    advisorQueryInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        advisorSearchBtn.click();
+      }
+    });
+
+    function runAdvisor(customQuery, overrideTitle = null, overrideRoadmap = null) {
+      const rawText = customQuery.toLowerCase();
+      // Split words and sanitize
+      const terms = rawText.split(/[\s,，、。]+/).filter(t => t.length > 0);
+
+      // Score each database
+      const scored = databases.map(db => {
+        let score = 0;
+        const nameL = db.name.toLowerCase();
+        const descL = db.description.toLowerCase();
+        const teachL = db.teaching_focus.toLowerCase();
+        const topicL = db.research_topic.toLowerCase();
+        const instL = db.institute.toLowerCase();
+        const tagsStr = db.tags.join(" ").toLowerCase();
+
+        terms.forEach(t => {
+          if (nameL.includes(t)) score += 15;
+          if (tagsStr.includes(t)) score += 12;
+          if (teachL.includes(t)) score += 10;
+          if (topicL.includes(t)) score += 8;
+          if (descL.includes(t)) score += 5;
+          if (instL.includes(t)) score += 4;
+        });
+
+        // Topic-specific bonuses
+        if ((rawText.includes("地圖") || rawText.includes("地理") || rawText.includes("地景") || rawText.includes("空間")) && db.id === "rchss-twhgis") score += 25;
+        if ((rawText.includes("日記") || rawText.includes("林獻堂") || rawText.includes("士紳")) && db.id === "ith-diary") score += 25;
+        if ((rawText.includes("青銅") || rawText.includes("3d") || rawText.includes("考古")) && db.id === "ihp-3d-archaeology") score += 25;
+        if ((rawText.includes("病") || rawText.includes("疫") || rawText.includes("瘟疫")) && db.id === "litphil-disease-map") score += 25;
+        if ((rawText.includes("僧") || rawText.includes("佛") || rawText.includes("絲路") || rawText.includes("玄奘")) && db.id === "litphil-youfun-map") score += 25;
+        if ((rawText.includes("半導體") || rawText.includes("科技") || rawText.includes("李國鼎")) && db.id === "mh-ktli") score += 25;
+        if ((rawText.includes("字") || rawText.includes("甲骨") || rawText.includes("六書")) && db.id === "ihp-xiaoxue") score += 25;
+        if ((rawText.includes("策展") || rawText.includes("探究") || rawText.includes("學習歷程")) && db.id === "ascdc-plaza") score += 25;
+        if ((rawText.includes("社會變遷") || rawText.includes("問卷") || rawText.includes("性別")) && (db.id === "ios-tscs" || db.id === "ios-tesd")) score += 20;
+
+        return { db, score };
+      });
+
+      scored.sort((a, b) => b.score - a.score);
+      const topMatches = scored.filter(s => s.score > 0).slice(0, 4);
+
+      // Fallback if no exact match
+      const recommendations = topMatches.length > 0 
+        ? topMatches.map(s => s.db)
+        : [databases[0], databases[1], databases[9], databases[17]]; // Hanji, 3D archaeology, Taiwan history, Open museum
+
+      renderAdvisorOutput(advisorQueryInput.value || customQuery, recommendations, overrideTitle, overrideRoadmap);
+    }
+
+    function renderAdvisorOutput(topicTitle, recs, overrideTitle, overrideRoadmap) {
+      const displayTitle = overrideTitle || `針對課題「${topicTitle}」的專屬史料選庫與教學建議`;
+      
+      const roadmapText = overrideRoadmap || `
+        針對此課題，建議採用「時空地景建立 ➔ 核心史料原典調閱 ➔ 數位成果策展」的三階段研究策略：
+        首先以【${recs[0].name}】作為起手資料庫，掌握基礎脈絡與時空背景；
+        接著運用【${recs[1] ? recs[1].name : recs[0].name}】深度檢索第一手歷史文獻或檔案；
+        最後可善用【開放博物館．參與平台】或相關 GIS 工具將研究論點轉化為圖文並茂的學習歷程報告。
+      `;
+
+      advisorResultsBox.innerHTML = `
+        <div class="bg-gradient-to-br from-indigo-50/90 to-amber-50/60 rounded-2xl p-6 border border-indigo-100 shadow-sm space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🎯</span>
+            <h3 class="text-lg font-bold text-slate-900">${displayTitle}</h3>
+          </div>
+          
+          <div class="bg-white p-4 rounded-xl border border-indigo-100 shadow-xs space-y-2">
+            <div class="font-bold text-xs text-indigo-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span>📋</span> 課題研究步驟與資料庫搭配建議：
+            </div>
+            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+              ${roadmapText}
+            </p>
+          </div>
+
+          <div>
+            <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
+              <span>⭐ 最匹配的 ${recs.length} 個中研院數位資料庫（點擊名稱即可直接前往）：</span>
+              <span class="text-indigo-600 font-semibold">皆附課堂教學引導</span>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              ${recs.map((db, idx) => `
+                <div class="bg-white rounded-xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow-md transition flex flex-col justify-between">
+                  <div>
+                    <div class="flex items-center justify-between gap-1 mb-2">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-extrabold ${idx === 0 ? 'bg-amber-100 text-amber-800 border border-amber-300' : 'bg-indigo-50 text-indigo-700'}">
+                        ${idx === 0 ? '👑 首選起手資料庫' : `推薦資料庫 #${idx + 1}`}
+                      </span>
+                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
+                        ${db.access_tier}
+                      </span>
+                    </div>
+
+                    <h4 class="font-bold text-sm text-slate-900 leading-snug">
+                      <a href="${db.url}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 hover:underline flex items-center justify-between gap-1">
+                        <span>${db.name}</span>
+                        <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
+                    </h4>
+                    
+                    <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">
+                      ${db.description}
+                    </p>
+
+                    <div class="mt-2.5 p-2 bg-amber-50 rounded-lg border border-amber-100 text-[11px] text-amber-900 leading-relaxed">
+                      <strong>教學應用建議：</strong> ${db.teaching_focus}
+                    </div>
+                  </div>
+
+                  <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs">
+                    <span class="text-[11px] text-slate-400 font-medium">${db.institute}</span>
+                    <a href="${db.url}" target="_blank" rel="noopener noreferrer" 
+                      class="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition flex items-center gap-1 shadow-sm">
+                      <span>直達資料庫</span>
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+
+        </div>
+      `;
+
+      advisorResultsBox.classList.remove("hidden");
+      advisorResultsBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // ==========================================
+    // FILTER CONTROLS & LISTENERS
+    // ==========================================
+    searchInput.addEventListener("input", (e) => {
+      currentSearch = e.target.value;
+      if (currentSearch) {
+        clearSearchBtn.classList.remove("hidden");
+      } else {
+        clearSearchBtn.classList.add("hidden");
+      }
+      renderDatabases();
+    });
+
+    clearSearchBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      currentSearch = "";
+      clearSearchBtn.classList.add("hidden");
+      renderDatabases();
+      searchInput.focus();
+    });
+
+    categoryFilter.addEventListener("change", (e) => {
+      currentCategory = e.target.value;
+      updateTopicBanner();
+      renderTopicButtons();
+      renderDatabases();
+    });
+
+    accessFilter.addEventListener("change", (e) => {
+      currentAccess = e.target.value;
+      renderDatabases();
+    });
+
+    teachingCheckbox.addEventListener("change", (e) => {
+      onlyTeaching = e.target.checked;
+      renderDatabases();
+    });
+
+    function resetAllFilters() {
+      searchInput.value = "";
+      currentSearch = "";
+      clearSearchBtn.classList.add("hidden");
+      categoryFilter.value = "ALL";
+      currentCategory = "ALL";
+      accessFilter.value = "ALL";
+      currentAccess = "ALL";
+      currentInstitute = "ALL";
+      teachingCheckbox.checked = false;
+      onlyTeaching = false;
+      onlyFavorites = false;
+      updateFavoritesUI();
+      updateTopicBanner();
+      renderTopicButtons();
+      renderInstituteFilters();
+      renderDatabases();
+      showToast("所有篩選條件已重設");
+    }
+
+    resetFiltersBtn.addEventListener("click", resetAllFilters);
+    emptyResetBtn.addEventListener("click", resetAllFilters);
+
+    toggleFavoritesBtn.addEventListener("click", () => {
+      onlyFavorites = !onlyFavorites;
+      updateFavoritesUI();
+      renderDatabases();
+    });
+
+    // Modal Close
+    closeModalBtn.addEventListener("click", closeModal);
+    detailModal.addEventListener("click", (e) => {
+      if (e.target === detailModal) closeModal();
+    });
+
+    // Modal Favorite Button
+    modalFavoriteBtn.addEventListener("click", () => {
+      if (activeDb) {
+        toggleFavorite(activeDb.id);
+        const isFav = favorites.includes(activeDb.id);
+        modalFavoriteText.textContent = isFav ? "已在收藏中 (點擊取消)" : "加入我的收藏";
+      }
+    });
+
+    // Copy URL Button with Fallback
+    modalCopyUrlBtn.addEventListener("click", () => {
+      if (!activeDb) return;
+      const url = activeDb.url;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(() => {
+            modalCopyText.textContent = "已複製網址！";
+            showToast("資料庫網址已複製到剪貼簿");
+            setTimeout(() => { modalCopyText.textContent = "複製連結"; }, 2000);
+          }).catch(() => fallbackCopy(url));
+        } else {
+          fallbackCopy(url);
+        }
+      } catch (err) {
+        fallbackCopy(url);
+      }
+    });
+
+    function fallbackCopy(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand("copy");
+        modalCopyText.textContent = "已複製網址！";
+        showToast("資料庫網址已複製到剪貼簿");
+        setTimeout(() => { modalCopyText.textContent = "複製連結"; }, 2000);
+      } catch (e) {
+        showToast("複製失敗，請手動複製", "⚠️");
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // Guide Modal Listeners
+    guideModalBtn.addEventListener("click", () => {
+      guideModal.classList.remove("hidden");
+    });
+    closeGuideModalBtn.addEventListener("click", () => {
+      guideModal.classList.add("hidden");
+    });
+    confirmGuideBtn.addEventListener("click", () => {
+      guideModal.classList.add("hidden");
+    });
+    guideModal.addEventListener("click", (e) => {
+      if (e.target === guideModal) guideModal.classList.add("hidden");
+    });
+
+    // Keyboard ESC listener
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (!detailModal.classList.contains("hidden")) closeModal();
+        if (!guideModal.classList.contains("hidden")) guideModal.classList.add("hidden");
+      }
+    });
+
+    // Initialize UI
+    renderTopicButtons();
+    renderInstituteFilters();
+    updateFavoritesUI();
+    renderDatabases();
+  </script>
+</body>
+</html>
