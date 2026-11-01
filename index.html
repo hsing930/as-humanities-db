@@ -1201,43 +1201,92 @@
     });
 
     function runAdvisor(customQuery, overrideTitle = null, overrideRoadmap = null) {
-      const rawText = customQuery.toLowerCase();
-      const terms = rawText.split(/[\\s,，、。]+/).filter(t => t.length > 0);
+      const rawText = (customQuery || advisorQueryInput.value || "").trim();
+      if (!rawText) {
+        showToast("請先輸入研究課題或點選範例！");
+        return;
+      }
+
+      const norm = rawText.replace(/台/g, "臺").toLowerCase();
+
+      // 日治臺灣史與殖民經濟專題辨識
+      const isColonialTaiwan = /拓殖|會社|株式會社|日治|日據|總督府|公文類纂|南進|皇民化|保甲|理蕃|霧社|林獻堂|蔣渭水|臺灣文化協會|文協|六三法|專賣局|米糖|糖業|蔗糖|蕃地|旅券|治安警察法|顏水龍|簡吉|農民組合|臺灣史|台灣史|熱蘭遮|荷治|清代臺灣|臺灣民間/i.test(norm);
+
+      // 分解子詞與 n-grams (以利中文短語與複合詞比對)
+      const ngrams = [];
+      if (norm.length >= 2) {
+        for (let i = 0; i < norm.length - 1; i++) {
+          ngrams.push(norm.substr(i, 2));
+          if (i < norm.length - 2) ngrams.push(norm.substr(i, 3));
+          if (i < norm.length - 3) ngrams.push(norm.substr(i, 4));
+        }
+      }
 
       const scored = databases.map(db => {
         let score = 0;
-        const nameL = db.name.toLowerCase();
-        const descL = db.description.toLowerCase();
-        const teachL = db.teaching_focus.toLowerCase();
-        const topicL = db.research_topic.toLowerCase();
-        const instL = db.institute.toLowerCase();
-        const tagsStr = db.tags.join(" ").toLowerCase();
+        const nameN = db.name.replace(/台/g, "臺").toLowerCase();
+        const descN = db.description.replace(/台/g, "臺").toLowerCase();
+        const teachN = db.teaching_focus.replace(/台/g, "臺").toLowerCase();
+        const topicN = db.research_topic.replace(/台/g, "臺").toLowerCase();
+        const instN = db.institute.replace(/台/g, "臺").toLowerCase();
+        const tagsN = (db.tags || []).join(" ").replace(/台/g, "臺").toLowerCase();
 
-        terms.forEach(t => {
-          if (nameL.includes(t)) score += 18;
-          if (tagsStr.includes(t)) score += 14;
-          if (teachL.includes(t)) score += 10;
-          if (topicL.includes(t)) score += 8;
-          if (descL.includes(t)) score += 6;
-          if (instL.includes(t)) score += 4;
+        // 完整詞精確命中
+        if (nameN.includes(norm)) score += 60;
+        if (descN.includes(norm)) score += 30;
+        if (teachN.includes(norm)) score += 30;
+        if (tagsN.includes(norm)) score += 30;
+
+        // 子詞與片語比對
+        ngrams.forEach(term => {
+          if (term.length < 2) return;
+          if (term === "臺灣" || term === "台灣") {
+            if (nameN.includes(term)) score += 6;
+            if (instN.includes("臺灣史")) score += 10;
+            return;
+          }
+          if (nameN.includes(term)) score += 15 * term.length;
+          if (tagsN.includes(term)) score += 10 * term.length;
+          if (teachN.includes(term)) score += 8 * term.length;
+          if (descN.includes(term)) score += 6 * term.length;
+          if (topicN.includes(term)) score += 6 * term.length;
         });
 
-        if ((rawText.includes("地圖") || rawText.includes("地理") || rawText.includes("地景")) && db.id === "rchss-twhgis") score += 25;
-        if ((rawText.includes("日記") || rawText.includes("林獻堂")) && db.id === "ith-diary") score += 25;
-        if ((rawText.includes("青銅") || rawText.includes("3d") || rawText.includes("考古")) && db.id === "ihp-3d-archaeology") score += 25;
-        if ((rawText.includes("漢簡") || rawText.includes("居延")) && db.id === "ihp-juyan-dict") score += 30;
-        if ((rawText.includes("甲骨") || rawText.includes("殷墟")) && db.id === "ihp-jiagu-rubbings") score += 30;
-        if ((rawText.includes("畫像") || rawText.includes("武梁祠")) && db.id === "ihp-han-stone-rubbings") score += 30;
-        if ((rawText.includes("寫真帖") || rawText.includes("老照片")) && db.id === "ith-photo-albums") score += 30;
-        if ((rawText.includes("婦女") || rawText.includes("性別")) && db.id === "mh-women-history") score += 30;
-        if ((rawText.includes("胡適") || rawText.includes("新文化")) && db.id === "mh-hushi") score += 30;
-        if ((rawText.includes("病") || rawText.includes("疫") || rawText.includes("瘟疫")) && db.id === "litphil-disease-map") score += 25;
-        if ((rawText.includes("僧") || rawText.includes("佛") || rawText.includes("絲路") || rawText.includes("玄奘")) && db.id === "litphil-youfun-map") score += 25;
-        if ((rawText.includes("英國") || rawText.includes("維多利亞") || rawText.includes("外國史")) && db.id === "ea-british-periodicals") score += 25;
-        if ((rawText.includes("傳教士") || rawText.includes("馬雅各") || rawText.includes("長老教會")) && db.id === "ea-presbyterian-mission") score += 30;
-        if ((rawText.includes("半導體") || rawText.includes("科技") || rawText.includes("李國鼎")) && db.id === "mh-ktli") score += 25;
-        if ((rawText.includes("字") || rawText.includes("六書")) && db.id === "ihp-xiaoxue") score += 25;
-        if ((rawText.includes("策展") || rawText.includes("探究") || rawText.includes("學習歷程")) && db.id === "ascdc-plaza") score += 25;
+        // 日治臺灣史、拓殖會社與近代臺灣特定權重加分
+        if (norm.includes("拓殖") || norm.includes("會社") || norm.includes("株式會社")) {
+          if (db.id === "ith-tais") score += 160; // 臺灣史檔案資源系統（典藏臺拓會社檔案）
+          if (db.id === "ith-gov-travel" || db.id === "ith-shokuinroku") score += 130; // 總督府職員錄與旅券
+          if (db.id === "rchss-twhgis") score += 110; // 臺灣百年歷史地圖（拓殖事業地景）
+          if (db.id === "ith-diary") score += 95; // 臺灣日記知識庫（當代士紳見聞）
+          if (db.id === "aslib_105" || db.id === "aslib_103") score += 85; // 臺灣日日新報
+          if (db.id === "ith-photo-albums") score += 80; // 寫真帖
+        } else if (isColonialTaiwan) {
+          if (db.id === "ith-tais") score += 130;
+          if (db.id === "ith-gov-travel" || db.id === "ith-shokuinroku") score += 120;
+          if (db.id === "rchss-twhgis") score += 110;
+          if (db.id === "ith-diary") score += 100;
+          if (db.id === "ith-photo-albums") score += 85;
+          if (db.id === "aslib_105" || db.id === "aslib_103") score += 80;
+          if (instN.includes("臺灣史")) score += 40;
+        }
+
+        // 其他人文社會核心課題專門加權
+        if ((norm.includes("地圖") || norm.includes("地理") || norm.includes("地景")) && db.id === "rchss-twhgis") score += 35;
+        if ((norm.includes("日記") || norm.includes("林獻堂") || norm.includes("張麗俊")) && db.id === "ith-diary") score += 35;
+        if ((norm.includes("青銅") || norm.includes("3d") || norm.includes("考古")) && db.id === "ihp-3d-archaeology") score += 35;
+        if ((norm.includes("漢簡") || norm.includes("居延")) && db.id === "ihp-juyan-dict") score += 40;
+        if ((norm.includes("甲骨") || norm.includes("殷墟")) && db.id === "ihp-jiagu-rubbings") score += 40;
+        if ((norm.includes("畫像") || norm.includes("武梁祠")) && db.id === "ihp-han-stone-rubbings") score += 40;
+        if ((norm.includes("寫真帖") || norm.includes("老照片")) && db.id === "ith-photo-albums") score += 40;
+        if ((norm.includes("婦女") || norm.includes("性別")) && db.id === "mh-women-history") score += 40;
+        if ((norm.includes("胡適") || norm.includes("新文化")) && db.id === "mh-hushi") score += 40;
+        if ((norm.includes("病") || norm.includes("疫") || norm.includes("瘟疫")) && db.id === "litphil-disease-map") score += 35;
+        if ((norm.includes("僧") || norm.includes("佛") || norm.includes("絲路") || norm.includes("玄奘")) && db.id === "litphil-youfun-map") score += 35;
+        if ((norm.includes("英國") || norm.includes("維多利亞") || norm.includes("外國史")) && db.id === "ea-british-periodicals") score += 35;
+        if ((norm.includes("傳教士") || norm.includes("馬雅各") || norm.includes("長老教會")) && db.id === "ea-presbyterian-mission") score += 40;
+        if ((norm.includes("半導體") || norm.includes("科技") || norm.includes("李國鼎")) && db.id === "mh-ktli") score += 35;
+        if ((norm.includes("字") || norm.includes("六書") || norm.includes("小學")) && db.id === "ihp-xiaoxue") score += 35;
+        if ((norm.includes("策展") || norm.includes("探究") || norm.includes("學習歷程")) && db.id === "ascdc-plaza") score += 35;
 
         return { db, score };
       });
@@ -1245,22 +1294,43 @@
       scored.sort((a, b) => b.score - a.score);
       const topMatches = scored.filter(s => s.score > 0).slice(0, 4);
 
+      // 若完全無匹配，挑選中研院跨領域最具代表性四大開放旗艦門戶，而非盲目抓前兩筆
+      const fallbackRecs = [
+        databases.find(d => d.id === "ith-tais") || databases[0],
+        databases.find(d => d.id === "rchss-twhgis") || databases[1],
+        databases.find(d => d.id === "ascdc-plaza") || databases[2],
+        databases.find(d => d.id === "ihp-hanji") || databases[3]
+      ];
+
       const recommendations = topMatches.length > 0 
         ? topMatches.map(s => s.db)
-        : [databases[0], databases[2], databases[20], databases[26]];
+        : fallbackRecs;
 
-      renderAdvisorOutput(advisorQueryInput.value || customQuery, recommendations, overrideTitle, overrideRoadmap);
+      renderAdvisorOutput(rawText, recommendations, overrideTitle, overrideRoadmap, isColonialTaiwan);
     }
 
-    function renderAdvisorOutput(topicTitle, recs, overrideTitle, overrideRoadmap) {
+    function renderAdvisorOutput(topicTitle, recs, overrideTitle, overrideRoadmap, isColonialTaiwan = false) {
       const displayTitle = overrideTitle || `針對課題「${topicTitle}」的專屬史料選庫與教學建議`;
       
-      const roadmapText = overrideRoadmap || `
-        針對此課題，建議採用「時空地景建立 ➔ 核心史料原典調閱 ➔ 數位成果策展」的三階段研究策略：
-        首先以【${recs[0].name}】作為起手資料庫，掌握基礎脈絡與時空背景；
-        接著運用【${recs[1] ? recs[1].name : recs[0].name}】深度檢索第一手歷史文獻或檔案；
-        最後可善用【開放博物館．參與平台】或相關 GIS 工具將研究論點轉化為圖文並茂的學習歷程報告。
-      `;
+      let roadmapText = overrideRoadmap;
+      if (!roadmapText) {
+        if (isColonialTaiwan || topicTitle.includes("拓殖") || topicTitle.includes("會社") || topicTitle.includes("日治")) {
+          roadmapText = `
+            針對日治臺灣史與「${topicTitle}」專題，建議採用「官方會社檔案翻閱 ➔ 職員與社會網絡考證 ➔ 空間地景重現 ➔ 當代輿情與日記對照」的四階段研究策略：<br>
+            • <strong>第一步（核心一手文獻）</strong>：優先運用【${recs[0] ? recs[0].name : "臺灣史檔案資源系統"}】調閱臺史所典藏之「臺灣拓殖株式會社文書」及日治公文類纂，掌握會社設立、土地收買與事業開墾之原始檔案；<br>
+            • <strong>第二步（政商職員網絡）</strong>：透過【${recs[1] ? recs[1].name : "臺灣總督府職員錄與旅券查詢系統"}】追查該會社歷任社長、理監事或職員之官方派任履歷與在臺人際網絡；<br>
+            • <strong>第三步（空間地景疊合）</strong>：搭配【${recs.find(r => r.id === "rchss-twhgis") ? recs.find(r => r.id === "rchss-twhgis").name : "臺灣百年歷史地圖"}】套疊日治時期五萬分之一地形圖與土地利用圖層，還原拓殖會社在各地的農場、林場與產業空間變遷；<br>
+            • <strong>第四步（社會輿情見證）</strong>：輔以【${recs.find(r => r.id === "ith-diary") ? recs.find(r => r.id === "ith-diary").name : "臺灣日記知識庫"}】（如林獻堂日記）或【臺灣日日新報】，考證民間地主與臺灣知識份子對拓殖政策的真實社會評價。
+          `;
+        } else {
+          roadmapText = `
+            針對此課題，建議採用「時空地景建立 ➔ 核心史料原典調閱 ➔ 數位成果策展」的三階段研究策略：<br>
+            • <strong>起步</strong>：首先以【${recs[0].name}】作為起手資料庫，掌握基礎脈絡與時空背景；<br>
+            • <strong>深究</strong>：接著運用【${recs[1] ? recs[1].name : recs[0].name}】深度檢索第一手歷史文獻、檔案或實證數據；<br>
+            • <strong>整合</strong>：最後可善用【開放博物館．參與平台】或相關 GIS 工具將研究論點轉化為圖文並茂的學習歷程或探究成果報告。
+          `;
+        }
+      }
 
       advisorResultsBox.innerHTML = `
         <div class="bg-gradient-to-br from-indigo-50/90 to-amber-50/60 rounded-2xl p-6 border border-indigo-100 shadow-sm space-y-4">
@@ -1273,112 +1343,46 @@
             <div class="font-bold text-xs text-indigo-900 uppercase tracking-wider flex items-center gap-1.5">
               <span>📋</span> 課題研究步驟與資料庫搭配建議：
             </div>
-            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+            <div class="text-xs sm:text-sm text-slate-700 leading-relaxed space-y-1">
               ${roadmapText}
-            </p>
+            </div>
           </div>
 
           <div>
             <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2 flex items-center justify-between">
               <span>⭐ 最匹配的 ${recs.length} 個中研院數位資料庫（點擊名稱即可直接前往）：</span>
-              <span class="text-indigo-600 font-semibold">皆附課堂教學引導</span>
+              <span class="text-indigo-600 font-semibold">皆附教學導引</span>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               ${recs.map((db, idx) => `
-                <div class="bg-white rounded-xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow-md transition flex flex-col justify-between">
+                <div class="p-3.5 rounded-xl bg-white border border-slate-200/80 hover:border-indigo-300 hover:shadow-md transition flex flex-col justify-between">
                   <div>
-                    <div class="flex items-center justify-between gap-1 mb-2">
-                      <span class="px-2 py-0.5 rounded text-[10px] font-extrabold ${idx === 0 ? 'bg-amber-100 text-amber-800 border border-amber-300' : 'bg-indigo-50 text-indigo-700'}">
-                        ${idx === 0 ? '👑 首選起手資料庫' : `推薦資料庫 #${idx + 1}`}
+                    <div class="flex items-center justify-between gap-1 mb-1.5">
+                      <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${idx === 0 ? "bg-amber-100 text-amber-800" : "bg-indigo-50 text-indigo-700"}">
+                        ${idx === 0 ? "👑 首選起手資料庫" : `推薦資料庫 #${idx + 1}`}
                       </span>
-                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
-                        ${db.access_tier}
-                      </span>
+                      <span class="text-[10px] font-medium text-slate-500">${db.access_tier}</span>
                     </div>
-
-                    <h4 class="font-bold text-sm text-slate-900 leading-snug">
-                      <a href="${db.url}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-600 hover:underline flex items-center justify-between gap-1">
-                        <span>${db.name}</span>
-                        <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                      </a>
-                    </h4>
-                    
-                    <p class="text-[11px] text-slate-500 mt-1 line-clamp-2">
-                      ${db.description}
-                    </p>
-
-                    <div class="mt-2.5 p-2 bg-amber-50 rounded-lg border border-amber-100 text-[11px] text-amber-900 leading-relaxed">
-                      <strong>教學應用建議：</strong> ${db.teaching_focus}
-                    </div>
-                  </div>
-
-                  <div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span class="text-[11px] text-slate-400 font-medium">${db.institute}</span>
-                    <a href="${db.url}" target="_blank" rel="noopener noreferrer" 
-                      class="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition flex items-center gap-1 shadow-sm">
-                      <span>直達資料庫</span>
-                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
+                    <a href="${db.url}" target="_blank" rel="noopener noreferrer" class="font-bold text-sm text-slate-900 hover:text-indigo-600 flex items-center gap-1">
+                      <span>${db.name}</span>
+                      <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
+                    <p class="text-xs text-slate-600 mt-1 line-clamp-2">${db.description}</p>
+                  </div>
+                  <div class="mt-2.5 pt-2 border-t border-slate-100 text-[11px] text-amber-900 font-medium">
+                    💡 <strong>搭配建議：</strong>${db.teaching_focus}
                   </div>
                 </div>
               `).join("")}
             </div>
           </div>
-
         </div>
       `;
 
       advisorResultsBox.classList.remove("hidden");
-      advisorResultsBox.scrollIntoView({ behavior: "smooth", block: "start" });
+      advisorResultsBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
-
-    searchInput.addEventListener("input", (e) => {
-      currentSearch = e.target.value;
-      if (currentSearch) {
-        clearSearchBtn.classList.remove("hidden");
-      } else {
-        clearSearchBtn.classList.add("hidden");
-      }
-      applyDeviceMode();
-      renderDatabases();
-      updateHeaderStats();
-    });
-
-    clearSearchBtn.addEventListener("click", () => {
-      searchInput.value = "";
-      currentSearch = "";
-      clearSearchBtn.classList.add("hidden");
-      renderDatabases();
-      searchInput.focus();
-    });
-
-    categoryFilter.addEventListener("change", (e) => {
-      currentCategory = e.target.value;
-      updateTopicBanner();
-      renderTopicButtons();
-      applyDeviceMode();
-      renderDatabases();
-      updateHeaderStats();
-    });
-
-    accessFilter.addEventListener("change", (e) => {
-      currentAccess = e.target.value;
-      applyDeviceMode();
-      renderDatabases();
-      updateHeaderStats();
-    });
-
-    teachingCheckbox.addEventListener("change", (e) => {
-      onlyTeaching = e.target.checked;
-      applyDeviceMode();
-      renderDatabases();
-      updateHeaderStats();
-    });
 
     function resetAllFilters() {
       searchInput.value = "";
