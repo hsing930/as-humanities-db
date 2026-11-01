@@ -26,6 +26,56 @@
     .custom-scrollbar::-webkit-scrollbar-thumb:hover {
       background: #94a3b8;
     }
+
+    /* Device-specific responsive helpers */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Mobile view override styles */
+    body.mode-mobile #databasesGrid {
+      grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+    body.mode-tablet #databasesGrid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+    body.mode-desktop #databasesGrid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+    @media (min-width: 1440px) {
+      body.mode-desktop #databasesGrid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      }
+    }
+
+    /* Mobile modal as Bottom Sheet */
+    body.mode-mobile #dbModal {
+      align-items: flex-end !important;
+      padding: 0 !important;
+    }
+    body.mode-mobile #dbModalContent {
+      width: 100% !important;
+      max-width: 100% !important;
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      border-top-left-radius: 1.5rem !important;
+      border-top-right-radius: 1.5rem !important;
+      max-height: 90vh !important;
+      margin: 0 !important;
+    }
+    
+    /* Touch target comfort */
+    .touch-target {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .glass-nav {
       background: rgba(15, 23, 42, 0.95);
       backdrop-filter: blur(12px);
@@ -51,7 +101,29 @@
       </div>
       
       <!-- Quick Action Controls -->
-      <div class="flex items-center gap-2.5">
+      <div class="flex flex-wrap items-center gap-2.5">
+
+      <!-- 載具自適應切換器 (筆電/平板/手機/自動辨識) -->
+      <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-800/90 border border-slate-700/80 text-xs">
+        <span class="text-[10px] text-slate-400 font-medium px-1.5 hidden sm:inline">載具模式:</span>
+        <button id="devAutoBtn" onclick="setDeviceMode('auto')" title="依螢幕寬度自動辨識" 
+          class="px-2 py-1 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow-xs">
+          ⚡ 自動辨識
+        </button>
+        <button id="devMobileBtn" onclick="setDeviceMode('mobile')" title="手機最佳化排版 (單欄/橫向滑動/底抽屜)" 
+          class="px-2 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-700 transition">
+          📱 手機
+        </button>
+        <button id="devTabletBtn" onclick="setDeviceMode('tablet')" title="平板最佳化排版 (雙欄/觸控大按鈕)" 
+          class="px-2 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-700 transition">
+          📟 平板
+        </button>
+        <button id="devDesktopBtn" onclick="setDeviceMode('desktop')" title="筆電/桌機大螢幕版 (多欄/全景檢索)" 
+          class="px-2 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-700 transition">
+          💻 筆電
+        </button>
+      </div>
+
         <button id="toggleFavoritesBtn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-medium transition text-amber-400">
           <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
@@ -213,7 +285,7 @@
             </span>
             <span id="activeCount" class="text-indigo-600 font-bold">顯示 393 個資源（共 393 個）</span>
           </div>
-          <div id="topicButtonsContainer" class="flex flex-wrap gap-1.5 mb-2">
+          <div id="topicButtonsContainer" class="flex flex-wrap gap-1.5 mb-2 transition-all duration-200">
             <!-- Dynamically populated research topic buttons -->
           </div>
         </div>
@@ -669,10 +741,91 @@
         activeBtn.className = "flex-1 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold transition bg-indigo-600 text-white shadow";
       }
       renderTopicButtons();
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
       updateHeaderStats();
     }
+
+    
+    // ==========================================
+    // 跨載具自動辨識與最佳化調適系統 (Laptop / Tablet / Mobile)
+    // ==========================================
+    let currentDeviceSetting = localStorage.getItem("as_db_device_setting") || "auto"; // auto, mobile, tablet, desktop
+    let detectedDevice = "desktop";
+
+    function detectClientDevice() {
+      const w = window.innerWidth;
+      const ua = navigator.userAgent.toLowerCase();
+      const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+      const isMobileUA = /iphone|ipod|android.*mobile|windows phone|blackberry/i.test(ua);
+      const isTabletUA = /ipad|android(?!.*mobile)|tablet/i.test(ua);
+
+      if (isMobileUA || (w < 640 && isTouch)) {
+        return "mobile";
+      } else if (isTabletUA || (w >= 640 && w <= 1024)) {
+        return "tablet";
+      } else {
+        return "desktop";
+      }
+    }
+
+    function applyDeviceMode() {
+      detectedDevice = detectClientDevice();
+      const effectiveMode = currentDeviceSetting === "auto" ? detectedDevice : currentDeviceSetting;
+
+      document.body.classList.remove("mode-mobile", "mode-tablet", "mode-desktop");
+      document.body.classList.add(`mode-${effectiveMode}`);
+
+      // Update button visual styles
+      const autoBtn = document.getElementById("devAutoBtn");
+      const mobBtn = document.getElementById("devMobileBtn");
+      const tabBtn = document.getElementById("devTabletBtn");
+      const deskBtn = document.getElementById("devDesktopBtn");
+
+      const buttons = [
+        { el: autoBtn, key: "auto", label: `⚡ 自動 (${detectedDevice === "mobile" ? "手機" : (detectedDevice === "tablet" ? "平板" : "筆電")})` },
+        { el: mobBtn, key: "mobile", label: "📱 手機" },
+        { el: tabBtn, key: "tablet", label: "📟 平板" },
+        { el: deskBtn, key: "desktop", label: "💻 筆電" }
+      ];
+
+      buttons.forEach(b => {
+        if (!b.el) return;
+        b.el.textContent = b.label;
+        if (currentDeviceSetting === b.key) {
+          b.el.className = "px-2 py-1 rounded-lg text-xs font-bold transition bg-indigo-600 text-white shadow-xs";
+        } else {
+          b.el.className = "px-2 py-1 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-700 transition";
+        }
+      });
+
+      // Tailor topic buttons row layout: on mobile, make it an elegant horizontal swipable pill bar
+      const topicContainer = document.getElementById("topicButtonsContainer");
+      if (topicContainer) {
+        if (effectiveMode === "mobile") {
+          topicContainer.className = "flex overflow-x-auto gap-2 mb-2 pb-2 hide-scrollbar whitespace-nowrap scroll-smooth";
+        } else {
+          topicContainer.className = "flex flex-wrap gap-1.5 mb-2";
+        }
+      }
+    }
+
+    function setDeviceMode(mode) {
+      currentDeviceSetting = mode;
+      localStorage.setItem("as_db_device_setting", mode);
+      applyDeviceMode();
+    }
+
+    // Auto listen to window resize and orientation change
+    window.addEventListener("resize", () => {
+      if (currentDeviceSetting === "auto") {
+        applyDeviceMode();
+      }
+    });
+    window.addEventListener("orientationchange", () => {
+      setTimeout(applyDeviceMode, 200);
+    });
 
     function renderTopicButtons() {
       topicButtonsContainer.innerHTML = researchTopics.map(topic => {
@@ -760,6 +913,7 @@
         localStorage.setItem("as_db_favorites", JSON.stringify(favorites));
       } catch (e) {}
       updateFavoritesUI();
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
     }
@@ -1186,6 +1340,7 @@
       } else {
         clearSearchBtn.classList.add("hidden");
       }
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
     });
@@ -1202,18 +1357,21 @@
       currentCategory = e.target.value;
       updateTopicBanner();
       renderTopicButtons();
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
     });
 
     accessFilter.addEventListener("change", (e) => {
       currentAccess = e.target.value;
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
     });
 
     teachingCheckbox.addEventListener("change", (e) => {
       onlyTeaching = e.target.checked;
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
     });
@@ -1244,6 +1402,7 @@
     toggleFavoritesBtn.addEventListener("click", () => {
       onlyFavorites = !onlyFavorites;
       updateFavoritesUI();
+      applyDeviceMode();
       renderDatabases();
       updateHeaderStats();
     });
